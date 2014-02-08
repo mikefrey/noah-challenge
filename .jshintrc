@@ -1,0 +1,26 @@
+{
+  "curly": false,
+  "eqeqeq": false,
+  "immed": true,
+  "latedef": "nofunc",
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "undef": true,
+  "boss": true,
+  "eqnull": true,
+  "browser": true,
+  "asi": true,
+  "devel": true,
+  "node": true,
+  "globals": {
+    "global": true,
+    "jQuery": true,
+    "module": true,
+    "exports": true,
+    "process": true,
+    "__dirname": true,
+    "angular": true,
+    "_": true
+  }
+}
