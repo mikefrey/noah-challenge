@@ -28,6 +28,11 @@ angular.module('oscars', [
       controller: 'BallotCtrl'
     })
 
+    .when('/admin/users', {
+      templateUrl: '/views/userList.html',
+      controller: 'UserCtrl'
+    })
+
     .otherwise({
       redirectTo: '/'
     }

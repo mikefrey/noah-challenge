@@ -10,7 +10,7 @@ var ballotSchema = new Schema({
   lastName: String,
   email: String,
   password: String,
-  admin: Boolean,
+  admin: { type: Boolean, default: false },
   votes: [{
     item: Schema.Types.ObjectId,
     value: Number

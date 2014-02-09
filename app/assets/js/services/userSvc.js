@@ -4,14 +4,31 @@ angular.module('oscars')
   .factory('UserService', function($req, $q) {
     var baseUrl = '/api/users'
 
+    function resolveOnMatch(promise, id) {
+      var dfd = $q.defer()
+      promise.then(function(data) {
+        if (data._id == id)
+          dfd.resolve()
+        else
+          dfd.reject()
+      }, dfd.reject)
+      return dfd.promise
+    }
+
+
     function create(user) {
       var url = baseUrl
       return $req.post(url, user)
     }
 
+    function update(user) {
+      var url = baseUrl + '/' + user._id
+      return resolveOnMatch($req.put(url, user), user._id)
+    }
+
     function destroy(id) {
       var url = baseUrl + '/' + id
-      return $req.del(url)
+      return resolveOnMatch($req.del(url), id)
     }
 
     function list() {
@@ -20,20 +37,13 @@ angular.module('oscars')
     }
 
     function login(id, password) {
-      var dfd = $q.defer()
       var url = baseUrl
-      $req.put(url, {id:id, pw:password})
-        .then(function(data) {
-          if (data._id == id)
-            dfd.resolve()
-          else
-            dfd.reject()
-        }, dfd.reject)
-      return dfd.promise
+      return resolveOnMatch($req.put(url, {id:id, pw:password}), id)
     }
 
     return {
       create: create,
+      update: update,
       list: list,
       login: login,
       destroy: destroy

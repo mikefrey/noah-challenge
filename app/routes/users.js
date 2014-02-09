@@ -12,14 +12,17 @@ function execQuery(query) {
 module.exports = {
 
   index: function *(next) {
-    var users = yield execQuery(Ballot.find({}, 'id firstName lastName'))
+    var fields = 'id firstName lastName'
+    if (true || this.session.admin === true)
+      fields += ' email admin'
+    var users = yield Ballot.find({}, fields).exec()
     this.body = users
   },
 
   login: function *(next) {
     var id = this.data.id
     var pw = this.data.pw
-    var result = yield execQuery(Ballot.findById(id, 'id').where('password', pw))
+    var result = yield Ballot.findById(id, 'id').where('password', pw).exec()
 
     if (result && id == result._id) {
       this.body = result
@@ -33,8 +36,17 @@ module.exports = {
     this.body = result
   },
 
-  // update: function *(next) {
+  update: function *(next) {
+    var id = this.params.id
+    delete this.data._id
+    var result = yield Ballot.findByIdAndUpdate(id, this.data).exec()
+    this.body = { _id:result._id }
+  },
 
-  // }
+  destroy: function *(next) {
+    var id = this.params.id
+    var result = yield Ballot.findByIdAndRemove(id).exec()
+    this.body = { _id:result._id }
+  }
 
 }

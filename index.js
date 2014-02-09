@@ -11,8 +11,6 @@ var parseBody = require('./app/middleware/bodyParser')
 
 var config = require('./config')
 
-// routes
-var usersRoute = require('./app/routes/users')
 
 app.keys = config.keys
 
@@ -31,10 +29,18 @@ app.use(staticFiles('./public'))
 app.use(views('./app/views', 'ejs'))
 app.use(router(app))
 
+// Users routes
+var usersRoute = require('./app/routes/users')
+
 app.get('/api/users', usersRoute.index)
 app.post('/api/users', parseBody.json, usersRoute.create)
 app.put('/api/users', parseBody.json, usersRoute.login)
+app.put('/api/users/:id', parseBody.json, usersRoute.update)
+// app.del('/api/users/:id', usersRoute.destroy)
+app['delete']('/api/users/:id', usersRoute.destroy)
 
+
+// Catch-all home route
 app.get('/*?', require('./app/routes/home'))
 
 
