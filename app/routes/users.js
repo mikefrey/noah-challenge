@@ -2,7 +2,10 @@ var Ballot = require('../models/ballot')
 
 function execQuery(query) {
   return function(fn) {
-    query.exec(fn)
+    query.exec(function(err, data) {
+      if (err) console.error(err)
+      fn(err, data)
+    })
   }
 }
 
@@ -13,12 +16,25 @@ module.exports = {
     this.body = users
   },
 
-  create: function *(next) {
+  login: function *(next) {
+    var id = this.data.id
+    var pw = this.data.pw
+    var result = yield execQuery(Ballot.findById(id, 'id').where('password', pw))
 
+    if (result && id == result._id) {
+      this.body = result
+    } else {
+      this.body = {}
+    }
   },
 
-  update: function *(next) {
+  create: function *(next) {
+    var result = yield Ballot.create(this.data)
+    this.body = result
+  },
 
-  }
+  // update: function *(next) {
+
+  // }
 
 }

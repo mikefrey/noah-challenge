@@ -1,6 +1,6 @@
 
 
-module.exports = function *(next) {
+// module.exports = function *(next) {
 
 
-}
+// }

@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="oscars">
 <head>
   <title>Noah's Challenge</title>
 </head>
 <body>
 
+  <div ng-view="">
+
+  </div>
+
+  <!-- build:js(app/assets) js/vendor.js -->
+  <!-- bower:js -->
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/bower_components/underscore/underscore.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app/assets}) js/bundle.js -->
+  <script src="/js/app.js"></script>
+  <script src="/js/filters/filters.js"></script>
+  <script src="/js/services/req.js"></script>
+  <script src="/js/services/userSvc.js"></script>
+  <script src="/js/services/ballotSvc.js"></script>
+  <script src="/js/controllers/login.js"></script>
+  <script src="/js/controllers/loginError.js"></script>
+  <script src="/js/controllers/register.js"></script>
+  <script src="/js/controllers/ballot.js"></script>
+  <!-- endbuild -->
 
 </body>
 </html>

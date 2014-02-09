@@ -13,6 +13,10 @@
   "asi": true,
   "devel": true,
   "node": true,
+  "-W033": true, // semicolons
+  "-W058": true, // parens when using new
+  "-W104": true, // yield
+  "-W119": true, // generators
   "globals": {
     "global": true,
     "jQuery": true,

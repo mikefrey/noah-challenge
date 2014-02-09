@@ -1,3 +1,6 @@
+*.log
+
+public
 node_modules
 app/assets/bower_components/underscore/docs
 app/assets/bower_components/underscore/test

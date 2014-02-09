@@ -1,0 +1,10 @@
+
+<select ng-model="user" ng-options="u | fullName for u in users | orderBy:'lastName'+'firstName'"></select>
+
+<input type="password" placeholder="Password" ng-model="password">
+
+<button ng-click="login(user, password)">Login</button>
+
+<p>Don't have a Ballot?<br/><button ng-click="gotoRegister()">Sign Up</button>
+
+<p><a href="mailto:someone@email.com">Contact Us for Login Help</a></p>

@@ -25,8 +25,8 @@ module.exports = function(grunt) {
 
     watch: {
       js: {
-        files: ['<%= conf.app %>/js/**/*.js', '<%= conf.app %>/locales/**/*.json'],
-        tasks: ['newer:jshint:all', 'copy:dev']
+        files: ['app/**/*.js'],
+        tasks: ['jshint:all', 'copy:dev']
       },
       views: {
         files: ['<%= conf.app %>/views/**/*.html'],
@@ -75,8 +75,8 @@ module.exports = function(grunt) {
     // Automatically inject Bower components into the app
     'bower-install': {
       app: {
-        src: 'app/views/layout.html',
-        ignorePath: 'app/',
+        src: 'app/views/home.ejs',
+        ignorePath: 'app/assets/',
         fileTypes: {
           html: {
             replace: {
