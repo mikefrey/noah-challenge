@@ -1,16 +1,22 @@
-<table>
-  <tr>
-    <th><a href ng-click="sort='firstName';dir=!dir">First</th>
-    <th><a href ng-click="sort='lastName';dir=!dir">Last</th>
-    <th><a href ng-click="sort='email';dir=!dir">Email</th>
-    <th><a href ng-click="sort='admin';dir=!dir">Admin?</th>
-    <th></th>
-  </tr>
-  <tr ng-repeat="user in users | orderBy:sort:dir">
-    <td>{{user.firstName}}</td>
-    <td>{{user.lastName}}</td>
-    <td>{{user.email}}</td>
-    <td><input type="checkbox" ng-model="user.admin" ng-change="toggleAdmin(user)"></td>
-    <td><a href ng-click="deleteUser(user._id, $index)">X</a></td>
-  </tr>
-</table>
+<section class="results">
+  <table>
+    <thead>
+      <tr>
+        <th><a href ng-click="sort='firstName';dir=!dir">First</a></th>
+        <th><a href ng-click="sort='lastName';dir=!dir">Last</a></th>
+        <th><a href ng-click="sort='email';dir=!dir">Email</a></th>
+        <th><a href ng-click="sort='admin';dir=!dir">Admin?</a></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users | orderBy:sort:dir">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td><input type="checkbox" ng-model="user.admin" ng-change="toggleAdmin(user)"></td>
+        <td><a href ng-click="deleteUser(user._id, $index)">X</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>

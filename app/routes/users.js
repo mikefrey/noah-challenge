@@ -1,14 +1,5 @@
 var Ballot = require('../models/ballot')
 
-function execQuery(query) {
-  return function(fn) {
-    query.exec(function(err, data) {
-      if (err) console.error(err)
-      fn(err, data)
-    })
-  }
-}
-
 module.exports = {
 
   index: function *(next) {

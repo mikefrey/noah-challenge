@@ -28,6 +28,10 @@ module.exports = function(grunt) {
         files: ['app/**/*.js'],
         tasks: ['jshint:all', 'copy:dev']
       },
+      css: {
+        files: ['app/assets/css/**/*.css'],
+        tasks: ['copy:dev']
+      },
       views: {
         files: ['<%= conf.app %>/views/**/*.html'],
         tasks: ['copy:dev']
@@ -95,8 +99,7 @@ module.exports = function(grunt) {
             '<%= conf.dist %>/js/**/*.js',
             '<%= conf.dist %>/css/**/*.css',
             '<%= conf.dist %>/img/**/*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= conf.dist %>/fonts/**/*.{eot,svg,ttf,woff}',
-            '<%= conf.dist %>/locales/**/*.json'
+            '<%= conf.dist %>/fonts/**/*.{eot,svg,ttf,woff}'
           ]
         }
       }
@@ -146,12 +149,9 @@ module.exports = function(grunt) {
           src: [
             'views/**/*.html',
             'bower_components/**/*',
-            'locales/**/*'
+            'img/**/*',
+            'css/**/*'
           ]
-        },
-        {
-          src: '<%= conf.config %>/angular/<%= conf.env %>.js',
-          dest: '<%= conf.dist %>/js/environment.js'
         }]
       },
       dev: {
@@ -163,13 +163,10 @@ module.exports = function(grunt) {
           src: [
             'bower_components/**/*',
             'js/**/*',
-            'locales/**/*',
-            'views/**/*'
+            'views/**/*',
+            'img/**/*',
+            'css/**/*'
           ]
-        },
-        {
-          src: '<%= conf.config %>/angular/development.js',
-          dest: '<%= conf.dist %>/js/environment.js'
         }]
       }
     }

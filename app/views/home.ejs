@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html ng-app="oscars">
 <head>
-  <title>Noah's Challenge</title>
+  <title>2014 MOVIE GOLD GAME</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="http://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Anton" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" type="image/ico" href="/img/favicon.ico">
 </head>
 <body>
-
-  <div ng-view="">
-
-  </div>
+  <header>
+    <h1>2014 Oscar Challenge</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/ballot">My Picks</a></li>
+      <li><a href="/results">Results</a></li>
+      <li><a href="/scoring">Scoring</a></li>
+      <li><a href="/howtoplay">How To Play</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </nav>
+  <div ng-view=""></div>
 
   <!-- build:js(app/assets) js/vendor.js -->
   <!-- bower:js -->
@@ -24,13 +36,16 @@
   <script src="/js/filters/filters.js"></script>
 
   <script src="/js/services/ballotSvc.js"></script>
+  <script src="/js/services/categorySvc.js"></script>
   <script src="/js/services/req.js"></script>
   <script src="/js/services/userSvc.js"></script>
 
   <script src="/js/controllers/ballot.js"></script>
+  <script src="/js/controllers/category.js"></script>
   <script src="/js/controllers/login.js"></script>
   <script src="/js/controllers/loginError.js"></script>
   <script src="/js/controllers/register.js"></script>
+  <script src="/js/controllers/scoring.js"></script>
   <script src="/js/controllers/user.js"></script>
   <!-- endbuild -->
 

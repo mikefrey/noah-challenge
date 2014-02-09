@@ -9,9 +9,12 @@ var categorySchema = new Schema({
   name: String,
   availablePoints: Number,
   winners: [Schema.Types.ObjectId],
-  options: [{
-    optionID: Schema.Types.ObjectId,
-    name: String
+  position: Number,
+  nominees: [{
+    nomineeID: { type:Schema.Types.ObjectId, default: function() { return new mongoose.Types.ObjectId } },
+    name: String,
+    detail: String,
+    position: Number
   }]
 })
 

@@ -1,0 +1,13 @@
+<div id="scoring">
+  <section class="picks">
+
+    <fieldset ng-repeat="category in ctrl.categories | orderBy:'position'">
+      <h2>{{category.name}} <button type="submit" ng-click="ctrl.saveWinners(category)">Save</button></h2>
+      <ul>
+        <li ng-repeat="nominee in category.nominees | orderBy:'position'">
+         <input type="checkbox" ng-model="nominee.winner"><label>{{nominee.name}} <span class="detail" ng-hide="!nominee.detail">({{nominee.detail}})</span></label>
+        </li>
+      </ul>
+    </fieldset>
+  </section>
+</div>

@@ -28,13 +28,27 @@ angular.module('oscars', [
       controller: 'BallotCtrl'
     })
 
+    .when('/howtoplay', {
+      templateUrl: '/views/howToPlay.html'
+    })
+
     .when('/admin/users', {
       templateUrl: '/views/userList.html',
       controller: 'UserCtrl'
     })
 
+    .when('/admin/categories', {
+      templateUrl: '/views/categories.html',
+      controller: 'CategoryCtrl as ctrl'
+    })
+
+    .when('/admin/scoring', {
+      templateUrl: '/views/scoring.html',
+      controller: 'ScoringCtrl as ctrl'
+    })
+
     .otherwise({
-      redirectTo: '/'
+      templateUrl: '/views/404.html'
     }
   )
 

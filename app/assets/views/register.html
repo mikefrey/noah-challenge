@@ -1,12 +1,25 @@
-
-<p>Ballot Account Setup</p>
-
-<input type="text" placeholder="First Name" ng-model="newUser.firstName"><br/>
-
-<input type="text" placeholder="Last Name" ng-model="newUser.lastName"><br/>
-
-<input type="password" placeholder="Password" ng-model="newUser.password"><br/>
-
-<input type="text" placeholder="Email" ng-model="newUser.email"><br/>
-
-<button ng-click="createUser(newUser)">Create My Ballot!</button>
+<div id="login">
+  <section>
+    <h2>Create Your Ballot Account</h2>
+    <fieldset>
+      <ul>
+        <li>
+         <input type="text" name="firstname" placeholder="First Name" ng-model="newUser.firstName">
+        </li>
+        <li>
+         <input type="text" name="lastname" placeholder="Last Name or Initial" ng-model="newUser.lastName">
+        </li>
+        <li>
+         <input type="password" name="password" placeholder="Password" ng-model="newUser.password">
+        </li>
+        <li>
+         <input type="text" name="email" placeholder="Email Address" ng-model="newUser.email">
+        </li>
+        <li>
+         <button type="submit" ng-click="createUser(newUser)">Create My Ballot</button>
+        </li>
+      </ul>
+    </fieldset>
+  </section>
+  <ng-include src="'/views/contactLink.html'"></ng-include>
+</div>

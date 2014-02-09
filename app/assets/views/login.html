@@ -1,10 +1,27 @@
-
-<select ng-model="user" ng-options="u | fullName for u in users | orderBy:'lastName'+'firstName'"></select>
-
-<input type="password" placeholder="Password" ng-model="password">
-
-<button ng-click="login(user, password)">Login</button>
-
-<p>Don't have a Ballot?<br/><button ng-click="gotoRegister()">Sign Up</button>
-
-<p><a href="mailto:someone@email.com">Contact Us for Login Help</a></p>
+<div id="login">
+  <section>
+    <h2>Find Your Ballot</h2>
+    <fieldset>
+      <ul>
+        <li>
+          <select ng-model="user" ng-options="u | fullName for u in users | orderBy:'lastName'+'firstName'">
+            <option>Select Your Name</option>
+          </select>
+        </li>
+        <li>
+         <input type="password" name="password" placeholder="Password" ng-model="password">
+        </li>
+        <li>
+         <button type="submit" ng-click="login(user, password)">Get My Ballot</button>
+        </li>
+      </ul>
+    </fieldset>
+  </section>
+  <section>
+  <h2>Don't Have a Ballot?</h2>
+    <fieldset>
+      <button type="submit" class="secondary" ng-click="gotoRegister()">Sign Up</button>
+    </fieldset>
+  </section>
+  <ng-include src="'/views/contactLink.html'"></ng-include>
+</div>

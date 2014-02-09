@@ -39,6 +39,13 @@ app.put('/api/users/:id', parseBody.json, usersRoute.update)
 // app.del('/api/users/:id', usersRoute.destroy)
 app['delete']('/api/users/:id', usersRoute.destroy)
 
+// Category Routes
+var categoriesRoutes = require('./app/routes/categories')
+
+app.get('/api/categories', categoriesRoutes.index)
+app.post('/api/categories', parseBody.json, categoriesRoutes.create)
+app.put('/api/categories/:id', parseBody.json, categoriesRoutes.update)
+app.del('/api/categories/:id', categoriesRoutes.destroy)
 
 // Catch-all home route
 app.get('/*?', require('./app/routes/home'))
