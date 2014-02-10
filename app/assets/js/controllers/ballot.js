@@ -13,7 +13,7 @@ angular.module('oscars')
       lastName: 'Frey'
     }
 
-    this.getRemPoints = function(cat) {
+    function getRemPoints(cat) {
       var pts = cat.nominees.reduce(function(p, nom) {
         return p + nom.points
       }, 0)
@@ -22,24 +22,28 @@ angular.module('oscars')
 
     this.setPoints = function(cat, nom) {
       var pts = nom.points
-      nom.points = parseInt(nom.newPoints, 10)
-      var rem = this.getRemPoints(cat)
+      nom.points = parseInt(nom.newPoints||0, 10)
+      var rem = getRemPoints(cat)
       if (rem < 0 || nom.points < 0 || !isNum(nom.points)) {
         nom.newPoints = pts || ''
         nom.points = pts
-        rem = this.getRemPoints(cat)
+        rem = getRemPoints(cat)
       }
-      cat.remaining = rem
-      // this.delayedSave()
+      if (cat.remaining != rem) {
+        cat.remaining = rem
+        this.delayedSave()
+      }
     }
 
     var delayPromise
     this.delayedSave = function() {
+      console.log('delayedSave')
       $timeout.cancel(delayPromise)
-      $timeout(function() {
+      delayPromise = $timeout(function() {
+        console.log('saving')
         var votes = this.getVotes()
         var ballot = { _id: this.user._id, votes: votes }
-        BallotService.save(ballot)
+        BallotService.update(ballot)
       }.bind(this), 2000)
     }
 
@@ -79,6 +83,7 @@ angular.module('oscars')
               }
             }
           })
+          cat.remaining = getRemPoints(cat)
         })
         this.categories = cats
       }.bind(this))

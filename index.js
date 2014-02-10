@@ -50,7 +50,7 @@ app.del('/api/categories/:id', categoriesRoutes.destroy)
 var ballotRoutes = require('./app/routes/ballots')
 
 app.get('/api/ballots/:id', ballotRoutes.show)
-app.put('/api/ballots/:id', ballotRoutes.update)
+app.put('/api/ballots/:id', parseBody.json, ballotRoutes.update)
 
 // Catch-all home route
 app.get('/*?', require('./app/routes/home'))
