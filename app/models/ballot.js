@@ -12,8 +12,8 @@ var ballotSchema = new Schema({
   password: String,
   admin: { type: Boolean, default: false },
   votes: [{
-    item: Schema.Types.ObjectId,
-    value: Number
+    nomineeID: Schema.Types.ObjectId,
+    points: Number
   }]
 })
 

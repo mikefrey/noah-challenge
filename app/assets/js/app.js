@@ -25,7 +25,7 @@ angular.module('oscars', [
 
     .when('/ballot', {
       templateUrl: '/views/ballot.html',
-      controller: 'BallotCtrl'
+      controller: 'BallotCtrl as ctrl'
     })
 
     .when('/howtoplay', {

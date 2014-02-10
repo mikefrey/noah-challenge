@@ -47,6 +47,12 @@ app.post('/api/categories', parseBody.json, categoriesRoutes.create)
 app.put('/api/categories/:id', parseBody.json, categoriesRoutes.update)
 app.del('/api/categories/:id', categoriesRoutes.destroy)
 
+// Ballot Routes
+var ballotRoutes = require('./app/routes/ballots')
+
+app.get('/api/ballots/:id', ballotRoutes.show)
+app.put('/api/ballots/:id', ballotRoutes.update)
+
 // Catch-all home route
 app.get('/*?', require('./app/routes/home'))
 
