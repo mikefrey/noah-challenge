@@ -16,6 +16,7 @@ module.exports = {
     var result = yield Ballot.findById(id, 'id').where('password', pw).exec()
 
     if (result && id == result._id) {
+      this.session.uid = id
       this.body = result
     } else {
       this.body = {}
@@ -24,6 +25,9 @@ module.exports = {
 
   create: function *(next) {
     var result = yield Ballot.create(this.data)
+    if (result) {
+      this.session.uid = result._id
+    }
     this.body = result
   },
 

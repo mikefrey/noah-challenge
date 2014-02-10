@@ -24,6 +24,7 @@ app.use(function *(next) {
 })
 
 app.use(session())
+app.use(require('./app/middleware/user'))
 
 app.use(staticFiles('./public'))
 app.use(views('./app/views', 'ejs'))
