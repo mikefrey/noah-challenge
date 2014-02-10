@@ -36,8 +36,7 @@ app.get('/api/users', usersRoute.index)
 app.post('/api/users', parseBody.json, usersRoute.create)
 app.put('/api/users', parseBody.json, usersRoute.login)
 app.put('/api/users/:id', parseBody.json, usersRoute.update)
-// app.del('/api/users/:id', usersRoute.destroy)
-app['delete']('/api/users/:id', usersRoute.destroy)
+app.del('/api/users/:id', usersRoute.destroy)
 
 // Category Routes
 var categoriesRoutes = require('./app/routes/categories')
