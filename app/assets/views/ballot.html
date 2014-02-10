@@ -8,7 +8,7 @@
       <h2>{{category.name}} <span>({{category.remaining}} pts. remaining)</span></h2>
       <ul>
         <li ng-repeat="nominee in category.nominees | orderBy:'position'">
-         <input type="text" ng-model="nominee.points" ng-blur="ctrl.setPoints(category, nominee)"><label>{{nominee.name}} <span class="detail" ng-hide="!nominee.detail">({{nominee.detail}})</span></label>
+         <input type="text" ng-model="nominee.newPoints" ng-blur="ctrl.setPoints(category, nominee)"><label>{{nominee.name}} <span class="detail" ng-hide="!nominee.detail">({{nominee.detail}})</span></label>
         </li>
       </ul>
     </fieldset>

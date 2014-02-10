@@ -1,7 +1,11 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('BallotCtrl', function (BallotService, CategoryService, $q) {
+  .controller('BallotCtrl', function (BallotService, CategoryService, $q, $timeout) {
+
+    function isNum(n) {
+      return typeof n === 'number' && n === n
+    }
 
     this.user = {
       _id: '52f66deeffb9d96e4b9a1717',
@@ -11,18 +15,47 @@ angular.module('oscars')
 
     this.getRemPoints = function(cat) {
       var pts = cat.nominees.reduce(function(p, nom) {
-        return p + (parseInt(nom.points, 10) || 0)
+        return p + nom.points
       }, 0)
       return cat.availablePoints - pts
     }
 
     this.setPoints = function(cat, nom) {
+      var pts = nom.points
+      nom.points = parseInt(nom.newPoints, 10)
       var rem = this.getRemPoints(cat)
-      if (rem < 0) {
-        nom.points = 0
+      if (rem < 0 || nom.points < 0 || !isNum(nom.points)) {
+        nom.newPoints = pts || ''
+        nom.points = pts
         rem = this.getRemPoints(cat)
       }
       cat.remaining = rem
+      // this.delayedSave()
+    }
+
+    var delayPromise
+    this.delayedSave = function() {
+      $timeout.cancel(delayPromise)
+      $timeout(function() {
+        var votes = this.getVotes()
+        var ballot = { _id: this.user._id, votes: votes }
+        BallotService.save(ballot)
+      }.bind(this), 2000)
+    }
+
+    this.getVotes = function() {
+      var votes = []
+      this.categories.forEach(function(cat) {
+        cat.nominees.forEach(function(nom) {
+          if (nom.points) {
+            votes.push({
+              nomineeID: nom.nomineeID,
+              points: nom.points
+            })
+          }
+        })
+      })
+      return votes
     }
 
     this.load = function() {
@@ -36,10 +69,12 @@ angular.module('oscars')
         cats.forEach(function (cat) {
           cat.remaining = cat.availablePoints
           cat.nominees.forEach(function(nom) {
+            nom.points = 0
             for (var i = 0; i < votes.length; i++) {
               var vote = votes[i]
               if (vote.nomineeID == nom.nomineeID) {
                 nom.points = vote.points
+                nom.newPoints = nom.points
                 break
               }
             }
