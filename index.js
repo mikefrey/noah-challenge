@@ -36,6 +36,7 @@ var usersRoute = require('./app/routes/users')
 app.get('/api/users', usersRoute.index)
 app.post('/api/users', parseBody.json, usersRoute.create)
 app.put('/api/users', parseBody.json, usersRoute.login)
+app.get('/api/users/me', usersRoute.me)
 app.put('/api/users/:id', parseBody.json, usersRoute.update)
 app.del('/api/users/:id', usersRoute.destroy)
 

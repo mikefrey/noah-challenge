@@ -42,6 +42,17 @@ module.exports = {
     var id = this.params.id
     var result = yield Ballot.findByIdAndRemove(id).exec()
     this.body = { _id:result._id }
+  },
+
+  me: function *(next) {
+    if (!this.user) {
+      this.body = {}
+    } else {
+      this.body = this.user
+    }
+
+    /// jshint is stupid
+    yield process.nextTick
   }
 
 }

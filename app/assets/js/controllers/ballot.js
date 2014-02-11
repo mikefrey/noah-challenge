@@ -1,18 +1,13 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('BallotCtrl', function (BallotService, CategoryService, $q, $timeout) {
+  .controller('BallotCtrl', function (MeProvider, BallotService, CategoryService, $q, $timeout) {
 
     function isNum(n) {
       return typeof n === 'number' && n === n
     }
 
-    this.user = {
-      _id: '52f66deeffb9d96e4b9a1717',
-      firstName: 'Mike',
-      lastName: 'Frey'
-    }
-
+    // determine points remaining for the given category
     function getRemPoints(cat) {
       var pts = cat.nominees.reduce(function(p, nom) {
         return p + nom.points
@@ -20,6 +15,7 @@ angular.module('oscars')
       return cat.availablePoints - pts
     }
 
+    // validate points and totals and set points remaining
     this.setPoints = function(cat, nom) {
       var pts = nom.points
       nom.points = parseInt(nom.newPoints||0, 10)
@@ -35,18 +31,20 @@ angular.module('oscars')
       }
     }
 
+    // delay ballot save by a moment or so to
+    // give the user a chance to do a bit more
     var delayPromise
     this.delayedSave = function() {
-      console.log('delayedSave')
       $timeout.cancel(delayPromise)
       delayPromise = $timeout(function() {
-        console.log('saving')
         var votes = this.getVotes()
         var ballot = { _id: this.user._id, votes: votes }
         BallotService.update(ballot)
       }.bind(this), 2000)
     }
 
+    // get a list of all the user's allocated
+    // points across all categories
     this.getVotes = function() {
       var votes = []
       this.categories.forEach(function(cat) {
@@ -62,6 +60,9 @@ angular.module('oscars')
       return votes
     }
 
+    // load the categories and ballot
+    // merge the data so that the user's scores
+    // are on each nominee
     this.load = function() {
       var p = {
         cats: CategoryService.list(),
@@ -89,6 +90,12 @@ angular.module('oscars')
       }.bind(this))
     }
 
-    this.load()
+    // load the uesr, then the data!
+    MeProvider.then(function() {
+      this.user = MeProvider
+      if (MeProvider.admin)
+        this.load()
+    }.bind(this))
+
 
   })

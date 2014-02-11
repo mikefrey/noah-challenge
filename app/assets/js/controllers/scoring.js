@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('ScoringCtrl', function (CategoryService) {
+  .controller('ScoringCtrl', function (CategoryService, MeProvider) {
 
     this.getCategories = function() {
       CategoryService.list().then(function(categories) {
@@ -23,6 +23,10 @@ angular.module('oscars')
       CategoryService.save(cat)
     }
 
-    this.getCategories()
+
+    MeProvider.then(function() {
+      if (MeProvider.admin)
+        this.getCategories()
+    }.bind(this))
 
   })

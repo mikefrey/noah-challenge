@@ -15,6 +15,10 @@ angular.module('oscars')
       return dfd.promise
     }
 
+    function me() {
+      var url = baseUrl + '/me'
+      return $req.get(url)
+    }
 
     function create(user) {
       var url = baseUrl
@@ -42,6 +46,7 @@ angular.module('oscars')
     }
 
     return {
+      me: me,
       create: create,
       update: update,
       list: list,

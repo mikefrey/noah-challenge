@@ -14,7 +14,11 @@
     <ul>
       <li><a href="/ballot">My Picks</a></li>
       <li><a href="/results">Results</a></li>
-      <li><a href="/scoring">Scoring</a></li>
+      <% if (me.admin) { %>
+      <li><a href="/admin/categories">Categories</a></li>
+      <li><a href="/admin/scoring">Scoring</a></li>
+      <li><a href="/admin/users">Users</a></li>
+      <% } %>
       <li><a href="/howtoplay">How To Play</a></li>
       <li><a href="/logout">Logout</a></li>
     </ul>
@@ -39,6 +43,7 @@
   <script src="/js/services/categorySvc.js"></script>
   <script src="/js/services/req.js"></script>
   <script src="/js/services/userSvc.js"></script>
+  <script src="/js/services/meProvider.js"></script>
 
   <script src="/js/controllers/ballot.js"></script>
   <script src="/js/controllers/category.js"></script>

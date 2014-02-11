@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('CategoryCtrl', function (CategoryService) {
+  .controller('CategoryCtrl', function (CategoryService, MeProvider) {
 
     this.getCategories = function() {
       CategoryService.list().then(function(categories) {
@@ -41,6 +41,9 @@ angular.module('oscars')
 
     this.sort = 'position'
 
-    this.getCategories()
+    MeProvider.then(function() {
+      if (MeProvider.admin)
+        this.getCategories()
+    }.bind(this))
 
   })
