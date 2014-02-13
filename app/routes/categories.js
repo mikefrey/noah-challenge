@@ -3,7 +3,7 @@ var Category = require('../models/category')
 module.exports = {
 
   index: function *(next) {
-    var categories = yield Category.find({}).exec()
+    var categories = yield Category.find({}).sort({position:'asc'}).exec()
     this.body = categories
   },
 

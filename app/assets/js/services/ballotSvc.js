@@ -22,7 +22,7 @@ angular.module('oscars')
     }
 
     function find(id) {
-      var url = baseUrl + '/' + id
+      var url = baseUrl + (id ? '/' + id : '')
       return $req.get(url)
     }
 

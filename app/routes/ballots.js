@@ -2,6 +2,11 @@ var Ballot = require('../models/ballot')
 
 module.exports = {
 
+  index: function *(next) {
+    var result = yield Ballot.find('id firstName lastName votes').exec()
+    this.body = result
+  },
+
   show: function *(next) {
     var id = this.params.id
     var result = yield Ballot.findById(id, 'id votes').exec()

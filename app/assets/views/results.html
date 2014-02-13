@@ -3,58 +3,18 @@
   <table>
     <thead>
       <tr>
-        <th class="rank">Rank</th>
-        <th>Score</th>
-        <th class="name">Name</th>
-        <th>Best<br>Picture</th>
-        <th>Best<br>Director</th>
-        <th>Film<br>Editing</th>
-        <th>Writing<br>Original<br>Screenplay</th>
-        <th>Writing<br>Adapted<br>Screenplay</th>
-        <th>Actor<br>Leading<br>Role</th>
-        <th>Actress<br>Leading<br>Role</th>
-        <th>Actor<br>Supporting<br>Role</th>
-        <th>Actress<br>Supporting<br>Role</th>
-        <th>Cinema-<br>tography</th>
-        <th>Production<br>Design</th>
-        <th>Costume<br>Design</th>
-        <th>Makeup &amp;<br>Hairstyling</th>
-        <th>Sound<br>Mixing</th>
-        <th>Sound<br>Editing</th>
-        <th>Music<br>Original<br>Score</th>
-        <th>Music<br>Original<br>Song</th>
-        <th>Visual<br>Effects</th>
-        <th>Animated<br>Feature<br>Film</th>
-        <th>Documentary<br>Feature</th>
-        <th>Foreign<br>Film</th>
+        <th class="rank" ng-click="ctrl.sort('sortRank')">Rank</th>
+        <th ng-click="ctrl.sort('sortRank')">Score</th>
+        <th class="name" ng-click="ctrl.sort('sortName')">Name</th>
+        <th ng-repeat="cat in ctrl.categories | orderBy:'position'"><span ng-bind-html="cat.name | break" ng-click="ctrl.sort($index)"></span></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="rank">00</td>
-        <td class="score">000</td>
-        <td class="name">Courtney Danielson</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00</td>
-        <td>00 </td>
+      <tr ng-repeat="ballot in ctrl.ballots">
+        <td class="rank">{{ballot.rank}}</td>
+        <td class="score">{{ballot.score}}</td>
+        <td class="name">{{ballot | fullName}}</td>
+        <td ng-repeat="points in ballot.points track by $index">{{points}}</td>
       </tr>
     </tbody>
     <tfoot>
@@ -62,27 +22,7 @@
         <td class="rank"></td>
         <td></td>
         <td class="name">Averages</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
-        <td>00.0</td>
+        <td ng-repeat="cat in ctrl.categories | orderBy:'position'">{{cat.avg | number:1}}</td>
       </tr>
     </tfoot>
   </table>

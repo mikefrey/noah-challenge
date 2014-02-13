@@ -51,6 +51,7 @@ app.del('/api/categories/:id', categoriesRoutes.destroy)
 // Ballot Routes
 var ballotRoutes = require('./app/routes/ballots')
 
+app.get('/api/ballots', ballotRoutes.index)
 app.get('/api/ballots/:id', ballotRoutes.show)
 app.put('/api/ballots/:id', parseBody.json, ballotRoutes.update)
 

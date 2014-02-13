@@ -6,3 +6,8 @@ angular.module('oscars')
       return obj.firstName + ' ' + obj.lastName
     }
   })
+  .filter('break', function() {
+    return function(txt) {
+      return txt.replace(/\s/g, '<br>')
+    }
+  })

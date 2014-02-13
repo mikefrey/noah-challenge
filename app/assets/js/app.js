@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('oscars', [
-    'ngRoute'
+    'ngRoute',
+    'ngSanitize'
 ])
 .config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true)
@@ -26,6 +27,11 @@ angular.module('oscars', [
     .when('/ballot', {
       templateUrl: '/views/ballot.html',
       controller: 'BallotCtrl as ctrl'
+    })
+
+    .when('/results', {
+      templateUrl: '/views/results.html',
+      controller: 'ResultsCtrl as ctrl'
     })
 
     .when('/howtoplay', {
