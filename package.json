@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "start": "node server.js --harmony",
+    "start": "node --harmony index.js",
     "watch": "nodemon --harmony --watch ./ ./index.js"
   },
   "author": "Mike Frey",
