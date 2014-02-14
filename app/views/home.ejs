@@ -14,7 +14,7 @@
     <ul>
       <li><a href="/ballot">My Picks</a></li>
       <li><a href="/results">Results</a></li>
-      <% if (me.admin) { %>
+      <% if (me && me.admin) { %>
       <li><a href="/admin/categories">Categories</a></li>
       <li><a href="/admin/scoring">Scoring</a></li>
       <li><a href="/admin/users">Users</a></li>
