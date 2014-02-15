@@ -1,13 +1,13 @@
 "use strict";
 
 angular.module('oscars')
-  .provider('navigation', function navigationDirective($rootScope) {
+  .directive('navigation', function navigationDirective($rootScope) {
+    console.log('$rootScope.me', $rootScope.me)
     return {
       restrict: 'E',
-      scope: {},
-      templateUrl: '/views/nav.html',
-      controller: function($scope) {
-        $scope.me = $rootScope.me
-      }
+      scope: {
+        me: '='
+      },
+      templateUrl: '/views/nav.html'
     }
   })
