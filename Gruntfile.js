@@ -26,16 +26,17 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: ['app/**/*.js'],
-        tasks: ['jshint:all', 'copy:dev']
+        // tasks: ['jshint:all', 'copy:dev']
+        tasks: ['jshint:all']
       },
-      css: {
-        files: ['app/assets/css/**/*.css'],
-        tasks: ['copy:dev']
-      },
-      views: {
-        files: ['<%= conf.app %>/views/**/*.html'],
-        tasks: ['copy:dev']
-      },
+      // css: {
+      //   files: ['app/assets/css/**/*.css'],
+      //   tasks: ['copy:dev']
+      // },
+      // views: {
+      //   files: ['<%= conf.app %>/views/**/*.html'],
+      //   tasks: ['copy:dev']
+      // },
       gruntfile: {
         files: ['Gruntfile.js']
       }
