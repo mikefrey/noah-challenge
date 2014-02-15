@@ -2,6 +2,7 @@
   <section>
     <h2>Find Your Ballot</h2>
     <fieldset>
+      <form ng-submit="login(user, password)">
       <ul>
         <li>
           <select ng-model="user" ng-options="u | fullName for u in users | orderBy:'lastName'+'firstName'">
@@ -12,9 +13,10 @@
          <input type="password" name="password" placeholder="Password" ng-model="password">
         </li>
         <li>
-         <button type="submit" ng-click="login(user, password)">Get My Ballot</button>
+         <button type="submit">Get My Ballot</button>
         </li>
       </ul>
+      </form>
     </fieldset>
   </section>
   <section>
