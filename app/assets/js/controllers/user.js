@@ -1,30 +1,29 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('UserCtrl', function ($scope, UserService, $location) {
+  .controller('UserCtrl', function (UserService, $location) {
 
-    var getUsers = function() {
+    this.getUsers = function() {
       UserService.list().then(function(users) {
-        $scope.users = users
-      }, function() {})
+        this.users = users
+      }.bind(this))
     }
 
-    $scope.deleteUser = function(id, idx) {
+    this.deleteUser = function(id, idx) {
       UserService.destroy(id).then(function() {
-        $scope.users.splice(idx, 1)
-      })
+        this.users.splice(idx, 1)
+      }.bind(this))
     }
 
-    $scope.toggleAdmin = function(user) {
+    this.toggleAdmin = function(user) {
       UserService.update(user).then(function() {
         console.log('User updated!')
       })
     }
 
-    $scope.refresh = getUsers
-    $scope.sort = 'firstName'
-    $scope.dir = false
+    this.sort = 'firstName'
+    this.dir = false
 
-    getUsers()
+    this.getUsers()
 
   })
