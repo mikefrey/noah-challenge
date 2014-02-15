@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('LoginCtrl', function ($scope, UserService, $location) {
+  .controller('LoginCtrl', function ($scope, UserService, $location, $window) {
 
     var getUsers = function() {
       UserService.list().then(function(users) {
@@ -12,7 +12,8 @@ angular.module('oscars')
     $scope.login = function(user, password) {
       UserService.login(user._id, password)
         .then(function loginSuccess() {
-          $location.url('/ballot')
+          window.location = '/ballot'
+          // $location.url('/ballot')
         }, function loginError() {
           $location.url('/login-error')
         })

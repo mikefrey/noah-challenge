@@ -10,19 +10,6 @@
   <header>
     <h1>2014 Oscar Challenge</h1>
   </header>
-  <nav>
-    <ul>
-      <li><a href="/ballot">My Picks</a></li>
-      <li><a href="/results">Results</a></li>
-      <% if (me && me.admin) { %>
-      <li><a href="/admin/categories">Categories</a></li>
-      <li><a href="/admin/scoring">Scoring</a></li>
-      <li><a href="/admin/users">Users</a></li>
-      <% } %>
-      <li><a href="/howtoplay">How To Play</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
-  </nav>
   <div ng-view=""></div>
 
   <!-- build:js(app/assets) js/vendor.js -->

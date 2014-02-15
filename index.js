@@ -7,26 +7,20 @@ var staticFiles = require('koa-static')
 var router = require('koa-router')
 var views = require('koa-render')
 var session = require('koa-session')
+
+var logger = require('./app/middleware/logger')
 var parseBody = require('./app/middleware/bodyParser')
+var user = require('./app/middleware/user')
+var loggedIn = require('./app/middleware/loggedIn')
 
 var config = require('./config')
 
-
 app.keys = config.keys
 
-// logger
-app.use(function *(next) {
-  var start = new Date
-  yield next
-  var ms = new Date - start
-  var sc = this.status || '404?'
-  console.log('%s %s - %s - %s', this.method, this.url, sc, ms)
-})
-
+app.use(logger)
 app.use(session())
-app.use(require('./app/middleware/user'))
-
-app.use(staticFiles('./public'))
+app.use(user)
+app.use(staticFiles('./app/assets'))
 app.use(views('./app/views', 'ejs'))
 app.use(router(app))
 
@@ -56,7 +50,11 @@ app.get('/api/ballots/:id', ballotRoutes.show)
 app.put('/api/ballots/:id', parseBody.json, ballotRoutes.update)
 
 // Catch-all home route
-app.get('/*?', require('./app/routes/home'))
+var homeRoute = require('./app/routes/home')
+app.get('/', homeRoute)
+app.get('/login-error', homeRoute)
+app.get('/register', homeRoute)
+app.get('/*?', loggedIn, homeRoute)
 
 
 app.listen(process.env.PORT || 3000)

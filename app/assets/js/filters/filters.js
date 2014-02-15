@@ -3,6 +3,7 @@
 angular.module('oscars')
   .filter('fullName', function() {
     return function(obj) {
+      if (!obj) return ''
       return obj.firstName + ' ' + obj.lastName
     }
   })
