@@ -87,14 +87,16 @@ angular.module('oscars')
           cat.remaining = getRemPoints(cat)
         })
         this.categories = cats
-      }.bind(this))
+      }.bind(this),
+      function() {
+        console.log('something failed')
+      })
     }
 
     // load the uesr, then the data!
     MeProvider.then(function() {
       this.user = MeProvider
-      if (MeProvider.admin)
-        this.load()
+      this.load()
     }.bind(this))
 
 
