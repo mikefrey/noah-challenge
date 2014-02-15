@@ -14,6 +14,11 @@ angular.module('oscars', [
       controller: 'LoginCtrl'
     })
 
+    .when('/logout', {
+      template: '<div></div>',
+      controller: 'LogoutCtrl'
+    })
+
     .when('/register', {
       templateUrl: '/views/register.html',
       controller: 'RegisterCtrl as ctrl'

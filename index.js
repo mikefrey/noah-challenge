@@ -33,15 +33,15 @@ app.post('/api/users', parseBody.json, usersRoute.create)
 app.put('/api/users', parseBody.json, usersRoute.login)
 app.get('/api/users/me', usersRoute.me)
 app.put('/api/users/:id', parseBody.json, usersRoute.update)
-app.del('/api/users/:id', usersRoute.destroy)
+app.del('/api/users/:id', adminOnly, usersRoute.destroy)
 
 // Category Routes
 var categoriesRoutes = require('./app/routes/categories')
 
 app.get('/api/categories', categoriesRoutes.index)
-app.post('/api/categories', parseBody.json, categoriesRoutes.create)
-app.put('/api/categories/:id', parseBody.json, categoriesRoutes.update)
-app.del('/api/categories/:id', categoriesRoutes.destroy)
+app.post('/api/categories', adminOnly, parseBody.json, categoriesRoutes.create)
+app.put('/api/categories/:id', adminOnly, parseBody.json, categoriesRoutes.update)
+app.del('/api/categories/:id', adminOnly, categoriesRoutes.destroy)
 
 // Ballot Routes
 var ballotRoutes = require('./app/routes/ballots')
@@ -49,6 +49,9 @@ var ballotRoutes = require('./app/routes/ballots')
 app.get('/api/ballots', ballotRoutes.index)
 app.get('/api/ballots/:id', ballotRoutes.show)
 app.put('/api/ballots/:id', parseBody.json, ballotRoutes.update)
+
+var logoutRoute = require('./app/routes/logout')
+app.all('/logout', logoutRoute)
 
 // Catch-all home route
 var homeRoute = require('./app/routes/home')
