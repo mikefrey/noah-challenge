@@ -1,8 +1,7 @@
 "use strict";
 
 angular.module('oscars')
-  .directive('navigation', function navigationDirective($rootScope) {
-    console.log('$rootScope.me', $rootScope.me)
+  .directive('navigation', function navigationDirective() {
     return {
       restrict: 'E',
       scope: {

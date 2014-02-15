@@ -12,6 +12,7 @@ var logger = require('./app/middleware/logger')
 var parseBody = require('./app/middleware/bodyParser')
 var user = require('./app/middleware/user')
 var loggedIn = require('./app/middleware/loggedIn')
+var adminOnly = require('./app/middleware/adminOnly')
 
 var config = require('./config')
 
@@ -51,10 +52,12 @@ app.put('/api/ballots/:id', parseBody.json, ballotRoutes.update)
 
 // Catch-all home route
 var homeRoute = require('./app/routes/home')
-app.get('/', homeRoute)
-app.get('/login-error', homeRoute)
-app.get('/register', homeRoute)
-app.get('/*?', loggedIn, homeRoute)
+app.all('/404', function *(next) { this.status = 404; yield next }, homeRoute)
+app.all('/', loggedIn, homeRoute)
+app.all('/admin/*', adminOnly, homeRoute)
+app.all('/login-error', homeRoute)
+app.all('/register', homeRoute)
+app.all('/*?', loggedIn, homeRoute)
 
 
 app.listen(process.env.PORT || 3000)
