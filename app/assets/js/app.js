@@ -40,7 +40,7 @@ angular.module('oscars', [
 
     .when('/admin/users', {
       templateUrl: '/views/userList.html',
-      controller: 'UserCtrl'
+      controller: 'UserCtrl as ctrl'
     })
 
     .when('/admin/categories', {
