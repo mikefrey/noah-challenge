@@ -16,7 +16,7 @@ angular.module('oscars', [
 
     .when('/register', {
       templateUrl: '/views/register.html',
-      controller: 'RegisterCtrl'
+      controller: 'RegisterCtrl as ctrl'
     })
 
     .when('/login-error', {

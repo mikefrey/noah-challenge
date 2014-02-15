@@ -1,9 +1,9 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('RegisterCtrl', function ($scope, UserService, $location) {
+  .controller('RegisterCtrl', function (UserService, $location) {
 
-    $scope.createUser = function(user) {
+    this.createUser = function(user) {
       UserService.create(user)
         .then(function loginSuccess() {
           $location.url('/ballot')
