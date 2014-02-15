@@ -21,7 +21,7 @@ angular.module('oscars', [
 
     .when('/login-error', {
       templateUrl: '/views/loginError.html',
-      controller: 'LoginErrorCtrl'
+      controller: 'LoginErrorCtrl as ctrl'
     })
 
     .when('/ballot', {
