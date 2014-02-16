@@ -79,11 +79,19 @@ angular.module('oscars')
       })
     }
 
+    var sortBy = 'sortRank'
+    var sortDir = 1
     this.sort = function(by) {
-      console.log('sorting by ', by)
+      // swap sort direction if sorting by the same field
+      if (sortBy == by) sortDir *= -1
+      else sortDir = 1
+      sortBy = by
+
       if (typeof by == 'string') {
         this.ballots.forEach(function(ballot) {
-          ballot.sortVal = ballot[by].toLowerCase()
+          ballot.sortVal = ballot[by]
+          if (by == 'sortName')
+            ballot.sortVal = ballot.sortVal.toLowerCase()
         })
       }
       else if (typeof by == 'number') {
@@ -95,8 +103,8 @@ angular.module('oscars')
       this.ballots.sort(function(a, b) {
         // doing string comparisons, so
         // subtraction won't work.
-        return a.sortVal < b.sortVal ? -1 :
-               a.sortVal > b.sortVal ? 1 : 0
+        return (a.sortVal < b.sortVal ? -1 :
+               a.sortVal > b.sortVal ? 1 : 0) * sortDir
       })
     }
 
