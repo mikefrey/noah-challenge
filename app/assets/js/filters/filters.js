@@ -9,6 +9,7 @@ angular.module('oscars')
   })
   .filter('break', function() {
     return function(txt) {
-      return txt.replace(/\s/g, '<br>')
+      // return txt.replace(/(\S{4,})\b\s/g, '$1<br>')
+      return txt.replace(/\s(\S{4,})\b/g, '<br>$1')
     }
   })
