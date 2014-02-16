@@ -83,7 +83,7 @@ angular.module('oscars')
       console.log('sorting by ', by)
       if (typeof by == 'string') {
         this.ballots.forEach(function(ballot) {
-          ballot.sortVal = ballot[by]
+          ballot.sortVal = ballot[by].toLowerCase()
         })
       }
       else if (typeof by == 'number') {
