@@ -53,6 +53,9 @@ app.put('/api/ballots/:id', parseBody.json, ballotRoutes.update)
 var logoutRoute = require('./app/routes/logout')
 app.all('/logout', logoutRoute)
 
+var exportRoute = require('./app/routes/export')
+app.all('/export/:id', exportRoute)
+
 // Catch-all home route
 var homeRoute = require('./app/routes/home')
 app.all('/404', function *(next) { this.status = 404; yield next }, homeRoute)

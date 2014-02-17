@@ -2,7 +2,7 @@
 <div id="ballot">
   <section>
     <h1>{{ctrl.user | fullName}}'s Ballot - <span>00 points</span></h1>
-    <h3><a href="">Export Spreadsheet</a></h3>
+    <h3><a ng-href="/export/{{ctrl.user._id}}" download="{{ctrl.firstName+ctrl.lastName}}.csv" target="_self">Export Spreadsheet</a></h3>
   </section>
   <section>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
