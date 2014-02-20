@@ -9,7 +9,7 @@ module.exports = {
 
   show: function *(next) {
     var id = this.params.id
-    var result = yield Ballot.findById(id, 'id votes').exec()
+    var result = yield Ballot.findById(id, 'id firstName lastName votes').exec()
     this.body = result
   },
 

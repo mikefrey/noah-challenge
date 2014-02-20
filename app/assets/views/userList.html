@@ -13,8 +13,8 @@
     </thead>
     <tbody>
       <tr ng-repeat="user in ctrl.users | orderBy:ctrl.sort:ctrl.dir">
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
+        <td><a ng-href="/ballot/{{user._id}}">{{user.firstName}}</a></td>
+        <td><a ng-href="/ballot/{{user._id}}">{{user.lastName}}</a></td>
         <td>{{user.email}}</td>
         <td><input type="checkbox" ng-model="user.admin" ng-change="ctrl.toggleAdmin(user)"></td>
         <td><a href ng-click="ctrl.deleteUser(user._id, $index)">X</a></td>

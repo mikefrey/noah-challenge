@@ -29,7 +29,7 @@ angular.module('oscars', [
       controller: 'LoginErrorCtrl as ctrl'
     })
 
-    .when('/ballot', {
+    .when('/ballot/:uid?', {
       templateUrl: '/views/ballot.html',
       controller: 'BallotCtrl as ctrl'
     })

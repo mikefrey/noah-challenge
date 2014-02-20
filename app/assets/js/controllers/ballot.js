@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('BallotCtrl', function (MeProvider, BallotService, CategoryService, $q, $timeout, $location) {
+  .controller('BallotCtrl', function (MeProvider, BallotService, CategoryService, $routeParams, $q, $timeout, $location) {
 
     function isNum(n) {
       return typeof n === 'number' && n === n
@@ -38,7 +38,7 @@ angular.module('oscars')
       $timeout.cancel(delayPromise)
       delayPromise = $timeout(function() {
         var votes = this.getVotes()
-        var ballot = { _id: this.user._id, votes: votes }
+        var ballot = { _id: this.ballot._id, votes: votes }
         BallotService.update(ballot)
       }.bind(this), 2000)
     }
@@ -60,17 +60,42 @@ angular.module('oscars')
       return votes
     }
 
+    // tally the total score for the ballot
+    function tallyBallot(ballot, cats) {
+      ballot.points = []
+      cats.forEach(function(cat) {
+        if (!cat.winners || !cat.winners.length)
+          return ballot.points.push(0)
+
+        var points = cat.winners.reduce(function(p, w) {
+          var vote = _.findWhere(ballot.votes, {nomineeID:w})
+          if (!vote) return p
+          return p + vote.points
+        }, 0)
+        ballot.points.push(points || 0)
+      })
+
+      ballot.score = ballot.points.reduce(function(t, p) { return t + p }, 0)
+    }
+
     // load the categories and ballot
     // merge the data so that the user's scores
     // are on each nominee
     this.load = function() {
+      var id = this.user._id
+      if ($routeParams.uid && this.user.admin) {
+        id = $routeParams.uid
+      }
+
       var p = {
         cats: CategoryService.list(),
-        ballot: BallotService.find(this.user._id)
+        ballot: BallotService.find(id)
       }
       $q.all(p).then(function(res) {
         var cats = res.cats
-        var votes = res.ballot.votes || []
+        var ballot = res.ballot
+        var votes = ballot.votes || []
+
         cats.forEach(function (cat) {
           cat.remaining = cat.availablePoints
           cat.nominees.forEach(function(nom) {
@@ -86,7 +111,11 @@ angular.module('oscars')
           })
           cat.remaining = getRemPoints(cat)
         })
+
+        tallyBallot(ballot, cats)
+
         this.categories = cats
+        this.ballot = ballot
       }.bind(this),
       function() {
         console.log('something failed')
