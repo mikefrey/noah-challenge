@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('UserCtrl', function (UserService, $location) {
+  .controller('UserCtrl', function (UserService, $location, MeProvider) {
 
     this.getUsers = function() {
       UserService.list().then(function(users) {
@@ -24,6 +24,9 @@ angular.module('oscars')
     this.sort = 'firstName'
     this.dir = false
 
-    this.getUsers()
-
+    MeProvider.then(function() {
+      if (MeProvider.admin)
+        return this.getUsers()
+      $location.path('/')
+    }.bind(this))
   })

@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('ResultsCtrl', function (MeProvider, BallotService, CategoryService, $q) {
+  .controller('ResultsCtrl', function (MeProvider, BallotService, CategoryService, $q, $location) {
 
     // load the categories and ballot
     // merge the data so that the user's scores
@@ -112,8 +112,8 @@ angular.module('oscars')
     // load the uesr, then the data!
     MeProvider.then(function() {
       this.user = MeProvider
-      if (MeProvider.admin)
-        this.load()
+      if (this.user) return this.load()
+      $location.path('/')
     }.bind(this))
 
 

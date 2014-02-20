@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('BallotCtrl', function (MeProvider, BallotService, CategoryService, $q, $timeout) {
+  .controller('BallotCtrl', function (MeProvider, BallotService, CategoryService, $q, $timeout, $location) {
 
     function isNum(n) {
       return typeof n === 'number' && n === n
@@ -96,7 +96,8 @@ angular.module('oscars')
     // load the uesr, then the data!
     MeProvider.then(function() {
       this.user = MeProvider
-      this.load()
+      if (this.user) return this.load()
+      $location.path('/')
     }.bind(this))
 
 

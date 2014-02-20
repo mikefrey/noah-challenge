@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('CategoryCtrl', function (CategoryService, MeProvider) {
+  .controller('CategoryCtrl', function (CategoryService, MeProvider, $location) {
 
     this.getCategories = function() {
       CategoryService.list().then(function(categories) {
@@ -43,7 +43,9 @@ angular.module('oscars')
 
     MeProvider.then(function() {
       if (MeProvider.admin)
-        this.getCategories()
+        return this.getCategories()
+
+      $location.path('/')
     }.bind(this))
 
   })

@@ -40,6 +40,14 @@ header {
 	z-index: 10;
 }
 
+header .logotype {
+	width: 800px;
+	height: 58px;
+	margin: 21px auto;
+	text-indent: -9999px;
+	background: url(../img/golden-statue-challenge.png) no-repeat 50%;
+}
+
 nav {
 	background: #000;
 	height: 50px;
@@ -188,7 +196,7 @@ section.results {
 
 /* SCORING */
 
-#scoring section {
+#ballot section {
 	width: 400px;
 }
 
@@ -249,7 +257,6 @@ fieldset {
 	vertical-align: bottom;
 	border-bottom: solid 1px #666;
 	padding: 0 0 10px;
-	cursor: pointer;
 }
 
 .results .rank {
@@ -277,20 +284,79 @@ td.score {
 	 color:#666;
  }
 
- .results tfoot td {
+.results tfoot td {
 	 border: none;
  }
 
- h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
 	 margin: 0;
  }
 
- h1 { font-size: 36px; }
+h1 { font-size: 36px; }
 
- .login-help {
+.login-help {
 	 text-align: center;
  }
 
+#how-to-play h2 {
+	text-align: center;
+}
+
+#how-to-play section {
+	width: 660px;
+}
+
+#how-to a {
+	color: #e4e0cc;
+	text-decoration: underline;
+}
+
+#how-to a:active {
+	color: #fff;
+}
+
+#how-to a:visited {
+	color: #e4e0cc;
+	text-decoration:underline;
+}
+
+#how-to a:hover {
+	color: #fff;
+}
+
+#how-to h3 {
+	font-weight: bold;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+}
+
+#how-to ul {
+	list-style-type: disc;
+	margin-left: 20px;
+	margin-bottom: 50px;
+}
+
+#how-to li {
+	 font-size: 21px;
+	 line-height: 24px;
+	 margin-bottom: 10px;
+	 color:#CCC;
+}
+
+#how-to li.indent {
+	 margin-left: 20px;
+	 list-style-type: circle;
+}
+
+#how-to li.image {
+	 margin-left: 0px;
+	 list-style-type: none;
+}
+
+#how-to li.note {
+		font-style:italic;
+		color:#999;
+}
 
 /* CATEGORIES */
 

@@ -62,6 +62,7 @@ app.all('/404', function *(next) { this.status = 404; yield next }, homeRoute)
 app.all('/', loggedIn, homeRoute)
 app.all('/admin/*', adminOnly, homeRoute)
 app.all('/login-error', homeRoute)
+app.all('/howtoplay', homeRoute)
 app.all('/register', homeRoute)
 app.all('/*?', loggedIn, homeRoute)
 
