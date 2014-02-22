@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('BallotCtrl', function (MeProvider, BallotService, CategoryService, $routeParams, $q, $timeout, $location) {
+  .controller('BallotCtrl', function (MeProvider, BallotService, CategoryService, GameService, $routeParams, $q, $timeout, $location) {
 
     function isNum(n) {
       return typeof n === 'number' && n === n
@@ -17,6 +17,7 @@ angular.module('oscars')
 
     // validate points and totals and set points remaining
     this.setPoints = function(cat, nom) {
+      if (this.game.locked) return
       var pts = nom.points
       nom.points = parseInt(nom.newPoints||0, 10)
       var rem = getRemPoints(cat)
@@ -81,7 +82,7 @@ angular.module('oscars')
     // load the categories and ballot
     // merge the data so that the user's scores
     // are on each nominee
-    this.load = function() {
+    this.loadBallot = function() {
       var id = this.user._id
       if ($routeParams.uid && this.user.admin) {
         id = $routeParams.uid
@@ -122,11 +123,34 @@ angular.module('oscars')
       })
     }
 
+
+    // polls the game endpoint to prevent changes
+    // after the game has been locked.
+    this.pollGame = function() {
+      $timeout(function() {
+        GameService.find().then(function(game) {
+          this.game.locked = this.user.admin ? false : game.locked
+          this.pollGame()
+        }.bind(this))
+      }.bind(this), 5*60*1000)
+    }
+
+
+
     // load the user, then the data!
     MeProvider.then(function(me) {
       this.user = me
-      if (this.user) return this.load()
-      $location.path('/')
+      if (!this.user._id) return $location.path('/')
+
+      GameService.find().then(function(game) {
+        this.game = game
+        this.game.locked = this.user.admin ? false : game.locked
+
+        this.loadBallot()
+
+        this.pollGame()
+      }.bind(this))
+
     }.bind(this))
 
 

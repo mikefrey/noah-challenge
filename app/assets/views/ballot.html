@@ -16,12 +16,15 @@
     <h5 style="text-align: center;">Must be paid by Noon on Saturday, March 1.</h5>
 
   </section>
+  <section ng-if="ctrl.game.locked">
+    <p>Ballots are locked. No further edits can be made.</p>
+  </section>
   <section class="picks">
     <fieldset ng-repeat="category in ctrl.categories | orderBy:'position'">
       <h2>{{category.name}} <span>({{category.remaining}} pts. remaining)</span></h2>
       <ul>
         <li ng-repeat="nominee in category.nominees | orderBy:'position'">
-         <input type="text" ng-model="nominee.newPoints" ng-blur="ctrl.setPoints(category, nominee)"><label>{{nominee.name}} <span class="detail" ng-hide="!nominee.detail">({{nominee.detail}})</span></label>
+         <input type="text" ng-model="nominee.newPoints" ng-blur="ctrl.setPoints(category, nominee)" ng-disabled="ctrl.game.locked"><label>{{nominee.name}} <span class="detail" ng-hide="!nominee.detail">({{nominee.detail}})</span></label>
         </li>
       </ul>
     </fieldset>

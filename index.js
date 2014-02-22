@@ -50,6 +50,13 @@ app.get('/api/ballots', ballotRoutes.index)
 app.get('/api/ballots/:id', ballotRoutes.show)
 app.put('/api/ballots/:id', parseBody.json, ballotRoutes.update)
 
+// games routes
+var gamesRoutes = require('./app/routes/games')
+
+app.get('/api/games', gamesRoutes.index)
+app.post('/api/games', adminOnly, parseBody.json, gamesRoutes.create)
+app.put('/api/games/:id', adminOnly, parseBody.json, gamesRoutes.update)
+
 var logoutRoute = require('./app/routes/logout')
 app.all('/logout', logoutRoute)
 

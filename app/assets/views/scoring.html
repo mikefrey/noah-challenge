@@ -3,6 +3,10 @@
   <section class="picks">
   <h1>Scoring</h1>
 
+    <fieldset>
+      Game is currently: <button ng-click="ctrl.toggleLock()" ng-disabled="!ctrl.lockToggleEnabled" style="width:inherit;">{{ctrl.game.locked ? 'Locked' : 'Unlocked'}}</button>
+    </fieldset>
+
     <fieldset ng-repeat="category in ctrl.categories | orderBy:'position'">
       <h2>{{category.name}} <button type="submit" ng-click="ctrl.saveWinners(category)">Save</button></h2>
       <ul>

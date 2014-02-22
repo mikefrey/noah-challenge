@@ -17,7 +17,7 @@ module.exports = {
     var uid = this.user && this.user._id
     var id = this.params.id
 
-    if (!uid || uid != id) return this.status = 401
+    if (!uid || (uid != id && !this.user.admin)) return this.status = 401
 
     delete this.data._id
     var result = yield Ballot.findByIdAndUpdate(id, this.data).exec()
