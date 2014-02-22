@@ -64,3 +64,4 @@ angular.module('oscars', [
   )
 
 })
+.run(function(MeProvider){})
