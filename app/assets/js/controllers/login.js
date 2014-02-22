@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('LoginCtrl', function ($scope, UserService, $location, $window) {
+  .controller('LoginCtrl', function ($scope, UserService, MeProvider, $location, $window) {
 
     var getUsers = function() {
       UserService.list().then(function(users) {
@@ -13,7 +13,6 @@ angular.module('oscars')
       UserService.login(user._id, password)
         .then(function loginSuccess() {
           window.location = '/ballot'
-          // $location.url('/ballot')
         }, function loginError() {
           $location.url('/login-error')
         })
@@ -23,6 +22,13 @@ angular.module('oscars')
       $location.url('/register')
     }
 
-    getUsers()
+
+
+    // load the user, then the data!
+    MeProvider.then(function() {
+      var user = MeProvider
+      if (!user._id) return getUsers()
+      $location.path('/ballot')
+    }.bind(this))
 
   })

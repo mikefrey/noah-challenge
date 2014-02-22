@@ -122,7 +122,7 @@ angular.module('oscars')
       })
     }
 
-    // load the uesr, then the data!
+    // load the user, then the data!
     MeProvider.then(function() {
       this.user = MeProvider
       if (this.user) return this.load()

@@ -10,7 +10,7 @@ angular.module('oscars')
         user = UserService.me().then(function(me) {
           angular.extend(user, me)
         })
-        $rootScope.me = user
+        $rootScope.me = !!user._id ? user : null
       }
 
       return user
