@@ -8,9 +8,9 @@ angular.module('oscars')
 
       if (!user) {
         user = UserService.me().then(function(me) {
-          angular.extend(user, me)
+          $rootScope.me = !!me._id ? me : null
+          return me
         })
-        $rootScope.me = !!user._id ? user : null
       }
 
       return user

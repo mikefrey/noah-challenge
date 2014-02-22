@@ -24,8 +24,8 @@ angular.module('oscars')
     this.sort = 'firstName'
     this.dir = false
 
-    MeProvider.then(function() {
-      if (MeProvider.admin)
+    MeProvider.then(function(me) {
+      if (me.admin)
         return this.getUsers()
       $location.path('/')
     }.bind(this))

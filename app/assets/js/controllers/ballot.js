@@ -123,8 +123,8 @@ angular.module('oscars')
     }
 
     // load the user, then the data!
-    MeProvider.then(function() {
-      this.user = MeProvider
+    MeProvider.then(function(me) {
+      this.user = me
       if (this.user) return this.load()
       $location.path('/')
     }.bind(this))

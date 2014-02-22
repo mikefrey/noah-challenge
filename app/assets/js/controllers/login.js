@@ -25,9 +25,8 @@ angular.module('oscars')
 
 
     // load the user, then the data!
-    MeProvider.then(function() {
-      var user = MeProvider
-      if (!user._id) return getUsers()
+    MeProvider.then(function(me) {
+      if (!me._id) return getUsers()
       $location.path('/ballot')
     }.bind(this))
 

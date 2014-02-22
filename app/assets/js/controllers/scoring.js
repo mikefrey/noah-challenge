@@ -24,8 +24,8 @@ angular.module('oscars')
     }
 
 
-    MeProvider.then(function() {
-      if (MeProvider.admin)
+    MeProvider.then(function(me) {
+      if (me.admin)
         return this.getCategories()
       $location.path('/')
     }.bind(this))
