@@ -6,7 +6,7 @@
       <form ng-submit="login(user, password)">
       <ul>
         <li>
-          <select ng-model="user" ng-options="u | fullName for u in users | orderBy:'lastName'+'firstName'">
+          <select ng-model="user" ng-options="u | fullName for u in users | orderBy:'firstName'">
             <option>Select Your Name</option>
           </select>
         </li>
