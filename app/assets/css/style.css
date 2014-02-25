@@ -154,6 +154,10 @@ section.results {
 #ballot h3 a {
 }
 
+#ballot form {
+	text-align: center;
+}
+
 .picks ul {
 	margin: 0 0 50px;
 }
@@ -196,7 +200,7 @@ section.results {
 
 /* SCORING */
 
-#ballot section {
+#scoring section {
 	width: 400px;
 }
 
