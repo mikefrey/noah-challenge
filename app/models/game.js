@@ -1,5 +1,5 @@
-var config = require('../../config')
-var url = config.mongo.url
+var config = require('config')
+var url = config.get('mongo.url')
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 

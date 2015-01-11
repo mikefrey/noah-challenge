@@ -14,9 +14,9 @@ var user = require('./app/middleware/user')
 var loggedIn = require('./app/middleware/loggedIn')
 var adminOnly = require('./app/middleware/adminOnly')
 
-var config = require('./config')
+var config = require('config')
 
-app.keys = config.keys
+app.keys = config.get('keys')
 
 app.use(logger)
 app.use(session())

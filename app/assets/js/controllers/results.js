@@ -34,17 +34,16 @@ angular.module('oscars')
     }
 
     function tallyBallot(ballot, cats) {
-      ballot.points = []
-      cats.forEach(function(cat) {
+      ballot.points = cats.map(function(cat) {
         if (!cat.winners || !cat.winners.length)
-          return ballot.points.push(0)
+          return 0
 
         var points = cat.winners.reduce(function(p, w) {
           var vote = _.findWhere(ballot.votes, {nomineeID:w})
           if (!vote) return p
           return p + vote.points
         }, 0)
-        ballot.points.push(points || 0)
+        return points || 0
       })
 
       ballot.score = ballot.points.reduce(function(t, p) { return t + p }, 0)
@@ -64,15 +63,19 @@ angular.module('oscars')
 
     function rankBallots(ballots) {
       ballots.sort(function(a, b) {
-        return b.rankScore - a.rankScore
+        var score = b.score - a.score
+        var rankScore = b.rankScore - a.rankScore
+        return score ? score : rankScore
       })
 
       var rank = 0
-      var prev = Infinity
+      var prevScore = Infinity
+      var prevRankScore = Infinity
       ballots.forEach(function(ballot, i) {
-        if (ballot.rankScore < prev) {
+        if (ballot.score < prevScore || ballot.rankScore < prevRankScore) {
           rank += 1
-          prev = ballot.rankScore
+          prevRankScore = ballot.rankScore
+          prevScore = ballot.score
         }
         ballot.rank = rank
         ballot.sortRank = i
