@@ -1,31 +1,36 @@
-<navigation me="me"></navigation>
-<section>
-  <h2>Results</h2>
-</section>
-<section class="results">
+<section id="results" class="px1200">
+  <h2>RESULTS</h2>
+  <h6>Updated February 22 &#64; 7:45pm CST</h6>
+  <div class="bars">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
   <table>
     <thead>
       <tr>
         <th class="rank" ng-click="ctrl.sort('sortRank')">Rank</th>
-        <th ng-click="ctrl.sort('sortRank')">Score</th>
-        <th class="name" ng-click="ctrl.sort('sortName')">Name</th>
-        <th ng-repeat="cat in ctrl.categories | orderBy:'position'"><span ng-bind-html="cat.name | break" ng-click="ctrl.sort($index)"></span></th>
+        <th class="score" ng-click="ctrl.sort('sortRank')">Score</th>
+        <th class="player" ng-click="ctrl.sort('sortName')">Name</th>
+        <th class="cat" ng-repeat="cat in ctrl.categories | orderBy:'position'" data-tooltip="{{cat.name}}">
+          <span ng-bind-html="cat.abbr" ng-click="ctrl.sort($index)"></span>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="ballot in ctrl.ballots">
         <td class="rank">{{ballot.rank}}</td>
         <td class="score">{{ballot.score}}</td>
-        <td class="name">{{ballot | fullName}}</td>
-        <td ng-repeat="points in ballot.points track by $index">{{points}}</td>
+        <td class="player">{{ballot | fullName}}</td>
+        <td class="cat" ng-repeat="points in ballot.points track by $index">{{points}}</td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
         <td class="rank"></td>
-        <td></td>
+        <td class="score"></td>
         <td class="name">Averages</td>
-        <td ng-repeat="cat in ctrl.categories | orderBy:'position'">{{cat.avg | number:1}}</td>
+        <td class="cat" ng-repeat="cat in ctrl.categories | orderBy:'position'">{{cat.avg | number:1}}</td>
       </tr>
     </tfoot>
   </table>

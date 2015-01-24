@@ -1,25 +1,30 @@
-<navigation me="me"></navigation>
-<div id="categories">
-  <section>
-    <h2>Categories</h2>
-    <fieldset ng-repeat="category in ctrl.categories | orderBy:'position'">
-      <h2><input type="text" placeholder="Pos" ng-model="category.position" style="width:4%;">
-      <input type="text" placeholder="Category Name" ng-model="category.name" style="width:62%;">
-      <input type="text" placeholder="Points" ng-model="category.availablePoints" style="width:6%;">
-      <button ng-click="ctrl.saveCategory(category)">Save</button>
-      <button ng-click="ctrl.deleteCategory(category, $index)">Delete</button></h2>
-      <ul>
-        <li ng-repeat="nominee in category.nominees | orderBy:'nominee.position'">
-          <input type="text" placeholder="Pos" size="2" ng-model="nominee.position">
-          <input type="text" placeholder="Nominee Name" ng-model="nominee.name">
-          <input type="text" placeholder="Detail" ng-model="nominee.detail">
-          <button type="submit" ng-click="ctrl.deleteNominee(category, $index)">Delete</button>
-        </li>
-      </ul>
-      <button ng-click="ctrl.addNewNominee(category)">Add Nominee</button>
-    </fieldset>
-  </section>
-  <section>
-    <button ng-click="ctrl.addNewCategory()">Add Category</button>
-  </section>
-</div>
+<section id="ballot-owner">
+  <h2>Categories</h2>
+  <div class="bars">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</section>
+<section id="ballot">
+  <fieldset ng-repeat="category in ctrl.categories | orderBy:'position'">
+    <h2><input type="text" placeholder="Pos" ng-model="category.position" style="width:4%;">
+    <input type="text" placeholder="Abbr" ng-model="category.abbr" style="width:6%;">
+    <input type="text" placeholder="Category Name" ng-model="category.name" style="width:55%;">
+    <input type="text" placeholder="Points" ng-model="category.availablePoints" style="width:6%;">
+    <button ng-click="ctrl.saveCategory(category)">Save</button>
+    <button ng-click="ctrl.deleteCategory(category, $index)">Delete</button></h2>
+    <ul>
+      <li ng-repeat="nominee in category.nominees | orderBy:'nominee.position'">
+        <input type="text" placeholder="Pos" size="2" ng-model="nominee.position">
+        <input type="text" placeholder="Nominee Name" ng-model="nominee.name">
+        <input type="text" placeholder="Detail" ng-model="nominee.detail">
+        <button type="submit" ng-click="ctrl.deleteNominee(category, $index)">Delete</button>
+      </li>
+    </ul>
+    <button ng-click="ctrl.addNewNominee(category)">Add Nominee</button>
+  </fieldset>
+</section>
+<section>
+  <button ng-click="ctrl.addNewCategory()">Add Category</button>
+</section>

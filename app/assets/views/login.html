@@ -1,30 +1,55 @@
-<navigation me="me"></navigation>
-<div id="login">
-  <section>
-    <h2>Find Your Ballot</h2>
-    <fieldset>
+<section id="login" class="px800">
+  <div class="category">
+    <div class="category-header">
+      <h2 class="category-name">
+        <span>Find Your Ballot</span>
+      </h2>
+      <div class="bars">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="category-nominees">
+      <fieldset>
       <form ng-submit="login(user, password)">
-      <ul>
-        <li>
-          <select ng-model="user" ng-options="u | fullName for u in users | orderBy:'firstName'">
-            <option>Select Your Name</option>
-          </select>
-        </li>
-        <li>
-         <input type="password" name="password" placeholder="Password" ng-model="password">
-        </li>
-        <li>
-         <button type="submit">Get My Ballot</button>
-        </li>
-      </ul>
+        <ul>
+          <li>
+            <select ng-model="user" ng-options="u | fullName for u in users | orderBy:'firstName'">
+              <option>Select Your Name</option>
+            </select>
+          </li>
+          <li>
+            <input type="password" name="password" placeholder="PASSWORD" ng-model="password">
+          </li>
+          <li>
+            <button type="submit" class="getballot">Get My Ballot</button>
+          </li>
+        </ul>
       </form>
-    </fieldset>
-  </section>
-  <section>
-  <h2>Don't Have a Ballot?</h2>
-    <fieldset>
-      <button type="submit" class="secondary" ng-click="gotoRegister()">Sign Up</button>
-    </fieldset>
-  </section>
-  <ng-include src="'/views/contactLink.html'"></ng-include>
-</div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="category gray">
+    <div class="category-header">
+      <h2 class="category-name">
+        <span>Don't Have a Ballot?</span>
+      </h2>
+      <div class="bars">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="category-nominees">
+      <fieldset>
+        <ul>
+          <li>
+            <button type="submit" class="signup" ng-click="gotoRegister()">Sign Up</button>
+          </li>
+        </ul>
+      </fieldset>
+      <ng-include src="'/views/contactLink.html'"></ng-include>
+    </div>
+  </div>
+</section>

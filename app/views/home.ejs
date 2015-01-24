@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html ng-app="oscars">
 <head>
-  <title>2014 GOLDEN STATUE CHALLENGE</title>
+  <title>2015 GOLDEN STATUE CHALLENGE</title>
   <link rel="stylesheet" href="/css/style.css">
-  <link href="http://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Anton" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/reset.css">
   <link rel="shortcut icon" type="image/ico" href="/img/favicon.ico">
 </head>
 <body>
+<!-- HEADER -->
   <header>
-    <a href="/"><h1 class="logotype">2014 Golden Statue Challenge</h1></a>
+    <section id="header">
+      <a href="/">2015 Golden Statue Challenge</a>
+    </section>
+    <section id="nav">
+      <nav>
+        <ul>
+          <li ng-hide="!me"><a href="/ballot">My Picks</a></li>
+          <li ng-hide="!me"><a href="/results">Results</a></li>
+          <li><a href="/howtoplay">How To Play</a></li>
+          <li ng-hide="!me.admin"><a href="/admin/scoring">Scoring</a></li>
+          <li ng-hide="!me.admin"><a href="/admin/categories">Categories</a></li>
+          <li ng-hide="!me.admin"><a href="/admin/users">Users</a></li>
+          <li ng-hide="!me"><a href="/logout" taget="_self">Logout</a></li>
+        </ul>
+      </nav>
+    </section>
   </header>
+<!-- PAGES -->
 
   <div ng-view=""></div>
 

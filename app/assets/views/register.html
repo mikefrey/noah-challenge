@@ -1,26 +1,36 @@
-<navigation me="me"></navigation>
-<div id="login">
-  <section>
-    <h2>Create Your Ballot Account</h2>
-    <fieldset>
-      <ul>
-        <li>
-         <input type="text" name="firstname" placeholder="First Name" ng-model="newUser.firstName">
-        </li>
-        <li>
-         <input type="text" name="lastname" placeholder="Last Name or Initial" ng-model="newUser.lastName">
-        </li>
-        <li>
-         <input type="password" name="password" placeholder="Password" ng-model="newUser.password">
-        </li>
-        <li>
-         <input type="text" name="email" placeholder="Email Address" ng-model="newUser.email">
-        </li>
-        <li>
-         <button type="submit" ng-click="ctrl.createUser(newUser)">Create My Ballot</button>
-        </li>
-      </ul>
-    </fieldset>
-  </section>
-  <ng-include src="'/views/contactLink.html'"></ng-include>
-</div>
+<section id="login" class="px800">
+  <div class="category">
+    <div class="category-header">
+      <h2 class="category-name">
+        <span>Create Your Ballot Account</span>
+      </h2>
+      <div class="bars">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="category-nominees">
+      <fieldset>
+        <ul>
+          <li>
+            <input type="text" name="first name" placeholder="First Name" ng-model="newUser.firstName">
+          </li>
+          <li>
+            <input type="text" name="last name" placeholder="Last Name or Initial" ng-model="newUser.lastName">
+          </li>
+          <li>
+            <input type="password" name="password" placeholder="PASSWORD" ng-model="newUser.password">
+          </li>
+          <li>
+            <input type="email" name="email" placeholder="Email" ng-model="newUser.email">
+          </li>
+          <li>
+            <button type="submit" class="getballot" ng-click="ctrl.createUser(newUser)">Create My Ballot</button>
+          </li>
+        </ul>
+      </fieldset>
+      <ng-include src="'/views/contactLink.html'"></ng-include>
+    </div>
+  </div>
+</section>

@@ -60,7 +60,7 @@ a, li, [data-tooltip], button, input {
 
 /* HEADER */
 
-header { 
+header {
 	background-color: #222 !important;
 	position: fixed;
 	top: 0;
@@ -68,18 +68,18 @@ header {
 	z-index: 1000;
 }
 
-#header a { 
-	background: url('../-img/golden-statue-challenge.png') 50% no-repeat;
+#header a {
+	background: url('/img/golden-statue-challenge.png') 50% no-repeat;
 	display: block;
 	height: 57px;
 	width: 791px;
 	margin: 40px auto;
 	text-indent: -9999px ;
-} 
+}
 
 /* NAV */
 
-#nav { 
+#nav {
 	background: #111;
 	overflow: hidden;
 	position: relative;
@@ -97,7 +97,7 @@ nav ul {
 	right: -50%
 }
 
-nav ul li { 
+nav ul li {
 	display: inline-block;
 	padding: 20px;
 }
@@ -110,7 +110,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 #ballot-owner { text-align: center; }
 #ballot-owner .owner { margin-bottom: 10px !important; }
 #ballot-owner .total-score { color: #B2A07E; font-weight: 100; }
-.circle { 
+.circle {
 	background: #111;
 	-webkit-border-radius: 82px;
 	border-radius: 82px;
@@ -144,7 +144,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 .bars span:nth-child(2) { height: 3px; margin-top: 6px; width: 100%; }
 .bars span:nth-child(3) { height: 1px; margin-top: 15px; left: 10px; right: 10px; }
 
-.category-header p { 
+.category-header p {
 	clear: both;
 	color: #666;
 	font-style: italic;
@@ -156,7 +156,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 .category-name {
 	float: right;
 	position: relative;
-	right: 50%;	
+	right: 50%;
 }
 
 .category-name span {
@@ -167,11 +167,11 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 	padding: 0 10px;
 }
 
-#ballot ul { 
+#ballot ul {
 	margin: 30px 0 0 200px;
 }
 
-#ballot ul li { 
+#ballot ul li {
 	margin: 0 0 4px;
 }
 
@@ -180,13 +180,13 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 	line-height: 40px;
 	padding-left: 20px;
 }
-#ballot ul label span { 
+#ballot ul label span {
 	color: #797979;
 	font-style: italic;
 	font-weight: 300;
 	padding-left: 1em;
 }
-#ballot input { 
+#ballot input {
 	background: #333;
 	border: none;
 	font-size: 18px;
@@ -218,7 +218,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 }
 
 #results thead {
-	background-color: #111; 
+	background-color: #111;
 	color: #666;
 }
 
@@ -253,7 +253,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 /* LOG IN */
 #login {  }
 #login fieldset { clear: both; }
-#login ul { 
+#login ul {
 	margin: 0 auto;
 	width: 300px;
 }
@@ -278,8 +278,8 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 #login ul select {
 	-webkit-appearance: none;
 	appearance: none;
-	background-image: url('../-img/select.png');
-	background-position: 276px 16px; 
+	background-image: url('/img/select.png');
+	background-position: 276px 16px;
 	background-repeat: no-repeat;
 	-webkit-border-radius: 0px;
 	border-radius: 0px;

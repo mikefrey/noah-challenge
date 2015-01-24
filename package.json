@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "start": "node --harmony index.js",
-    "watch": "nodemon --harmony --watch ./ ./index.js"
+    "start": "node index.js",
+    "watch": "nodemon --watch ./ ./index.js"
   },
   "author": "Mike Frey",
   "license": "private",
@@ -41,6 +41,6 @@
     "underscore": "~1.6.0"
   },
   "engines": {
-    "node": "0.11.11"
+    "iojs": "1.0.x"
   }
 }

@@ -6,6 +6,7 @@ var Schema = mongoose.Schema
 // mongoose.connect(url)
 
 var categorySchema = new Schema({
+  abbr: String,
   name: String,
   availablePoints: Number,
   winners: [Schema.Types.ObjectId],
