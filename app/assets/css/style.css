@@ -53,7 +53,7 @@ p { text-align: center; }
 
 /* TRANSITIONS */
 
-a, li, [data-tooltip], button, input {
+a, li, [data-tooltip], button, input, label {
 	-webkit-transition: all ease 200ms; /* For Safari 3.1 to 6.0 */
     transition: all ease 200ms;
 }
@@ -175,6 +175,15 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 	margin: 0 0 4px;
 }
 
+#ballot ul li:hover input {
+	background: #9E9E9E;
+	cursor: pointer;
+}
+
+#ballot ul li:hover label {
+	color: #B2A07E;
+}
+
 #ballot ul label {
 	height: 40px;
 	line-height: 40px;
@@ -240,6 +249,28 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 
 /* HOW TO PLAY */
 #how-to-play {  }
+#how-to-play ol {
+	font-size: 24px;
+	font-weight: 600;
+	margin: 50px 0 0 50px;
+}
+
+#how-to-play ol>li {
+	margin-bottom: 30px;
+}
+
+#how-to-play ol ul {
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 150%;
+	list-style-type: disc;
+	margin-left: 1em;
+	text-transform: none;
+}
+
+#how-to-play img {
+	margin-left: 30px;
+}
 
 /* SCORING */
 #scoring {  }
