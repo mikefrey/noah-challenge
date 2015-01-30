@@ -21,7 +21,7 @@ h2 { font-family: 'Poiret One', cursive; font-size: 48px !important; margin-bott
 h3 { font-size: 36px !important; }
 h4 { font-size: 30px !important; }
 h5 { font-size: 24px !important; }
-h6 { color: #666; font-size: 14px; font-weight: 400; padding-bottom: 30px !important; text-align: center; }
+h6 { color: #666; font-size: 14px; font-weight: 400; padding-bottom: 30px !important; text-align: center; clear: both; }
 
 a:link, a:visited { color: #B2A07E; text-decoration: none; }
 a:hover, a:active { color: #fff; text-decoration: underline; }
@@ -182,6 +182,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 
 #ballot ul li:hover label {
 	color: #B2A07E;
+	font-weight: 900;
 }
 
 #ballot ul label {
