@@ -24,6 +24,13 @@ module.exports = {
   },
 
   create: function *(next) {
+    console.log('CREATE USER', this.data)
+    if (!this.data.invite || this.data.invite.toLowerCase() !== 'mgustave') {
+      console.log('\n\nDID NOT PASS GO\n\n')
+      return this.status = 403
+    }
+
+    console.log('\n\nSHOULD NOT RUN\n\n')
     var result = yield Ballot.create(this.data)
     if (result) {
       this.session.uid = result._id

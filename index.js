@@ -19,7 +19,7 @@ var config = require('config')
 app.keys = config.get('keys')
 
 app.use(logger)
-app.use(session())
+app.use(session(app))
 app.use(user)
 app.use(staticFiles('./app/assets'))
 app.use(views('./app/views', 'ejs'))
@@ -62,6 +62,9 @@ app.all('/logout', logoutRoute)
 
 var exportRoute = require('./app/routes/export')
 app.all('/export/:id', exportRoute)
+
+var videoRoute = require('./app/routes/video')
+app.get('/video/oscars-2015.mp4', videoRoute)
 
 // Catch-all home route
 var homeRoute = require('./app/routes/home')

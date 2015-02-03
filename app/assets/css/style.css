@@ -8,7 +8,7 @@ font-family: 'Poiret One', cursive;
 /* GLOBAL */
 
 body {
-	background: #222 !important;
+	background: #262626 !important;
 	color: #F8F8F8;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14px;
@@ -39,7 +39,7 @@ input { color: #f8f8f8; }
 
 input:focus {
 	background: #B2A07E !important;
-	color: #222 !important;
+	color: #262626 !important;
 	border: none !important;
 	outline: none !important;
 }
@@ -61,7 +61,7 @@ a, li, [data-tooltip], button, input, label {
 /* HEADER */
 
 header {
-	background-color: #222 !important;
+	background-color: #262626 !important;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -163,7 +163,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 	float: right;
 	right: -50%;
 	position: relative;
-	background: #222;
+	background: #262626;
 	padding: 0 10px;
 }
 
@@ -283,7 +283,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 #users {  }
 
 /* LOG IN */
-#login {  }
+#login > div.category:first-child { margin-top: 0; }
 #login fieldset { clear: both; }
 #login ul {
 	margin: 0 auto;

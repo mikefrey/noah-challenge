@@ -26,10 +26,16 @@
             <input type="email" name="email" placeholder="Email" ng-model="newUser.email">
           </li>
           <li>
+            <input type="invite" name="invite" placeholder="Invite Code" ng-model="newUser.invite">
+          </li>
+          <li>
             <button type="submit" class="getballot" ng-click="ctrl.createUser(newUser)">Create My Ballot</button>
           </li>
         </ul>
       </fieldset>
+      <video autoplay loop style="display: block; margin: 20px auto 0;">
+        <source src="/video/oscars-2015.mp4" type="video/mp4">
+      </video>
       <ng-include src="'/views/contactLink.html'"></ng-include>
     </div>
   </div>
