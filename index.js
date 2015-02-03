@@ -70,11 +70,12 @@ app.get('/video/oscars-2015.mp4', videoRoute)
 var homeRoute = require('./app/routes/home')
 app.all('/404', function *(next) { this.status = 404; yield next }, homeRoute)
 app.all('/', loggedIn, homeRoute)
-app.all('/admin/*', adminOnly, homeRoute)
+app.all(/\/admin\/[\w\d]*/i, adminOnly, homeRoute)
 app.all('/login-error', homeRoute)
 app.all('/howtoplay', homeRoute)
 app.all('/register', homeRoute)
 app.all('/*?', loggedIn, homeRoute)
+app.all(/\/[\w\d]*/, loggedIn, homeRoute)
 
 
 app.listen(process.env.PORT || 3000)
