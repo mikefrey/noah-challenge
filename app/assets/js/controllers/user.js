@@ -11,7 +11,12 @@ angular.module('oscars')
 
     this.deleteUser = function(id, idx) {
       UserService.destroy(id).then(function() {
-        this.users.splice(idx, 1)
+        for (var i = 0; i < this.users.length; i++) {
+          if (this.users[i]._id == id) {
+            this.users.splice(i, 1)
+            break
+          }
+        }
       }.bind(this))
     }
 
