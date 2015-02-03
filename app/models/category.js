@@ -16,7 +16,18 @@ var categorySchema = new Schema({
     name: String,
     detail: String,
     position: Number
-  }]
+  }],
+  createdAt: { type: Date },
+  updatedAt: { type: Date }
+})
+
+categorySchema.pre('save', function(next) {
+  var now = new Date()
+  this.updatedAt = now
+  if (!this.createdAt) {
+    this.createdAt = now
+  }
+  next()
 })
 
 var Category = module.exports = mongoose.model('Category', categorySchema)

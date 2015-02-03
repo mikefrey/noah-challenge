@@ -2,6 +2,7 @@
 
 angular.module('oscars')
   .controller('ResultsCtrl', function (MeProvider, BallotService, CategoryService, $q, $location) {
+    this.updatedAt = ''
 
     // load the categories and ballot
     // merge the data so that the user's scores
@@ -23,7 +24,9 @@ angular.module('oscars')
         // find the average for each category
         cats.forEach(function(cat) {
           averageCategory(cat, ballots)
-        })
+          var date = new Date(cat.updatedAt)
+          this.updatedAt = date > this.updatedAt ? date : this.updatedAt
+        }.bind(this))
 
         // rank each ballot against one another
         rankBallots(ballots)
