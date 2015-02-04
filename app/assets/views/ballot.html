@@ -3,7 +3,7 @@
   <h1 class="total-score">{{ctrl.ballot.score}}</h1>
   <div class="circle"></div>
   <p style="padding-top: 30px;">
-    <a  ng-href="/export/{{ctrl.ballot._id}}" download="{{ctrl.ballot.firstName+ctrl.ballot.lastName}}.csv" class="gray">Download picks in excel</a>
+    <a ng-href="/export/{{ctrl.ballot._id}}" download="{{ctrl.ballot.firstName+ctrl.ballot.lastName}}.csv" target="_self" class="gray">Download picks in excel</a>
   </p>
 </section>
 <section ng-if="ctrl.game.locked">
