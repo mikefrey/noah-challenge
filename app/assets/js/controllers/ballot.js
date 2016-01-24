@@ -1,7 +1,18 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('BallotCtrl', function (MeProvider, BallotService, CategoryService, GameService, $routeParams, $q, $timeout, $location) {
+  .controller('BallotCtrl', function ($scope, MeProvider, BallotService, CategoryService, GameService, $routeParams, $q, $timeout, $location) {
+
+    $scope.$on('$locationChangeStart', function(event, next, current) {
+      var cats = this.categories
+      for (var i = 0; i < cats.length; i++) {
+        if (getRemPoints(cats[i]) > 0) {
+          var answer = confirm('You still have unallocated points, are you sure you want to leave?')
+          if (!answer) event.preventDefault()
+          return
+        }
+      }
+    }.bind(this))
 
     function isNum(n) {
       return typeof n === 'number' && n === n
