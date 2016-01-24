@@ -24,13 +24,21 @@ module.exports = {
   },
 
   create: function *(next) {
-    console.log('CREATE USER', this.data)
+
     if (!this.data.invite || this.data.invite.toLowerCase() !== 'mgustave') {
       console.log('\n\nDID NOT PASS GO\n\n')
+      this.body = { error: 'Incorrect invite code' }
       return this.status = 403
     }
 
-    console.log('\n\nSHOULD NOT RUN\n\n')
+    this.data.email = this.data.email.toLowerCase()
+
+    var current = yield Ballot.findOne({ email: this.data.email }).exec()
+    if (current) {
+      this.body = { error: 'Account already exists' }
+      return this.status = 401
+    }
+
     var result = yield Ballot.create(this.data)
     if (result) {
       this.session.uid = result._id
