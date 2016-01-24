@@ -12,6 +12,7 @@
     </div>
     <div class="category-nominees">
       <fieldset>
+        <div ng-if="ctrl.error">{{ctrl.error}}</div>
         <ul>
           <li>
             <input type="text" name="first name" placeholder="First Name" ng-model="newUser.firstName">
@@ -23,7 +24,7 @@
             <input type="password" name="password" placeholder="PASSWORD" ng-model="newUser.password">
           </li>
           <li>
-            <input type="email" name="email" placeholder="Email" ng-model="newUser.email">
+            <input type="text" name="email" placeholder="Email" ng-model="newUser.email">
           </li>
           <li>
             <input type="invite" name="invite" placeholder="Invite Code" ng-model="newUser.invite">
