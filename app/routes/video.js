@@ -15,7 +15,7 @@ module.exports = function *(next) {
     var start = parseInt(partialstart, 10)
     var end = partialend ? parseInt(partialend, 10) : total - 1
     var chunksize = (end - start) + 1
-    console.log('RANGE:', start, '-', end, '=', chunksize)
+    //console.log('RANGE:', start, '-', end, '=', chunksize)
 
     var stream = fs.createReadStream(path, {start:start, end:end})
     this.set({
