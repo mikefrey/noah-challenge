@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('ResultsCtrl', function (MeProvider, BallotService, CategoryService, $q, $location) {
+  .controller('ResultsCtrl', function (MeProvider, BallotService, CategoryService, GameService, $q, $location, $timeout) {
     this.updatedAt = ''
 
     // load the categories and ballot
@@ -114,12 +114,24 @@ angular.module('oscars')
       })
     }
 
+    // polls the game endpoint to prevent changes
+    // after the game has been locked.
+    this.pollGame = function() {
+      GameService.find().then(function(game) {
+        this.game.locked = this.user.admin ? true : game.locked
+        $timeout(this.pollGame.bind(this), 5*60*1000)
+      }.bind(this))
+    }
+
 
     // load the uesr, then the data!
     MeProvider.then(function(me) {
+      this.game = { locked: true }
       this.user = me
-      if (this.user) return this.load()
-      $location.path('/')
+      if (!this.user) return $location.path('/')
+
+      this.load()
+      this.pollGame()
     }.bind(this))
 
 

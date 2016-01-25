@@ -21,7 +21,8 @@
       <tr ng-repeat="ballot in ctrl.ballots">
         <td class="rank">{{ballot.rank}}</td>
         <td class="score">{{ballot.score}}</td>
-        <td class="player">{{ballot | fullName}}</td>
+        <td ng-if="!ctrl.game.locked" class="player">{{ballot | fullName}}</td>
+        <td ng-if="ctrl.game.locked" class="player"><a ng-href="/ballot/{{ballot._id}}">{{ballot | fullName}}</a></td>
         <td class="cat" ng-repeat="points in ballot.points track by $index">{{points}}</td>
       </tr>
     </tbody>
