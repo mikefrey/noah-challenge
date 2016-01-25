@@ -24,6 +24,6 @@
     "underscore": "^1.7.0"
   },
   "engines": {
-    "iojs": "1.0.x"
+    "node": "4.2.6"
   }
 }
