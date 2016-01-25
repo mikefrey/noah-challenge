@@ -25,7 +25,7 @@ module.exports = {
 
   create: function *(next) {
 
-    if (!this.data.invite || this.data.invite.toLowerCase() !== 'mgustave') {
+    if (!this.data.invite || this.data.invite.toLowerCase() !== 'furiosa') {
       console.log('\n\nDID NOT PASS GO\n\n')
       this.body = { error: 'Incorrect invite code' }
       return this.status = 403
@@ -33,7 +33,14 @@ module.exports = {
 
     this.data.email = this.data.email.toLowerCase()
 
-    var current = yield Ballot.findOne({ email: this.data.email }).exec()
+    var current = yield Ballot.findOne({
+      $or: [
+        { email:this.data.email },
+        { $and: [
+            { firstName: this.data.firstName },
+            { lastName: this.data.lastName }
+          ]}
+      ]}).exec()
     if (current) {
       this.body = { error: 'Account already exists' }
       return this.status = 401
