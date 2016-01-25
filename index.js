@@ -35,6 +35,12 @@ app.get('/api/users/me', usersRoute.me)
 app.put('/api/users/:id', parseBody.json, usersRoute.update)
 app.del('/api/users/:id', adminOnly, usersRoute.destroy)
 
+// Password routes
+var passwordRoute = require('.app/routes/password')
+
+app.put('/api/password', passwordRoute.forgot)
+app.post('/api/password', passwordRoute.reset)
+
 // Category Routes
 var categoriesRoutes = require('./app/routes/categories')
 

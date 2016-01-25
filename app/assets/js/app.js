@@ -39,6 +39,16 @@ angular.module('oscars', [
       controller: 'ResultsCtrl as ctrl'
     })
 
+    .when('/forgot-password', {
+      templateUrl: '/views/forgotPassword.html',
+      controller: 'ForgotCtrl'
+    })
+
+    .when('/reset-password', {
+      templateUrl: '/views/resetPassword.html',
+      controller: 'ResetCtrl'
+    })
+
     .when('/howtoplay', {
       templateUrl: '/views/howToPlay.html'
     })
