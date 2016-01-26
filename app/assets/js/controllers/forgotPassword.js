@@ -3,6 +3,8 @@
 angular.module('oscars')
   .controller('ForgotCtrl', function ($scope, PasswordService, $location) {
 
+    $scope.success = ''
+
     $scope.forgot = function(email) {
       PasswordService.forgot(email)
         .then(function loginSuccess() {

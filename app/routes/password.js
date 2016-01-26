@@ -8,12 +8,11 @@ module.exports = {
 
     var email = this.data.email.toLowerCase()
 
-    var current = yield Ballot.findOne({ email:this.data.email }).exec()
-
+    var current = yield Ballot.findOne({ email: email }).exec()
     if (!current) return this.body = { success: true }
 
     var resetToken = Crypto.randomBytes(24).toString('base64')
-    var resetBefore = Date.now() + (6 * 60 * 60) // 6 hours
+    var resetBefore = Date.now() + (6 * 60 * 60 * 1000) // 6 hours
 
     Sendgrid.send({
       to: email,
@@ -25,8 +24,10 @@ module.exports = {
       console.log(json)
     })
 
-    var result = yield Ballot.findOneAndUpdate({ email: email }, {
-      $set: { resetToken: resetToken, resetBefore: resetBefore }}).exec()
+    var result = yield Ballot.findByIdAndUpdate(current._id,
+      { $set: { resetToken: resetToken, resetBefore: resetBefore } },
+      { new: true }
+    ).exec()
 
     if (result) {
       this.body = { success: true }
@@ -35,13 +36,16 @@ module.exports = {
   },
 
   reset: function *(next) {
-    var id = this.params.id
-    delete this.data.token
 
     var result = yield Ballot.findOneAndUpdate({
       resetToken: this.data.resetToken,
       resetBefore: { $gte: Date.now() }
-    }, { $set: { password: this.data.password } }).exec()
+    }, {
+      password: this.data.password,
+      resetToken: null,
+      resetBefore: null
+    }).exec()
+
     this.body = { success: !!result }
   }
 

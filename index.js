@@ -36,10 +36,10 @@ app.put('/api/users/:id', parseBody.json, usersRoute.update)
 app.del('/api/users/:id', adminOnly, usersRoute.destroy)
 
 // Password routes
-var passwordRoute = require('.app/routes/password')
+var passwordRoute = require('./app/routes/password')
 
-app.put('/api/password', passwordRoute.forgot)
-app.post('/api/password', passwordRoute.reset)
+app.post('/api/password', parseBody.json, passwordRoute.forgot)
+app.put('/api/password', parseBody.json, passwordRoute.reset)
 
 // Category Routes
 var categoriesRoutes = require('./app/routes/categories')
@@ -77,6 +77,8 @@ var homeRoute = require('./app/routes/home')
 app.all('/404', function *(next) { this.status = 404; yield next }, homeRoute)
 app.all('/', loggedIn, homeRoute)
 app.all(/\/admin\/[\w\d]*/i, adminOnly, homeRoute)
+app.all('/forgot-password', homeRoute)
+app.all('/reset-password', homeRoute)
 app.all('/login-error', homeRoute)
 app.all('/howtoplay', homeRoute)
 app.all('/register', homeRoute)

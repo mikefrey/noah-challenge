@@ -9,9 +9,12 @@ angular.module('oscars')
       return $req.post(url, { email: email })
     }
 
-    function reset(password) {
+    function reset(password, resetToken) {
       var url = baseUrl
-      return $req.put(url, password)
+      return $req.put(url, {
+        password: password,
+        resetToken: resetToken
+      })
     }
 
     return {

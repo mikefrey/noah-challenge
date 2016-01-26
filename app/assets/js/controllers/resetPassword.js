@@ -16,7 +16,7 @@ angular.module('oscars')
       if (password !== confirm)
         return $scope.error = 'Passwords do not match'
 
-      PasswordService.reset(email)
+      PasswordService.reset(password, resetToken)
         .then(function success() {
           $scope.success = 'Your password has been changed.'
         }, function error() {

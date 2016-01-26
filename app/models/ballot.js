@@ -3,6 +3,7 @@ var url = config.get('mongo.url')
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
+mongoose.set('debug', true)
 mongoose.connect(url)
 
 var ballotSchema = new Schema({
@@ -11,6 +12,8 @@ var ballotSchema = new Schema({
   email: String,
   password: String,
   admin: { type: Boolean, default: false },
+  resetToken: String,
+  resetBefore: Number,
   votes: [{
     nomineeID: Schema.Types.ObjectId,
     points: Number

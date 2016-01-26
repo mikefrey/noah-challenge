@@ -20,7 +20,7 @@
     "koa-router": "^3.8.0",
     "koa-session": "^3.1.0",
     "koa-static": "^1.4.8",
-    "mongoose": "~3.8.6",
+    "mongoose": "^4.3.7",
     "sendgrid": "^2.0.0",
     "underscore": "^1.7.0"
   },
