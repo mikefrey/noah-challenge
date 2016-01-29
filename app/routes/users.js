@@ -37,8 +37,8 @@ module.exports = {
       $or: [
         { email:this.data.email },
         { $and: [
-            { firstName: this.data.firstName },
-            { lastName: this.data.lastName }
+            { firstName: new RegExp(`^${this.data.firstName.toLowerCase()}$`, 'i') },
+            { lastName: new RegExp(`^${this.data.lastName.toLowerCase()}$`, 'i') }
           ]}
       ]}).exec()
     if (current) {
