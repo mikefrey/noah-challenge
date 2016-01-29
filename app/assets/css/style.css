@@ -69,7 +69,7 @@ header {
 }
 
 #header a {
-	background: url('..//img/golden-statue-challenge.png') 50% no-repeat;
+	background: url('../img/golden-statue-challenge.png') 50% no-repeat;
 	display: block;
 	height: 57px;
 	width: 811px;
@@ -310,7 +310,7 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 #login ul select {
 	-webkit-appearance: none;
 	appearance: none;
-	background-image: url('..//img/select.png');
+	background-image: url('../img/select.png');
 	background-position: 276px 16px;
 	background-repeat: no-repeat;
 	-webkit-border-radius: 0px;
