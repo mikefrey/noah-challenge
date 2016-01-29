@@ -8,7 +8,7 @@ angular.module('oscars')
       var cats = this.categories
       for (var i = 0; i < cats.length; i++) {
         if (getRemPoints(cats[i]) > 0) {
-          var answer = confirm('You still have unallocated points, are you sure you want to leave?')
+          var answer = confirm('You still have unallocated points, are you sure you want to leave? Don’t worry, the picks you have made are saved.')
           if (!answer) event.preventDefault()
           return
         }
