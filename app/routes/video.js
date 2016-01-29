@@ -2,7 +2,7 @@ var fs = require('fs')
 var Path = require('path')
 
 module.exports = function *(next) {
-  var path = Path.join(__dirname, '/../assets/img/oscars-2015.mp4')
+  var path = Path.join(__dirname, '/../assets/img/oscars-2016.mp4')
   var stat = fs.statSync(path)
   var total = stat.size
 
