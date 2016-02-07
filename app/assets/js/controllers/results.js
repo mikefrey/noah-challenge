@@ -16,9 +16,15 @@ angular.module('oscars')
         var cats = res.cats
         var ballots = res.ballots
 
+        // find the remaining nominees
+        var noms = cats.reduce(function(t, cat) {
+          if (cat.winners && cat.winners.length > 0) return t
+          return t.concat(_.pluck(cat.nominees, 'nomineeID'))
+        }, [])
+
         // tally up points for each ballot
         ballots.forEach(function(ballot) {
-          tallyBallot(ballot, cats)
+          tallyBallot(ballot, cats, noms)
         })
 
         // find the average for each category
@@ -36,7 +42,7 @@ angular.module('oscars')
       }.bind(this))
     }
 
-    function tallyBallot(ballot, cats) {
+    function tallyBallot(ballot, cats, noms) {
       ballot.points = cats.map(function(cat) {
         if (!cat.winners || !cat.winners.length)
           return 0
@@ -49,9 +55,17 @@ angular.module('oscars')
         return points || 0
       })
 
+      var possible = ballot.votes.reduce(function(t, vote) {
+        if (~noms.indexOf(vote.nomineeID)) {
+          return t + vote.points
+        }
+        return t
+      }, 0)
+
       ballot.score = ballot.points.reduce(function(t, p) { return t + p }, 0)
       ballot.rankScore = ballot.points.reduce(function(t, p) { return t + Math.pow(p,2) }, 0)
       ballot.sortName = ballot.lastName+' '+ballot.firstName
+      ballot.max = possible + ballot.score
     }
 
     function averageCategory(cat, ballots) {
