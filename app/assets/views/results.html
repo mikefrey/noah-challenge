@@ -6,12 +6,15 @@
     <span></span>
     <span></span>
   </div>
+  <div ng-if="ctrl.user.admin" style="margin-top:30px; text-align:right;">
+    <label><input type="checkbox" ng-model="ctrl.isOscarParty"> Oscar Party</label>
+  </div>
   <table>
     <thead>
       <tr>
         <th class="rank" ng-click="ctrl.sort('sortRank')">Rank</th>
         <th class="score" ng-click="ctrl.sort('sortRank')">Score</th>
-        <th class="score" ng-click="ctrl.sort('sortMax')">Max</th>
+        <th class="max" ng-click="ctrl.sort('sortMax')" data-tooltip="Maximum Possible Score">Max</th>
         <th class="player" ng-click="ctrl.sort('sortName')">Name</th>
         <th class="cat" ng-repeat="cat in ctrl.categories | orderBy:'position'" data-tooltip="{{cat.name}}">
           <span ng-bind-html="cat.abbr" ng-click="ctrl.sort($index)"></span>
@@ -19,10 +22,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="ballot in ctrl.ballots">
+      <tr ng-repeat="ballot in ctrl.ballots" ng-if="!ctrl.isOscarParty || ctrl.isOscarParty && ballot.party">
         <td class="rank">{{ballot.rank}}</td>
         <td class="score">{{ballot.score}}</td>
-        <td class="score">{{ballot.max}}</td>
+        <td class="max">{{ballot.max}}</td>
         <td ng-if="!ctrl.game.locked" class="player">{{ballot | fullName}}</td>
         <td ng-if="ctrl.game.locked" class="player"><a ng-href="/ballot/{{ballot._id}}">{{ballot | fullName}}</a></td>
         <td class="cat" ng-repeat="points in ballot.points track by $index">{{points}}</td>
@@ -32,6 +35,7 @@
       <tr>
         <td class="rank"></td>
         <td class="score"></td>
+        <td class="max"></td>
         <td class="name">Averages</td>
         <td class="cat" ng-repeat="cat in ctrl.categories | orderBy:'position'">{{cat.avg | number:1}}</td>
       </tr>

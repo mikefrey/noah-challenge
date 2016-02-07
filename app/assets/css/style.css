@@ -241,6 +241,12 @@ nav ul li:hover a, nav ul li:active a { color: #fff; text-decoration: none; }
 	width: 70px;
 }
 
+#results td.max {
+	color: #F8F8F8;
+	font-weight: 300;
+	width: 70px;
+}
+
 #results .player {
 	font-weight: 900;
 	width: 230px;

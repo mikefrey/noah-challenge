@@ -3,6 +3,7 @@
 angular.module('oscars')
   .controller('ResultsCtrl', function (MeProvider, BallotService, CategoryService, GameService, $q, $location, $timeout) {
     this.updatedAt = ''
+    this.isOscarParty = false
 
     // load the categories and ballot
     // merge the data so that the user's scores
@@ -59,12 +60,28 @@ angular.module('oscars')
         return points || 0
       })
 
-      var possible = ballot.votes.reduce(function(t, vote) {
-        if (~noms.indexOf(vote.nomineeID)) {
-          return t + vote.points
-        }
-        return t
+
+
+      var possible = cats.reduce(function(t, cat) {
+        if (cat.winners && cat.winners.length > 0) return t
+        var noms = _.pluck(cat.nominees, 'nomineeID')
+
+        var votes = _.filter(ballot.votes, function(vote) {
+          return ~noms.indexOf(vote.nomineeID)
+        })
+
+        var max = _.reduce(votes, function(t, vote) { return Math.max(t, vote.points) }, 0)
+
+        return t + Math.max(max, 0)
       }, 0)
+
+
+      // var possible = ballot.votes.reduce(function(t, vote) {
+      //   if (~noms.indexOf(vote.nomineeID)) {
+      //     return t + vote.points
+      //   }
+      //   return t
+      // }, 0)
 
       ballot.score = ballot.points.reduce(function(t, p) { return t + p }, 0)
       ballot.rankScore = ballot.points.reduce(function(t, p) { return t + Math.pow(p,2) }, 0)
@@ -142,7 +159,7 @@ angular.module('oscars')
     }
 
 
-    // load the uesr, then the data!
+    // load the user, then the data!
     MeProvider.then(function(me) {
       this.game = { locked: true }
       this.user = me
