@@ -1,23 +1,28 @@
-<section>
+<section id="results" class="px1200">
   <h2>User List</h2>
-</section>
-<section class="results">
+  <div class="bars">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
   <table>
     <thead>
       <tr>
-        <th><a href ng-click="sort='ctrl.firstName';ctrl.dir=!ctrl.dir">First</a></th>
-        <th><a href ng-click="sort='ctrl.lastName';ctrl.dir=!ctrl.dir">Last</a></th>
-        <th><a href ng-click="sort='ctrl.email';ctrl.dir=!ctrl.dir">Email</a></th>
-        <th><a href ng-click="sort='ctrl.admin';ctrl.dir=!ctrl.dir">Admin?</a></th>
+        <th class="player"><a href ng-click="sort='ctrl.firstName';ctrl.dir=!ctrl.dir">First</a></th>
+        <th class="player"><a href ng-click="sort='ctrl.lastName';ctrl.dir=!ctrl.dir">Last</a></th>
+        <th class="player"><a href ng-click="sort='ctrl.email';ctrl.dir=!ctrl.dir">Email</a></th>
+        <th><a href ng-click="sort='ctrl.admin';ctrl.dir=!ctrl.dir">Admin?&nbsp;</a></th>
+        <th><a href ng-click="sort='ctrl.party';ctrl.dir=!ctrl.dir">Oscar&nbsp;Party?</a></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="user in ctrl.users | orderBy:ctrl.sort:ctrl.dir">
-        <td><a ng-href="/ballot/{{user._id}}">{{user.firstName}}</a></td>
-        <td><a ng-href="/ballot/{{user._id}}">{{user.lastName}}</a></td>
-        <td>{{user.email}}</td>
-        <td><input type="checkbox" ng-model="user.admin" ng-change="ctrl.toggleAdmin(user)"></td>
+        <td class="player"><a ng-href="/ballot/{{user._id}}">{{user.firstName}}</a></td>
+        <td class="player"><a ng-href="/ballot/{{user._id}}">{{user.lastName}}</a></td>
+        <td class="player">{{user.email}}</td>
+        <td><input type="checkbox" ng-model="user.admin" ng-change="ctrl.saveUser(user)"></td>
+        <td><input type="checkbox" ng-model="user.party" ng-change="ctrl.saveUser(user)"></td>
         <td><a href ng-click="ctrl.deleteUser(user._id, $index)">X</a></td>
       </tr>
     </tbody>

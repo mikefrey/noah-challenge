@@ -16,6 +16,10 @@ angular.module('oscars')
         var cats = res.cats
         var ballots = res.ballots
 
+        if ($location.search().party) {
+          ballots = _.where(ballots, { party: true })
+        }
+
         // find the remaining nominees
         var noms = cats.reduce(function(t, cat) {
           if (cat.winners && cat.winners.length > 0) return t

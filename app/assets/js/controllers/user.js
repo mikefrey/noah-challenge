@@ -20,7 +20,7 @@ angular.module('oscars')
       }.bind(this))
     }
 
-    this.toggleAdmin = function(user) {
+    this.saveUser = function(user) {
       UserService.update(user).then(function() {
         console.log('User updated!')
       })
