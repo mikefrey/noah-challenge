@@ -3,7 +3,7 @@ var Ballot = require('../models/ballot')
 module.exports = {
 
   index: function *(next) {
-    var fields = 'id firstName lastName party'
+    var fields = 'id firstName lastName party partyOnly'
     if (true || this.session.admin === true)
       fields += ' email admin'
     var users = yield Ballot.find({}, fields).exec()

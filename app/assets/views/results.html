@@ -22,7 +22,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="ballot in ctrl.ballots" ng-if="!ctrl.isOscarParty || ctrl.isOscarParty && ballot.party">
+      <tr ng-repeat="ballot in ctrl.ballots" ng-if="!ctrl.isOscarParty && !ballot.partyOnly || ctrl.isOscarParty && ballot.party">
         <td class="rank">{{ballot.rank}}</td>
         <td class="score">{{ballot.score}}</td>
         <td class="max">{{ballot.max}}</td>

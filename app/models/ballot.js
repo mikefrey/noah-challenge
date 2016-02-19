@@ -18,7 +18,8 @@ var ballotSchema = new Schema({
     nomineeID: Schema.Types.ObjectId,
     points: Number
   }],
-  party: { type: Boolean, default: false }
+  party: { type: Boolean, default: false },
+  partyOnly: { type: Boolean, default: false }
 })
 
 ballotSchema.virtual('fullName').get(function() {
