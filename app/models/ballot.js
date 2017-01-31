@@ -9,6 +9,7 @@ mongoose.connect(url)
 var ballotSchema = new Schema({
   firstName: String,
   lastName: String,
+  authId: String,
   email: String,
   password: String,
   admin: { type: Boolean, default: false },

@@ -2,10 +2,13 @@
   "name": "oscars",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "1.2.10",
-    "angular-resource": "1.2.10",
-    "angular-sanitize": "1.2.10",
-    "angular-route": "1.2.10",
-    "underscore": "1.5.2"
+    "angular": "1.6.1",
+    "angular-resource": "1.6.1",
+    "angular-sanitize": "1.6.1",
+    "angular-route": "1.6.1",
+    "underscore": "1.8.3",
+    "auth0-lock": "^10.9.2",
+    "angular-lock": "^1.0.5",
+    "angular-jwt": "^0.1.8"
   }
 }

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="oscars">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>2015 GOLDEN STATUE CHALLENGE</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="shortcut icon" type="image/ico" href="/img/favicon.ico">
+  <base href="/">
 </head>
 <body>
 <!-- HEADER -->
   <header>
     <section id="header">
-      <a href="/">2015 Golden Statue Challenge</a>
+      <a href="/">2017 Golden Statue Challenge</a>
     </section>
     <section id="nav">
       <nav>
@@ -37,6 +39,9 @@
   <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/underscore/underscore.js"></script>
+  <script src="/bower_components/auth0-lock/build/lock.js"></script>
+  <script src="/bower_components/angular-lock/dist/angular-lock.js"></script>
+  <script src="/bower_components/angular-jwt/dist/angular-jwt.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -45,6 +50,7 @@
   <script src="/js/filters/filters.js"></script>
 
   <script src="/js/directives/navigation.js"></script>
+  <script src="/js/services/authSvc.js"></script>
   <script src="/js/services/ballotSvc.js"></script>
   <script src="/js/services/categorySvc.js"></script>
   <script src="/js/services/gameSvc.js"></script>
@@ -65,6 +71,5 @@
   <script src="/js/controllers/scoring.js"></script>
   <script src="/js/controllers/user.js"></script>
   <!-- endbuild -->
-
 </body>
 </html>

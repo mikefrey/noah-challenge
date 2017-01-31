@@ -5,7 +5,9 @@ angular.module('oscars')
 
     function req(method, url, data) {
       var dfd = $q.defer()
-      $http[method](url, data).success(dfd.resolve).error(dfd.reject)
+      $http[method](url, data).then(function(resp) {
+        return dfd.resolve(resp.data)
+      }).catch(dfd.reject)
       return dfd.promise
     }
 

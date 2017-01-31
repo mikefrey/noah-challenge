@@ -20,6 +20,12 @@ angular.module('oscars')
       return $req.get(url)
     }
 
+    var user = {}
+    function currentUser(u) {
+      if (u) user = u
+      return user
+    }
+
     function create(user) {
       var url = baseUrl
       return $req.post(url, user)
@@ -47,6 +53,7 @@ angular.module('oscars')
 
     return {
       me: me,
+      currentUser: currentUser,
       create: create,
       update: update,
       list: list,

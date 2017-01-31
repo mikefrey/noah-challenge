@@ -15,18 +15,7 @@
       <form ng-submit="login(user, password)">
         <ul>
           <li>
-            <select ng-model="user" ng-options="u | fullName for u in users | orderBy:'firstName'">
-              <option value="">Select Your Ballot</option>
-            </select>
-          </li>
-          <li>
-            <input type="password" name="password" placeholder="PASSWORD" ng-model="password">
-          </li>
-          <li>
             <button type="submit" class="getballot">Get My Ballot</button>
-          </li>
-          <li style="text-align:center;">
-            <a href="/forgot-password">Forget your password?</a>
           </li>
         </ul>
       </form>
@@ -37,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="category gray">
+  <!-- <div class="category gray">
     <div class="category-header">
       <h2 class="category-name">
         <span>Don't Have a Ballot?</span>
@@ -59,5 +48,5 @@
       </fieldset>
       <ng-include src="'/views/contactLink.html'"></ng-include>
     </div>
-  </div>
+  </div> -->
 </section>
