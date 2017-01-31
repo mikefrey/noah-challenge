@@ -27,13 +27,12 @@ module.exports = {
 
     const result = yield Ballot.findOne({ authId: user.sub }).exec()
 
-    if (result && id == result._id) {
-      this.session.uid = id
+    if (result) {
+      this.session.uid = result._id
       return this.body = result
     }
 
     const auth0User = yield getUserInfo(token)
-    console.log('USER', auth0User)
     this.body = { email: auth0User.email, authId: user.sub }
   },
 
