@@ -2,8 +2,16 @@
 
 angular.module('oscars', [
     'ngRoute',
-    'ngSanitize'
+    'ngSanitize',
+    'auth0.lock',
+    'angular-jwt'
 ])
+.config(function (lockProvider) {
+  lockProvider.init({
+    clientID: 'ehiPo219n7XhyCkXKiAo5iVTtXHKKUf8',
+    domain: 'goldenstatuechallenge.auth0.com'
+  })
+})
 .config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true)
 
@@ -74,4 +82,7 @@ angular.module('oscars', [
   )
 
 })
-.run(function(MeProvider){})
+// .run(function(MeProvider){})
+.run(function (authService, lock) {
+  authService.registerAuthenticationListener()
+})

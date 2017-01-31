@@ -5,7 +5,7 @@ angular.module('oscars')
 
     this.getCategories = function() {
       CategoryService.list().then(function(categories) {
-        this.categories = categories
+        this.categories = categories || []
       }.bind(this), function() {})
     }
 

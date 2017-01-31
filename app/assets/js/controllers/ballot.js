@@ -4,7 +4,7 @@ angular.module('oscars')
   .controller('BallotCtrl', function ($scope, MeProvider, BallotService, CategoryService, GameService, $routeParams, $q, $timeout, $location) {
 
     $scope.$on('$locationChangeStart', function(event, next, current) {
-      if (this.game.locked) return
+      if (!this.game || this.game.locked) return
       var cats = this.categories
       for (var i = 0; i < cats.length; i++) {
         if (getRemPoints(cats[i]) > 0) {
