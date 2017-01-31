@@ -49,13 +49,16 @@ module.exports = function *(next) {
 
 
 
-  var csv = ballot.firstName + ' ' + ballot.lastName + '\n'
-  csv += ballot.score + '\n\n'
+  var csv = `${ballot.firstName} ${ballot.lastName}
+${ballot.email}
+${ballot.score}
+
+`
 
   cats.forEach(function(cat) {
-    csv += cat.score + ',' + cat.name + '\n'
+    csv += `${cat.score},${cat.name}\n`
     cat.nominees.forEach(function(nom) {
-      csv += nom.points + ',' + nom.name + '\n'
+      csv += `${nom.points},${nom.name}\n`
     })
     csv += '\n'
   })
