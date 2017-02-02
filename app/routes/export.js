@@ -63,8 +63,8 @@ ${ballot.score}
     csv += '\n'
   })
 
-  var filename = ballot.firstName+ballot.lastName+'.csv'
-  this.set('Content-Disposition', 'attachment; filename="'+filename+'"')
+  var filename = `${ballot.firstName}${ballot.lastName}.csv`
+  this.set('Content-Disposition', `attachment; filename="${filename}"`)
   this.set('Content-Type', 'text/csv')
   this.body = csv
 }

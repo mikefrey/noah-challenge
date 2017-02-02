@@ -9,3 +9,5 @@ data
 config/local.js
 
 _bower_components
+
+.DS_Store
