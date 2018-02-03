@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('oscars')
-  .controller('BallotCtrl', function ($scope, MeProvider, BallotService, CategoryService, GameService, $routeParams, $q, $timeout, $location) {
+  .controller('BallotCtrl', function ($scope, MeProvider, BallotService, CategoryService, GameService, $routeParams, $q, $timeout, $location, $window) {
 
     $scope.$on('$locationChangeStart', function(event, next, current) {
       if (!this.game || this.game.locked) return
@@ -60,11 +60,7 @@ angular.module('oscars')
     // clears all points for the ballot
     this.clearVotes = function(ballot) {
       BallotService.clear(ballot._id)
-        .then(() => {
-          this.categories.forEach(cat => {
-            cat.nominees.forEach(nom => nom.points = 0)
-          })
-        })
+        .then(() => $window.history.back())
     }
 
     // get a list of all the user's allocated
