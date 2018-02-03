@@ -3,7 +3,7 @@
     <div>
       <div style="display: block; margin: 0 auto 40px; width: 360px; height: 360px !important; position: relative;">
         <img src="/img/video-border.png" style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 360px; height: 360px;">
-        <video src="/img/oscars-2017.mp4" type="video/mp4" preload="" autoplay="" loop="" style="width: 360px; height: 360px;"></video>
+        <video src="/img/oscars-2017.mp4" id="vid" type="video/mp4" preload="" autoplay="" loop="" style="width: 360px; height: 360px;"></video>
       </div>
     </div>
     <div class="category-header">
@@ -55,4 +55,7 @@
       <ng-include src="'/views/contactLink.html'"></ng-include>
     </div>
   </div> -->
+  <script>
+    document.getElementById('vid').play()
+</script>
 </section>

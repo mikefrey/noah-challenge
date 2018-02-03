@@ -81,7 +81,7 @@ angular.module('oscars')
 
       ballot.score = ballot.points.reduce(function(t, p) { return t + p }, 0)
       ballot.rankScore = ballot.points.reduce(function(t, p) { return t + Math.pow(p,2) }, 0)
-      ballot.sortName = ballot.lastName+' '+ballot.firstName
+      ballot.sortName = ballot.firstName+' '+ballot.lastName
       ballot.max = possible + ballot.score
     }
 

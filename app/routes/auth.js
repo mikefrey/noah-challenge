@@ -7,6 +7,7 @@ const Wreck = require('wreck')
 const secret = config.get('auth0.clientSecret')
 const audience = config.get('auth0.clientID')
 
+const INVITE_CODE = 'interlinked'
 
 function getUserInfo(token) {
   const url = 'https://goldenstatuechallenge.auth0.com/tokeninfo'
@@ -38,7 +39,7 @@ module.exports = {
 
   signup: function *(next) {
 
-    if (!this.data.invite || this.data.invite.toLowerCase() !== 'kangaroo') {
+    if (!this.data.invite || this.data.invite.toLowerCase() !== INVITE_CODE) {
       console.log('\n\nDID NOT PASS GO\n\n')
       this.body = { error: 'Incorrect invite code' }
       return this.status = 403

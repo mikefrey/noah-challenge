@@ -19,6 +19,7 @@
         <th class="cat" ng-repeat="cat in ctrl.categories | orderBy:'position'" data-tooltip="{{cat.name}}">
           <span ng-bind-html="cat.abbr" ng-click="ctrl.sort($index)"></span>
         </th>
+        <th>Export</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@
         <td ng-if="!ctrl.game.locked" class="player">{{ballot | fullName}}</td>
         <td ng-if="ctrl.game.locked" class="player"><a ng-href="/ballot/{{ballot._id}}">{{ballot | fullName}}</a></td>
         <td class="cat" ng-repeat="points in ballot.points track by $index">{{points}}</td>
+        <td><a ng-href="/export/{{ballot._id}}" download="{{ballot.firstName+ballot.lastName}}.csv" target="_self">EX</a></td>
       </tr>
     </tbody>
     <tfoot>
@@ -38,6 +40,7 @@
         <td class="max"></td>
         <td class="name">Averages</td>
         <td class="cat" ng-repeat="cat in ctrl.categories | orderBy:'position'">{{cat.avg | number:1}}</td>
+        <td></td>
       </tr>
     </tfoot>
   </table>
