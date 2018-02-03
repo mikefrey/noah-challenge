@@ -33,7 +33,8 @@ angular.module('oscars')
 
     return {
       update: update,
-      find: find
+      find: find,
+      clear: clear
     }
 
   })
