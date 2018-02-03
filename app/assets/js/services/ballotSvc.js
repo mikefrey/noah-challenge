@@ -26,6 +26,11 @@ angular.module('oscars')
       return $req.get(url)
     }
 
+    function clear(id) {
+      var url = baseUrl + (id ? '/' + id : '')
+      return $req.del(url)
+    }
+
     return {
       update: update,
       find: find

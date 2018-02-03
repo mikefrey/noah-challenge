@@ -56,6 +56,12 @@ angular.module('oscars')
       }.bind(this), 2000)
     }
 
+
+    // clears all points for the ballot
+    this.clearVotes = function(ballot) {
+      BallotService.clear(ballot._id)
+    }
+
     // get a list of all the user's allocated
     // points across all categories
     this.getVotes = function() {

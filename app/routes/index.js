@@ -39,6 +39,7 @@ const ballotRoutes = require('./ballots')
 router.get('/api/ballots', ballotRoutes.index)
 router.get('/api/ballots/:id', ballotRoutes.show)
 router.put('/api/ballots/:id', parseBody.json, ballotRoutes.update)
+router.del('/api/ballots/:id', ballotRoutes.clear)
 
 // games routes
 const gamesRoutes = require('./games')
