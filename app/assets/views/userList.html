@@ -23,7 +23,11 @@
         <td class="player"><a ng-href="/ballot/{{user._id}}">{{user.firstName}}</a></td>
         <td class="player"><a ng-href="/ballot/{{user._id}}">{{user.lastName}}</a></td>
         <td class="player">{{user.email}}</td>
-        <td class="player">{{user.location}}</td>
+        <td class="player"><select name="location" ng-model="user.location" ng-change="ctrl.saveUser(user)">
+            <option value="">Location</option>
+            <option value="minneapolis">Minneapolis</option>
+            <option value="chicago">Chicago</option>
+          </select></td>
         <td><input type="checkbox" ng-model="user.admin" ng-change="ctrl.saveUser(user)"></td>
         <td><input type="checkbox" ng-model="user.party" ng-change="ctrl.saveUser(user)"></td>
         <td><input type="checkbox" ng-model="user.partyOnly" ng-change="ctrl.saveUser(user)"></td>
