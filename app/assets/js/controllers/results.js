@@ -4,6 +4,20 @@ angular.module('oscars')
   .controller('ResultsCtrl', function (MeProvider, BallotService, CategoryService, GameService, $q, $location, $timeout) {
     this.updatedAt = ''
     this.isOscarParty = false
+    this.showMinneapolis = true
+    this.showChicago = true
+
+    this.shouldShowParty = (b) => {
+      if (!this.isOscarParty && !b.partyOnly) return true
+      if (this.isOscarParty && (b.party || b.partyOnly)) return true
+      return false
+    }
+
+    this.shouldShowLocation = (b) => {
+      if (b.location === 'minneapolis' && this.showMinneapolis) return true
+      if (b.location === 'chicago' && this.showChicago) return true
+      return false
+    }
 
     // load the categories and ballot
     // merge the data so that the user's scores

@@ -11,6 +11,7 @@
         <th class="player"><a href ng-click="sort='ctrl.firstName';ctrl.dir=!ctrl.dir">First</a></th>
         <th class="player"><a href ng-click="sort='ctrl.lastName';ctrl.dir=!ctrl.dir">Last</a></th>
         <th class="player"><a href ng-click="sort='ctrl.email';ctrl.dir=!ctrl.dir">Email</a></th>
+        <th class="player"><a href ng-click="sort='ctrl.location';ctrl.dir=!ctrl.dir">Location</a></th>
         <th><a href ng-click="sort='ctrl.admin';ctrl.dir=!ctrl.dir">Admin?&nbsp;</a></th>
         <th style="line-height:16px;padding:0 15px 0 15px;"><a href ng-click="sort='ctrl.party';ctrl.dir=!ctrl.dir">Oscar Party?</a></th>
         <th style="line-height:16px;padding:0 15px 0 15px;"><a href ng-click="sort='ctrl.party';ctrl.dir=!ctrl.dir">Oscar Party Only?</a></th>
@@ -22,6 +23,7 @@
         <td class="player"><a ng-href="/ballot/{{user._id}}">{{user.firstName}}</a></td>
         <td class="player"><a ng-href="/ballot/{{user._id}}">{{user.lastName}}</a></td>
         <td class="player">{{user.email}}</td>
+        <td class="player">{{user.location}}</td>
         <td><input type="checkbox" ng-model="user.admin" ng-change="ctrl.saveUser(user)"></td>
         <td><input type="checkbox" ng-model="user.party" ng-change="ctrl.saveUser(user)"></td>
         <td><input type="checkbox" ng-model="user.partyOnly" ng-change="ctrl.saveUser(user)"></td>

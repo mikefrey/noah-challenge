@@ -6,6 +6,7 @@ var ballotSchema = new Schema({
   lastName: String,
   authId: String,
   email: String,
+  location: String,
   password: String,
   admin: { type: Boolean, default: false },
   resetToken: String,

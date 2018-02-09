@@ -14,7 +14,7 @@ angular.module('oscars')
     this.createUser = function(user) {
 
       if (!(user && user.firstName && user.lastName &&
-            user.email && user.invite)) {
+            user.email && user.location && user.invite)) {
         return this.error = 'Please fill in all fields!'
       }
 

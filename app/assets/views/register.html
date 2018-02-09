@@ -24,6 +24,13 @@
             <input type="text" name="email" placeholder="Email" ng-model="newUser.email">
           </li>
           <li>
+            <select name="location" ng-model="newUser.location">
+              <option value="">Location</option>
+              <option value="minneapolis">Minneapolis</option>
+              <option value="chicago">Chicago</option>
+            </select>
+          </li>
+          <li>
             <input type="invite" name="invite" placeholder="Invite Code" ng-model="newUser.invite">
           </li>
           <li>

@@ -3,7 +3,7 @@ var Ballot = require('../models/ballot')
 module.exports = {
 
   index: function *(next) {
-    var result = yield Ballot.find('id firstName lastName votes').exec()
+    var result = yield Ballot.find('id firstName lastName location votes').exec()
     this.body = result
   },
 

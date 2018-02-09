@@ -9,6 +9,10 @@
   <div ng-if="ctrl.user.admin" style="margin-top:30px; text-align:right;">
     <label><input type="checkbox" ng-model="ctrl.isOscarParty"> Oscar Party</label>
   </div>
+  <div style="margin-top:30px; text-align:right;">
+    <label><input type="checkbox" ng-model="ctrl.showMinneapolis"> Minneapolis</label>
+    <label><input type="checkbox" ng-model="ctrl.showChicago"> Chicago</label>
+  </div>
   <table>
     <thead>
       <tr>
@@ -23,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="ballot in ctrl.ballots" ng-if="!ctrl.isOscarParty && !ballot.partyOnly || ctrl.isOscarParty && ballot.party">
+      <tr ng-repeat="ballot in ctrl.ballots" ng-if="ctrl.shouldShowParty(ballot) && ctrl.shouldShowLocation(ballot)">
         <td class="rank">{{ballot.rank}}</td>
         <td class="score">{{ballot.score}}</td>
         <td class="max">{{ballot.max}}</td>
