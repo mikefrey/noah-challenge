@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CSSCore from 'fbjs/lib/CSSCore';
@@ -5,7 +6,7 @@ import CSSCore from 'fbjs/lib/CSSCore';
 export default class Slider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {children: {current: props.children}};
+    this.state = { children: { current: props.children } };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,7 +23,10 @@ export default class Slider extends React.Component {
       });
       this.animate = true;
     } else if (!this.timeout) {
-      this.setState({children: {current: nextProps.children}, transitionName: nextProps.transitionName});
+      this.setState({
+        children: { current: nextProps.children },
+        transitionName: nextProps.transitionName
+      });
     }
   }
 
@@ -37,6 +41,7 @@ export default class Slider extends React.Component {
       const prevComponent = this.refs[prev.key];
 
       const transition = (component, className, delay) => {
+        // eslint-disable-next-line
         const node = ReactDOM.findDOMNode(component);
         const activeClassName = `${className}-active`;
 
@@ -52,14 +57,17 @@ export default class Slider extends React.Component {
         }
       };
 
-      const callback = (slide) => {
+      const callback = slide => {
         currentComponent.componentWillSlideIn(slide);
-        const classNamePrefix = reverse ? "reverse-" : "";
+        const classNamePrefix = reverse ? 'reverse-' : '';
         transition(currentComponent, `${classNamePrefix}${transitionName}-enter`, this.props.delay);
-        transition(prevComponent, `${classNamePrefix}${transitionName}-leave`);
+        transition(prevComponent, `${classNamePrefix}${transitionName}-exit`);
 
         this.timeout = setTimeout(() => {
-          this.setState({children: {current: this.state.children.current}, transitionName: this.props.transitionName});
+          this.setState({
+            children: { current: this.state.children.current },
+            transitionName: this.props.transitionName
+          });
           currentComponent.componentDidSlideIn(::this.props.onDidAppear);
           this.props.onDidSlide();
           this.timeout = null;
@@ -76,13 +84,13 @@ export default class Slider extends React.Component {
   }
 
   render() {
-    const {current, prev} = this.state.children;
+    const { current, prev } = this.state.children;
     const children = prev ? [current, prev] : [current];
     const childrenToRender = children.map(child => {
-      return React.cloneElement(
-        React.createElement(Child, {}, child),
-        {ref: child.key, key: child.key}
-      );
+      return React.cloneElement(React.createElement(Child, {}, child), {
+        ref: child.key,
+        key: child.key
+      });
     });
 
     return React.createElement(this.props.component, {}, childrenToRender);
@@ -90,17 +98,18 @@ export default class Slider extends React.Component {
 }
 
 Slider.propTypes = {
-  component: React.PropTypes.string,
-  delay: React.PropTypes.number.isRequired,
-  onDidAppear: React.PropTypes.func.isRequired,
-  onDidSlide: React.PropTypes.func.isRequired,
-  onWillSlide: React.PropTypes.func.isRequired,
-  reverse: React.PropTypes.bool.isRequired,
-  transitionName: React.PropTypes.string.isRequired
+  children: PropTypes.node.isRequired,
+  component: PropTypes.string,
+  delay: PropTypes.number.isRequired,
+  onDidAppear: PropTypes.func.isRequired,
+  onDidSlide: PropTypes.func.isRequired,
+  onWillSlide: PropTypes.func.isRequired,
+  reverse: PropTypes.bool.isRequired,
+  transitionName: PropTypes.string.isRequired
 };
 
 Slider.defaultProps = {
-  component: "span",
+  component: 'span',
   onDidAppear: () => {},
   onDidSlide: () => {},
   onWillSlide: () => {},
@@ -108,18 +117,17 @@ Slider.defaultProps = {
 };
 
 class Child extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {height: "", originalHeight: "", show: true};
+    this.state = { height: '', originalHeight: '', show: true };
   }
 
-  componentWillSlideIn(slide) {
-    const node = ReactDOM.findDOMNode(this);
+  node;
 
+  componentWillSlideIn(slide) {
     this.setState({
       height: slide.height,
-      originalHeight: parseInt(window.getComputedStyle(node, null).height, 10),
+      originalHeight: parseInt(window.getComputedStyle(this.node, null).height, 10),
       show: false
     });
   }
@@ -128,7 +136,7 @@ class Child extends React.Component {
     const { height, originalHeight } = this.state;
 
     if (height === originalHeight) {
-      this.setState({show: true, height: ""});
+      this.setState({ show: true, height: '' });
       cb();
     } else {
       this.cb = cb;
@@ -137,19 +145,19 @@ class Child extends React.Component {
       let current = height;
       const last = originalHeight;
       const step = Math.abs(current - last) / frames;
-      const dir =  current < last ? 1 : -1;
-      const dh  = step * dir;
+      const dir = current < last ? 1 : -1;
+      const dh = step * dir;
 
       // TODO: rAF
       this.t = setInterval(() => {
         if (count < frames - 1) {
-          this.setState({height: current, animating: true});
+          this.setState({ height: current, animating: true });
           current += dh;
           count++;
         } else {
           clearInterval(this.t);
           delete this.t;
-          this.setState({height: "", show: true});
+          this.setState({ height: '', show: true });
           this.cb();
         }
       }, 17);
@@ -157,9 +165,8 @@ class Child extends React.Component {
   }
 
   componentWillSlideOut(cb) {
-    const node = ReactDOM.findDOMNode(this);
-    const size = window.getComputedStyle(node, null).height;
-    cb({height: parseInt(size, 10), reverse: this.reverse});
+    const size = window.getComputedStyle(this.node, null).height;
+    cb({ height: parseInt(size, 10), reverse: this.reverse });
   }
 
   componentWillUnmount() {
@@ -174,12 +181,13 @@ class Child extends React.Component {
     const { height, show } = this.state;
 
     return (
-      <div style={height ? {height: height + "px"} : {}}>
-        <div style={{visibility: show ? "inherit" : "hidden"}}>
-          {children}
-        </div>
+      <div ref={node => (this.node = node)} style={height ? { height: height + 'px' } : {}}>
+        <div style={{ visibility: show ? 'inherit' : 'hidden' }}>{children}</div>
       </div>
     );
   }
-
 }
+
+Child.propTypes = {
+  children: PropTypes.node.isRequired
+};

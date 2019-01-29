@@ -6,18 +6,25 @@ import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
 import { STRATEGIES as SOCIAL_STRATEGIES } from '../../connection/social/index';
+import { authButtonsTheme } from '../../connection/social/index';
 
 // TODO: handle this from CSS
 function icon(strategy) {
   if (SOCIAL_STRATEGIES[strategy]) return strategy;
-  if (strategy === "google-apps") return strategy;
-  if (~["adfs", "office365", "waad"].indexOf(strategy)) return "windows";
-  return "auth0";
+  if (strategy === 'google-apps') return strategy;
+  if (~['adfs', 'office365', 'waad'].indexOf(strategy)) return 'windows';
+  return 'auth0';
 }
 
-const Component = ({i18n, model}) => {
-  const headerText = i18n.html("lastLoginInstructions") || null;
+const Component = ({ i18n, model }) => {
+  const headerText = i18n.html('lastLoginInstructions') || null;
   const header = headerText && <p>{headerText}</p>;
+  const theme = authButtonsTheme(model);
+  const connectionName = lastUsedConnection(model).get('name');
+  const buttonTheme = theme.get(connectionName);
+  const primaryColor = buttonTheme && buttonTheme.get('primaryColor');
+  const foregroundColor = buttonTheme && buttonTheme.get('foregroundColor');
+  const buttonIcon = buttonTheme && buttonTheme.get('icon');
 
   const buttonClickHandler = () => {
     logIn(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
@@ -25,20 +32,22 @@ const Component = ({i18n, model}) => {
 
   return (
     <QuickAuthPane
-      alternativeLabel={i18n.str("notYourAccountAction")}
+      alternativeLabel={i18n.str('notYourAccountAction')}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
       buttonLabel={lastUsedUsername(model)}
       buttonClickHandler={buttonClickHandler}
       header={header}
-      strategy={icon(lastUsedConnection(model).get("strategy"))}
+      strategy={icon(lastUsedConnection(model).get('strategy'))}
+      buttonIcon={buttonIcon}
+      primaryColor={primaryColor}
+      foregroundColor={foregroundColor}
     />
   );
 };
 
 export default class LastLoginScreen extends Screen {
-
   constructor() {
-    super("lastLogin");
+    super('lastLogin');
   }
 
   renderAuxiliaryPane(lock) {
@@ -48,5 +57,4 @@ export default class LastLoginScreen extends Screen {
   render() {
     return Component;
   }
-
 }
