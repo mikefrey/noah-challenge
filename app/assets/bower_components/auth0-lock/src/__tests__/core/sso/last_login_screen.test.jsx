@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Immutable from 'immutable';
 
-import { expectComponent, extractPropsFromWrapper, mockComponent } from 'testUtils';
+import { expectComponent, extractPropsFromWrapper, mockComponent, setURL } from 'testUtils';
 
 jest.mock('ui/pane/quick_auth_pane', () => mockComponent('quick_auth_pane'));
 
@@ -21,11 +21,13 @@ describe('LastLoginScreen', () => {
 
     jest.mock('quick-auth/actions', () => ({
       logIn: jest.fn(),
+      checkSession: jest.fn(),
       skipQuickAuth: jest.fn()
     }));
 
     jest.mock('core/index', () => ({
-      id: () => 'id'
+      id: () => 'id',
+      domain: () => 'me.auth0.com'
     }));
 
     jest.mock('core/sso/index', () => ({
@@ -36,7 +38,9 @@ describe('LastLoginScreen', () => {
     }));
 
     jest.mock('connection/social/index', () => ({
-      STRATEGIES: {},
+      STRATEGIES: {
+        twitter: 'Twitter'
+      },
       authButtonsTheme: () => ({
         get: () => undefined
       })
@@ -89,8 +93,45 @@ describe('LastLoginScreen', () => {
       'waad',
       'some-other-strategy'
     ].forEach(testStrategy);
+
+    it(`when strategy is empty, use name instead`, () => {
+      require('core/sso/index').lastUsedConnection = () =>
+        Immutable.fromJS({
+          name: testStrategyName
+        });
+      const Component = getComponent();
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    });
   });
-  it('calls logIn in the buttonClickHandler', () => {
+  describe('renders correct buttonLabel', () => {
+    it('uses SOCIAL_STRATEGY mapping when there is not a lastUsedUsername', () => {
+      require('core/sso/index').lastUsedConnection = () => ({
+        get: () => 'twitter'
+      });
+      require('core/sso/index').lastUsedUsername = () => undefined;
+      const Component = getComponent();
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    });
+    it('uses lastUsedConnectionName when there is not a lastUsedUsername and no SOCIAL_STRATEGY mapping', () => {
+      require('core/sso/index').lastUsedUsername = () => undefined;
+      const Component = getComponent();
+      expectComponent(<Component {...defaultProps} />).toMatchSnapshot();
+    });
+  });
+  it('calls checkSession in the buttonClickHandler when outside of the universal login page', () => {
+    setURL('https://other-url.auth0.com');
+    const Component = getComponent();
+    const wrapper = mount(<Component {...defaultProps} />);
+    const props = extractPropsFromWrapper(wrapper);
+    props.buttonClickHandler();
+    const { mock } = require('quick-auth/actions').checkSession;
+    expect(mock.calls.length).toBe(1);
+    expect(mock.calls[0][0]).toBe('id');
+    expect(mock.calls[0][1].get()).toBe('lastUsedConnection');
+    expect(mock.calls[0][2]).toBe('lastUsedUsername');
+  });
+  it('calls logIn in the buttonClickHandler when inside of the universal login page', () => {
+    setURL('https://me.auth0.com');
     const Component = getComponent();
     const wrapper = mount(<Component {...defaultProps} />);
     const props = extractPropsFromWrapper(wrapper);

@@ -2,7 +2,7 @@ import urljoin from 'url-join';
 import Immutable, { List, Map, Set } from 'immutable';
 import { isSmallScreen } from '../utils/media_utils';
 import { endsWith } from '../utils/string_utils';
-import { parseUrl } from '../utils/url_utils';
+import { getLocationFromUrl, getOriginFromUrl } from '../utils/url_utils';
 import * as i18n from '../i18n';
 import trim from 'trim';
 import * as gp from '../avatar/gravatar_provider';
@@ -27,7 +27,6 @@ export function setup(id, clientID, domain, options, hookRunner, emitEventFn) {
       emitEventFn: emitEventFn,
       hookRunner: hookRunner,
       useTenantInfo: options.__useTenantInfo || false,
-      oidcConformant: options.oidcConformant || false,
       hashCleanup: options.hashCleanup === false ? false : true,
       allowedConnections: Immutable.fromJS(options.allowedConnections || []),
       ui: extractUIOptions(id, options),
@@ -65,10 +64,6 @@ export function tenantBaseUrl(m) {
 
 export function useTenantInfo(m) {
   return get(m, 'useTenantInfo');
-}
-
-export function oidcConformant(m) {
-  return get(m, 'oidcConformant');
 }
 
 export function connectionResolver(m) {
@@ -139,6 +134,18 @@ export function clearGlobalSuccess(m) {
   return tremove(m, 'globalSuccess');
 }
 
+export function setGlobalInfo(m, str) {
+  return tset(m, 'globalInfo', str);
+}
+
+export function globalInfo(m) {
+  return tget(m, 'globalInfo', '');
+}
+
+export function clearGlobalInfo(m) {
+  return tremove(m, 'globalInfo');
+}
+
 export function rendering(m) {
   return tget(m, 'render', false);
 }
@@ -150,7 +157,9 @@ export function stopRendering(m) {
 function extractUIOptions(id, options) {
   const closable = options.container
     ? false
-    : undefined === options.closable ? true : !!options.closable;
+    : undefined === options.closable
+      ? true
+      : !!options.closable;
   const theme = options.theme || {};
   const { labeledSubmitButton, hideMainScreenTitle, logo, primaryColor, authButtons } = theme;
 
@@ -186,6 +195,7 @@ function extractUIOptions(id, options) {
     allowAutocomplete: !!options.allowAutocomplete,
     authButtonsTheme: typeof authButtons === 'object' ? authButtons : {},
     allowShowPassword: !!options.allowShowPassword,
+    allowPasswordAutocomplete: !!options.allowPasswordAutocomplete,
     scrollGlobalMessagesIntoView:
       undefined === options.scrollGlobalMessagesIntoView
         ? true
@@ -222,7 +232,9 @@ export const ui = {
   rememberLastLogin: m => tget(m, 'rememberLastLogin', getUIAttribute(m, 'rememberLastLogin')),
   allowAutocomplete: m => tget(m, 'allowAutocomplete', getUIAttribute(m, 'allowAutocomplete')),
   scrollGlobalMessagesIntoView: lock => getUIAttribute(lock, 'scrollGlobalMessagesIntoView'),
-  allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword'))
+  allowShowPassword: m => tget(m, 'allowShowPassword', getUIAttribute(m, 'allowShowPassword')),
+  allowPasswordAutocomplete: m =>
+    tget(m, 'allowPasswordAutocomplete', getUIAttribute(m, 'allowPasswordAutocomplete'))
 };
 
 const { get: getAuthAttribute } = dataFns(['core', 'auth']);
@@ -253,8 +265,6 @@ function extractAuthOptions(options) {
   } =
     options.auth || {};
 
-  let { oidcConformant } = options;
-
   audience = typeof audience === 'string' ? audience : undefined;
   connectionScopes = typeof connectionScopes === 'object' ? connectionScopes : {};
   params = typeof params === 'object' ? params : {};
@@ -268,30 +278,13 @@ function extractAuthOptions(options) {
   // if responseType was not set and there is a redirectUrl, it defaults to code. Otherwise token.
   responseType = typeof responseType === 'string' ? responseType : redirectUrl ? 'code' : 'token';
   // now we set the default because we already did the validation
-  redirectUrl = redirectUrl || `${window.location.origin}${window.location.pathname}`;
+  redirectUrl =
+    redirectUrl || `${getOriginFromUrl(window.location.href)}${window.location.pathname}`;
 
   sso = typeof sso === 'boolean' ? sso : true;
 
-  if (!oidcConformant && trim(params.scope || '') === 'openid profile') {
-    warn(
-      options,
-      "Usage of scope 'openid profile' is not recommended. See https://auth0.com/docs/scopes for more details."
-    );
-  }
-
-  if (oidcConformant && !redirect && responseType.indexOf('id_token') > -1) {
-    throw new Error("It is not possible to request an 'id_token' while using popup mode.");
-  }
-
-  if (!oidcConformant && audience) {
-    throw new Error(
-      'It is not possible to use the `auth.audience` option when the `oidcConformant` flag is set to false'
-    );
-  }
-
-  // for legacy flow, the scope should default to openid
-  if (!oidcConformant && !params.scope) {
-    params.scope = 'openid';
+  if (!params.scope) {
+    params.scope = 'openid profile email';
   }
 
   return Immutable.fromJS({
@@ -329,7 +322,7 @@ function extractClientBaseUrlOption(opts, domain) {
   }
 
   const domainUrl = 'https://' + domain;
-  const hostname = parseUrl(domainUrl).hostname;
+  const hostname = getLocationFromUrl(domainUrl).hostname;
   const DOT_AUTH0_DOT_COM = '.auth0.com';
   const AUTH0_US_CDN_URL = 'https://cdn.auth0.com';
   if (endsWith(hostname, DOT_AUTH0_DOT_COM)) {
@@ -344,6 +337,10 @@ function extractClientBaseUrlOption(opts, domain) {
 
 export function extractTenantBaseUrlOption(opts, domain) {
   if (opts.configurationBaseUrl && typeof opts.configurationBaseUrl === 'string') {
+    if (opts.overrides && opts.overrides.__tenant) {
+      // When using a custom domain and a configuration URL hosted in auth0's cdn
+      return urljoin(opts.configurationBaseUrl, 'tenants', 'v1', `${opts.overrides.__tenant}.js`);
+    }
     return urljoin(opts.configurationBaseUrl, 'info-v1.js');
   }
 
@@ -352,7 +349,7 @@ export function extractTenantBaseUrlOption(opts, domain) {
   }
 
   const domainUrl = 'https://' + domain;
-  const hostname = parseUrl(domainUrl).hostname;
+  const hostname = getLocationFromUrl(domainUrl).hostname;
   const DOT_AUTH0_DOT_COM = '.auth0.com';
   const AUTH0_US_CDN_URL = 'https://cdn.auth0.com';
 
@@ -588,8 +585,9 @@ export function overrideOptions(m, opts) {
   }
 
   if (opts.flashMessage) {
-    const key = 'success' === opts.flashMessage.type ? 'globalSuccess' : 'globalError';
-    m = tset(m, key, opts.flashMessage.text);
+    const { type } = opts.flashMessage;
+    const typeCapitalized = type.charAt(0).toUpperCase() + type.slice(1);
+    m = tset(m, `global${typeCapitalized}`, opts.flashMessage.text);
   }
 
   if (opts.auth && opts.auth.params) {
@@ -626,6 +624,9 @@ export function overrideOptions(m, opts) {
   }
   if (typeof opts.allowShowPassword === 'boolean') {
     m = tset(m, 'allowShowPassword', opts.allowShowPassword);
+  }
+  if (typeof opts.allowPasswordAutocomplete === 'boolean') {
+    m = tset(m, 'allowPasswordAutocomplete', opts.allowPasswordAutocomplete);
   }
 
   return m;

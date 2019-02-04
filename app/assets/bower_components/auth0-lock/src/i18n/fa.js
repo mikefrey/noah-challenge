@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'بیش از دفعات مجاز تغییر رمز عبور تلاش نموده اید ، لطفا کمی صبر کنید و دوباره تلاش کنید',
-      'lock.fallback': 'متاسفیم ، مشکلی در تغییر رمز عبور رخ داده است.'
+      'lock.fallback': 'متاسفیم ، مشکلی در تغییر رمز عبور رخ داده است.',
+      enterprise_email:
+        'دامنه ایمیل شما بخشی از ارائهدهنده هویت سازمانی است. برای بازنشانی گذرواژه خود، لطفا به مدیر امنیتی خود مراجعه کنید.'
     },
     login: {
       blocked_user: 'کاربر مسدود شده است.',
@@ -100,7 +102,6 @@ export default {
   sentLabel: 'ارسال شد!',
   signUpLabel: 'ثبت نام',
   signUpSubmitLabel: 'ثبت نام',
-  signUpTerms: '',
   signUpWithLabel: 'ورود با %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -120,6 +121,7 @@ export default {
   mfaSubmitLabel: 'ورود',
   mfaCodeErrorHint: 'از %d عدد استفاده کنید',
   forgotPasswordTitle: 'تنظیم مجدد کلمه ورود',
-  signupTitle: 'ثبت نام',
-  showPassword: 'نمایش رمز ورود'
+  signUpTitle: 'ثبت نام',
+  showPassword: 'نمایش رمز ورود',
+  signUpTerms: 'با ثبت نام، با شرایط خدمات و سیاست حفظ حریم خصوصی ما موافقت می کنید.'
 };

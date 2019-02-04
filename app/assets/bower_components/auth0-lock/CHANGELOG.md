@@ -1,28 +1,331 @@
 # Change Log
 
-## [v10.24.3](https://github.com/auth0/lock/tree/v10.24.3) (2018-01-25)
-[Full Changelog](https://github.com/auth0/lock/compare/v10.24.2...v10.24.3)
+## [v11.14.0](https://github.com/auth0/lock/tree/v11.14.0) (2019-01-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.2...v11.14.0)
 
 
-
-## [v10.24.2](https://github.com/auth0/lock/tree/v10.24.2) (2017-12-21)
-[Full Changelog](https://github.com/auth0/lock/compare/v10.24.1...v10.24.2)
-
+**Changed**
+- Upgrade Auth0.js to trim email, username and phoneNumber on every request [\#1596](https://github.com/auth0/lock/pull/1596) ([luisrudge](https://github.com/luisrudge))
 
 
-## [v10.24.1](https://github.com/auth0/lock/tree/v10.24.1) (2017-11-13)
-[Full Changelog](https://github.com/auth0/lock/compare/v10.24.0...v10.24.1)
-
-**Fixed**
-- Upgraded auth0-js to fix a case where a transaction was not being created
-
-## [v10.24.0](https://github.com/auth0/lock/tree/v10.24.0) (2017-11-08)
-[Full Changelog](https://github.com/auth0/lock/compare/v10.23.1...v10.24.0)
+## [v11.13.2](https://github.com/auth0/lock/tree/v11.13.2) (2019-01-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.1...v11.13.2)
 
 
 **Fixed**
-- Upgrading auth0-js with fixed state checking [\#1166](https://github.com/auth0/lock/pull/1166) ([luisrudge](https://github.com/luisrudge))
+- Fix lock center position with scroll across browsers [\#1594](https://github.com/auth0/lock/pull/1594) ([luisrudge](https://github.com/luisrudge))
 
+
+## [v11.13.1](https://github.com/auth0/lock/tree/v11.13.1) (2019-01-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.13.0...v11.13.1)
+
+
+**Fixed**
+- Upgrade Auth0.js with fix for storage inside the Hosted Login Page [\#1592](https://github.com/auth0/lock/pull/1592) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.13.0](https://github.com/auth0/lock/tree/v11.13.0) (2019-01-15)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.12.1...v11.13.0)
+
+
+**Added**
+- Adding terms for passwordless [\#1424](https://github.com/auth0/lock/pull/1424) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Don't use storage when inside the Universal Login Page (Auth0.js update) [\#1587](https://github.com/auth0/lock/pull/1587) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed missing scroll issue for sign up [\#1566](https://github.com/auth0/lock/pull/1566) ([degrammer](https://github.com/degrammer))
+
+
+## [v11.12.1](https://github.com/auth0/lock/tree/v11.12.1) (2018-11-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.12.0...v11.12.1)
+
+
+**Fixed**
+- Fix `lock is undefined` error in non-redirect scenarios [\#1557](https://github.com/auth0/lock/pull/1557) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.12.0](https://github.com/auth0/lock/tree/v11.12.0) (2018-11-19)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.11.0...v11.12.0)
+
+
+**Added**
+- Add ids to inputs and buttons [\#1517](https://github.com/auth0/lock/pull/1517) ([tingaloo](https://github.com/tingaloo))
+- Add `showTerms` option [\#1485](https://github.com/auth0/lock/pull/1485) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Trim auth params before sending to the API (not while typing) [\#1546](https://github.com/auth0/lock/pull/1546) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix padding in all screens [\#1547](https://github.com/auth0/lock/pull/1547) ([luisrudge](https://github.com/luisrudge))
+- Fix IE10 script error [\#1542](https://github.com/auth0/lock/pull/1542) ([luisrudge](https://github.com/luisrudge))
+- Fix mobile styles using different heights [\#1539](https://github.com/auth0/lock/pull/1539) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.11.0](https://github.com/auth0/lock/tree/v11.11.0) (2018-10-23)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.10.0...v11.11.0)
+
+
+**Added**
+- Add prefill support to Auth0LockPasswordless [\#1505](https://github.com/auth0/lock/pull/1505) ([luisrudge](https://github.com/luisrudge))
+- Add `ariaLabel` option for custom fields [\#1492](https://github.com/auth0/lock/pull/1492) ([Splact](https://github.com/Splact))
+
+**Fixed**
+- Fix google button styles according to google's guidelines [\#1512](https://github.com/auth0/lock/pull/1512) ([luisrudge](https://github.com/luisrudge))
+- [Sustainment] Fixed Reset Password Avatar/Enterprise Issue [\#1504](https://github.com/auth0/lock/pull/1504) ([cocojoe](https://github.com/cocojoe))
+- Remove aria-describedby on missing ref [\#1497](https://github.com/auth0/lock/pull/1497) ([Splact](https://github.com/Splact))
+
+
+## [v11.10.0](https://github.com/auth0/lock/tree/v11.10.0) (2018-09-27)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.9.1...v11.10.0)
+
+**Changed**
+- Upgrade Auth0.js to use cookies instead of localStorage by default: [Read more](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v980-2018-09-26)
+
+
+## [v11.9.1](https://github.com/auth0/lock/tree/v11.9.1) (2018-09-10)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.9.0...v11.9.1)
+
+
+**Fixed**
+- Use span for icon buttons [\#1478](https://github.com/auth0/lock/pull/1478) ([andrew-me](https://github.com/andrew-me))
+
+
+## [v11.9.0](https://github.com/auth0/lock/tree/v11.9.0) (2018-08-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.8.1...v11.9.0)
+
+
+**Added**
+- Support new minimum password length parameter [\#1472](https://github.com/auth0/lock/pull/1472) ([luisrudge](https://github.com/luisrudge))
+- Improve accessibility [\#1471](https://github.com/auth0/lock/pull/1471) ([andrew-me](https://github.com/andrew-me))
+- Add a new type of additionalSignUpField: hidden [\#1459](https://github.com/auth0/lock/pull/1459) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fixed login_hint in some enterprise authorize call scenarios [\#1460](https://github.com/auth0/lock/pull/1460) ([cocojoe](https://github.com/cocojoe))
+
+
+## [v11.8.1](https://github.com/auth0/lock/tree/v11.8.1) (2018-07-30)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.8.0...v11.8.1)
+
+
+**Fixed**
+- Fix/sign up title inconsistenty [\#1457](https://github.com/auth0/lock/pull/1457) ([luisrudge](https://github.com/luisrudge))
+- Fix wrong autoComplete value in password_input [\#1456](https://github.com/auth0/lock/pull/1456) ([luisrudge](https://github.com/luisrudge))
+- Fix crash when showing lock for the second time with custom select input [\#1448](https://github.com/auth0/lock/pull/1448) ([luisrudge](https://github.com/luisrudge))
+- Moving the PasswordStrength component to below the password input [\#1444](https://github.com/auth0/lock/pull/1444) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.8.0](https://github.com/auth0/lock/tree/v11.8.0) (2018-07-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.2...v11.8.0)
+
+
+**Added**
+- Add allowPasswordAutocomplete option [\#1419](https://github.com/auth0/lock/pull/1419) ([jshado1](https://github.com/jshado1))
+
+**Changed**
+- Upgrade auth0.js to 9.7.3 [\#1442](https://github.com/auth0/lock/pull/1442) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix Configuration URL when using __tenantInfo and a baseConfigurationURL [\#1425](https://github.com/auth0/lock/pull/1425) ([lbalmaceda](https://github.com/lbalmaceda))
+- Fix SSO screen not showing in some cases [\#1415](https://github.com/auth0/lock/pull/1415) ([luisrudge](https://github.com/luisrudge))
+- In SSO mode, hide the password input instead of removing it from the DOM [\#1407](https://github.com/auth0/lock/pull/1407) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.7.2](https://github.com/auth0/lock/tree/v11.7.2) (2018-06-07)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.1...v11.7.2)
+
+
+**Added**
+- Added an i18n file for the Norwegian Nynorsk language [\#1398](https://github.com/auth0/lock/pull/1398) ([cjrorvik](https://github.com/cjrorvik))
+
+**Fixed**
+- SSO: Fallback to email if the username field is empty [\#1400](https://github.com/auth0/lock/pull/1400) ([sandrinodimattia](https://github.com/sandrinodimattia))
+- Fixed some typos and corrected some mistakes in the Norwegian Bokmaal [\#1399](https://github.com/auth0/lock/pull/1399) ([cjrorvik](https://github.com/cjrorvik))
+
+
+## [v11.7.1](https://github.com/auth0/lock/tree/v11.7.1) (2018-06-01)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.7.0...v11.7.1)
+
+
+**Fixed**
+- Fix IE submit button display:initial issue [\#1394](https://github.com/auth0/lock/pull/1394) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.7.0](https://github.com/auth0/lock/tree/v11.7.0) (2018-05-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.6.1...v11.7.0)
+
+
+**Fixed**
+- Display error for all enterprise connections in the reset password screen [\#1384](https://github.com/auth0/lock/pull/1384) ([luisrudge](https://github.com/luisrudge))
+- Hide password strength message when the password is valid [\#1382](https://github.com/auth0/lock/pull/1382) ([luisrudge](https://github.com/luisrudge))
+- Fixed Turkish translation [\#1379](https://github.com/auth0/lock/pull/1379) ([saltukalakus](https://github.com/saltukalakus))
+- Fix IE default redirect url [\#1373](https://github.com/auth0/lock/pull/1373) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.6.1](https://github.com/auth0/lock/tree/v11.6.1) (2018-05-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.6.0...v11.6.1)
+
+**Fixed**
+- Fix rendering issue on iOS devices [\#1365](https://github.com/auth0/lock/pull/1365) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.6.0](https://github.com/auth0/lock/tree/v11.6.0) (2018-04-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.5.2...v11.6.0)
+
+
+**Added**
+- Add signup error to valid events [\#1329](https://github.com/auth0/lock/pull/1329) ([yveswehrli](https://github.com/yveswehrli))
+
+**Changed**
+- Upgrade auth0-js to 9.5.0. See auth0-js' changelog [here](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v950-2018-04-24).
+**Fixed**
+- Show spinner when doing quick auth [\#1346](https://github.com/auth0/lock/pull/1346) ([luisrudge](https://github.com/luisrudge))
+- Fix danish translation [\#1338](https://github.com/auth0/lock/pull/1338) ([luisrudge](https://github.com/luisrudge))
+- Fix getSSOData not sending custom nonce/state [\#1333](https://github.com/auth0/lock/pull/1333) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.5.2](https://github.com/auth0/lock/tree/v11.5.2) (2018-03-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.5.1...v11.5.2)
+
+
+**Added**
+- Add jwksURI override option [\#1321](https://github.com/auth0/lock/pull/1321) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.5.1](https://github.com/auth0/lock/tree/v11.5.1) (2018-03-22)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.5.0...v11.5.1)
+
+
+
+## [v11.5.0](https://github.com/auth0/lock/tree/v11.5.0) (2018-03-22)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.4.0...v11.5.0)
+
+
+**Changed**
+- updating auth0-js with impersonation and access token validation changes [\#1308](https://github.com/auth0/lock/pull/1308) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix inconsistent state assignment when parsing a hash [\#1309](https://github.com/auth0/lock/pull/1309) ([luisrudge](https://github.com/luisrudge))
+- Fixed German translations [\#1307](https://github.com/auth0/lock/pull/1307) ([roschaefer](https://github.com/roschaefer))
+- Fixing IE lack of support for `includes` [\#1298](https://github.com/auth0/lock/pull/1298) ([luisrudge](https://github.com/luisrudge))
+- Fix Japanese translations [\#1295](https://github.com/auth0/lock/pull/1295) ([hiro1107](https://github.com/hiro1107))
+
+
+## [v11.4.0](https://github.com/auth0/lock/tree/v11.4.0) (2018-03-12)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.3.1...v11.4.0)
+
+
+**Added**
+- Update auth0.js and add flag to enable impersonation [\#1290](https://github.com/auth0/lock/pull/1290) ([luisrudge](https://github.com/luisrudge))
+
+**Changed**
+- Making HRD work in signup page and showing an error when HRD is detected in the forgot password page [\#1278](https://github.com/auth0/lock/pull/1278) ([luisrudge](https://github.com/luisrudge))
+
+**Fixed**
+- Fix inconsistent screen title [\#1288](https://github.com/auth0/lock/pull/1288) ([luisrudge](https://github.com/luisrudge))
+- Always remove spaces from email and username [\#1280](https://github.com/auth0/lock/pull/1280) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.3.1](https://github.com/auth0/lock/tree/v11.3.1) (2018-02-28)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.3.0...v11.3.1)
+
+
+**Fixed**
+- Add enterprise mapping to the auth0-oidc strategy [\#1275](https://github.com/auth0/lock/pull/1275) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.3.0](https://github.com/auth0/lock/tree/v11.3.0) (2018-02-22)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.3...v11.3.0)
+
+
+**Fixed**
+- Fix Lock Passwordless feature parity (events and quick auth screen) [\#1267](https://github.com/auth0/lock/pull/1267) ([luisrudge](https://github.com/luisrudge))
+- Removing legacy COA mapping + fixing access_denied mapping [\#1266](https://github.com/auth0/lock/pull/1266) ([luisrudge](https://github.com/luisrudge))
+- Only call getSSOData when rememberLastLogin is true [\#1265](https://github.com/auth0/lock/pull/1265) ([luisrudge](https://github.com/luisrudge))
+- Upgrade auth0-js to 9.3.0. See auth0-js' changelog [here](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v930-2018-02-22).
+
+
+
+## [v11.2.3](https://github.com/auth0/lock/tree/v11.2.3) (2018-02-08)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.2...v11.2.3)
+
+
+**Fixed**
+- Fixing Auth0LockPasswordless export [\#1259](https://github.com/auth0/lock/pull/1259) ([luisrudge](https://github.com/luisrudge))
+- Fix sso warning [\#1258](https://github.com/auth0/lock/pull/1258) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.2.2](https://github.com/auth0/lock/tree/v11.2.2) (2018-02-06)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.1...v11.2.2)
+
+
+**Fixed**
+- Upgrade a0js to fix popup mode with passwordless [\#1251](https://github.com/auth0/lock/pull/1251) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.2.1](https://github.com/auth0/lock/tree/v11.2.1) (2018-02-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.2.0...v11.2.1)
+
+
+**Fixed**
+- DIsable HRD check for passwordless connections [\#1248](https://github.com/auth0/lock/pull/1248) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.2.0](https://github.com/auth0/lock/tree/v11.2.0) (2018-02-02)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.3...v11.2.0)
+
+
+**Changed**
+- call /ssodata when inside the universal login page [\#1245](https://github.com/auth0/lock/pull/1245) ([luisrudge](https://github.com/luisrudge))
+- Handling embedded and universal login in the same application [\#1243](https://github.com/auth0/lock/pull/1243) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.1.3](https://github.com/auth0/lock/tree/v11.1.3) (2018-01-29)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.2...v11.1.3)
+
+**Changed**
+- Update auth0.js [auth0.js changelog](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v913-2018-01-29)
+
+
+
+## [v11.1.2](https://github.com/auth0/lock/tree/v11.1.2) (2018-01-26)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.1...v11.1.2)
+
+**Changed**
+- Update auth0.js [auth0.js changelog](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v912-2018-01-26)
+
+
+## [v11.1.1](https://github.com/auth0/lock/tree/v11.1.1) (2018-01-24)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.1.0...v11.1.1)
+
+**Changed**
+- Update auth0.js [auth0.js changelog](https://github.com/auth0/auth0.js/blob/master/CHANGELOG.md#v911-2018-01-24)
+
+
+## [v11.1.0](https://github.com/auth0/lock/tree/v11.1.0) (2018-01-16)
+[Full Changelog](https://github.com/auth0/lock/compare/v11.0.1...v11.1.0)
+
+
+**Changed**
+- Update auth0.js [\#1225](https://github.com/auth0/lock/pull/1225) ([luisrudge](https://github.com/luisrudge))
+
+
+## [v11.0.0](https://github.com/auth0/lock/tree/v11.0.0) (2017-12-21)
+[Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v11.0.0)
+
+Lock v11 is designed for embedded login scenarios and **is not supported in centralized login scenarios** (i.e. Hosted Login Pages). You need to keep using Lock v10 in the Hosted Login Page.
+
+We wrote a [Migration Guide](https://auth0.com/docs/libraries/lock/v11/migration-guide) to make upgrading your app easy. 
+
+**Breaking change**
+`lock.getProfile` now expects an access\_token as the first parameter. You'll need to update your code to change the parameter sent (v10 expected an id_token).
+
+**Removed**
+The `oidcConformant` flag was used to force Lock v10 to not call legacy endpoints. Lock v11 never uses legacy endpoint so the flag is not needed anymore. If specified, it will be ignored.
+
+**Changed**
+Lock v11 default the `scope` parameter to `openid profile email`. This is to make the 'Last Logged in With' window work.
 
 ## [v10.23.1](https://github.com/auth0/lock/tree/v10.23.1) (2017-10-12)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.23.0...v10.23.1)
@@ -327,7 +630,7 @@ In the meantime, react@16 works just fine with this codebase. You'll just have t
 -  Don't disable mfa-code input [\#872](https://github.com/auth0/lock/pull/872) ([nikolaseu](https://github.com/nikolaseu))
 - Fix a box-sizing issue that happened when bootstrap was being used with lock [\#868](https://github.com/auth0/lock/pull/868) ([luisrudge](https://github.com/luisrudge))
 - Cleaning params sent to auth0js [\#863](https://github.com/auth0/lock/pull/863) ([luisrudge](https://github.com/luisrudge))
-- Only set prefill values when client is initialized [\#855](https://github.com/auth0/lock/pull/855) ([luisrudge](https://github.com/luisrudge))
+- Only set prefill values when application is initialized [\#855](https://github.com/auth0/lock/pull/855) ([luisrudge](https://github.com/luisrudge))
 
 
 ## [v10.11.0](https://github.com/auth0/lock/tree/v10.11.0) (2017-01-30)
@@ -464,7 +767,7 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 [Full Changelog](https://github.com/auth0/lock/compare/v10.7.1...v10.7.2)
 
 **Fixed**
-- Fix how the tenant and client info url is build to avoid format issues [\#740](https://github.com/auth0/lock/pull/740) ([glena](https://github.com/glena))
+- Fix how the tenant and application info url is build to avoid format issues [\#740](https://github.com/auth0/lock/pull/740) ([glena](https://github.com/glena))
 - Fix: Single saml connection with no domain shows undefined in button [\#738](https://github.com/auth0/lock/pull/738) ([glena](https://github.com/glena))
 
 ## [v10.7.1](https://github.com/auth0/lock/tree/v10.7.1) (2016-11-25)
@@ -591,7 +894,7 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 - fixed ionic page scroll [\#591](https://github.com/auth0/lock/pull/591) ([beneliflo](https://github.com/beneliflo))
 
 **Added:**
-- Add min/max username validation from client info settings [\#611](https://github.com/auth0/lock/pull/611) ([cristiandouce](https://github.com/cristiandouce))
+- Add min/max username validation from application info settings [\#611](https://github.com/auth0/lock/pull/611) ([cristiandouce](https://github.com/cristiandouce))
 - Introduce clientBaseUrl and languageBaseUrl options to deprecate assetsUrl [\#601](https://github.com/auth0/lock/pull/601) ([cristiandouce](https://github.com/cristiandouce))
 - Added Hungarian translations [\#599](https://github.com/auth0/lock/pull/599) ([nagyv](https://github.com/nagyv))
 - Add french translation [\#596](https://github.com/auth0/lock/pull/596) ([RomainFallet](https://github.com/RomainFallet))
@@ -604,10 +907,10 @@ In lock v10.9 we introduced an issue in auth0.js that changed the casing of the 
 
 This version introduces `languageBaseUrl` and `clientBaseUrl` in replacement of `assetsUrl`.
 
-- The client will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/client`). The region is inferred from the `domain`.
+- The application will be fetched from `${clientBaseUrl}/${clientID}.js` and will default to the CDN url including the region (e.g. `https://cdn.eu.auth0.com/client`). The region is inferred from the `domain`.
 - The language will be fetched from `${languageBaseUrl}/${lang}.js` and will default to the CDN without the region (e.g. `https://cdn.auth0.com/js/lock/${lockVersion}/`).
 - The new options have priority over `assetsUrl`.
-- If `assetsUrl` is provided, keep the current behavior: fetch client from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
+- If `assetsUrl` is provided, keep the current behavior: fetch application from `${assetsUrl}/client/${clientID}.js` and languages from `{assetsUrl}/js/lock/${lockVersion}/${language}.js`.
 
 ## [v10.2.3](https://github.com/auth0/lock/tree/v10.2.3) (2016-10-21)
 [Full Changelog](https://github.com/auth0/lock/compare/v10.2.2...v10.2.3)

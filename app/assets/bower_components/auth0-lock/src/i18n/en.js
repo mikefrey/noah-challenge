@@ -3,7 +3,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'You have reached the limit on password change attempts. Please wait before trying again.',
-      'lock.fallback': "We're sorry, something went wrong when requesting the password change."
+      'lock.fallback': "We're sorry, something went wrong when requesting the password change.",
+      enterprise_email:
+        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator."
     },
     login: {
       blocked_user: 'The user is blocked.',
@@ -25,7 +27,7 @@ export default {
       too_many_attempts: 'Your account has been blocked after multiple consecutive login attempts.',
       session_missing:
         "Couldn't complete your authentication request. Please try again after closing all open dialogs",
-      'hrd.not_matching_email': 'Please, use your corporate email to login.'
+      'hrd.not_matching_email': 'Please use your corporate email to login.'
     },
     passwordless: {
       'bad.email': 'The email is invalid',
@@ -98,10 +100,10 @@ export default {
   retryLabel: 'Retry',
   sentLabel: 'Sent!',
   showPassword: 'Show password',
-  signupTitle: 'Sign Up',
+  signUpTitle: 'Sign Up',
   signUpLabel: 'Sign Up',
   signUpSubmitLabel: 'Sign Up',
-  signUpTerms: '',
+  signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.',
   signUpWithLabel: 'Sign up with %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',

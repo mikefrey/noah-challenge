@@ -7,7 +7,9 @@ export default {
       too_many_requests:
         'Olet yrittänyt vaihtaa salasanaa liian monta kertaa. Ole hyvä ja odota ennen kuin yrität uudelleen.',
       'lock.fallback':
-        'Olemme pahoillamme, mutta jotain meni vikaan kun salasanaa yritettiin vaihtaa.'
+        'Olemme pahoillamme, mutta jotain meni vikaan kun salasanaa yritettiin vaihtaa.',
+      enterprise_email:
+        'Sähköpostisi verkkotunnus on osa yrityspalvelun tarjoajaa. Voit palauttaa salasanasi turva-järjestelmänvalvojalta.'
     },
     login: {
       blocked_user: 'Käyttäjä on estetty.',
@@ -102,10 +104,9 @@ export default {
   resendingLabel: 'Lähettää uudelleen...',
   retryLabel: 'Yritä uudelleen',
   sentLabel: 'Lähetetty!',
-  signupTitle: 'Rekisteröidy',
+  signUpTitle: 'Rekisteröidy',
   signUpLabel: 'Rekisteröidy',
   signUpSubmitLabel: 'Rekisteröidy',
-  signUpTerms: '',
   signUpWithLabel: 'Rekisteröidy %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,5 +126,6 @@ export default {
   mfaLoginInstructions: 'Ole hyvä ja anna mobiilisovelluksesi luoma tarkistuskoodi.',
   mfaSubmitLabel: 'Kirjaudu',
   mfaCodeErrorHint: 'Käytä %d numeroa',
-  showPassword: 'Näytä salasana'
+  showPassword: 'Näytä salasana',
+  signUpTerms: 'Ilmoittautumalla hyväksyt käyttöehdot ja tietosuojakäytännöt.'
 };

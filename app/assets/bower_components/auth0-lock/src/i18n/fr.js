@@ -7,7 +7,9 @@ export default {
       too_many_requests:
         'Vous avez atteint la limite de tentatives de changement de mot de passe. Veuillez patienter avant de recommencer.',
       'lock.fallback':
-        'Nous sommes désolés, un problème est survenu lors de la demande de changement de mot de passe.'
+        'Nous sommes désolés, un problème est survenu lors de la demande de changement de mot de passe.',
+      enterprise_email:
+        "Le domaine de votre messagerie fait partie d'un fournisseur d'identité d'entreprise. Pour réinitialiser votre mot de passe, veuillez contacter votre administrateur de sécurité."
     },
     login: {
       blocked_user: 'L’utilisateur est bloqué.',
@@ -111,7 +113,6 @@ export default {
   sentLabel: 'Envoyé !',
   signUpLabel: 'Inscription',
   signUpSubmitLabel: 'Inscription',
-  signUpTerms: '',
   signUpWithLabel: 'S’inscrire avec %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -127,12 +128,14 @@ export default {
   windowsAuthInstructions: 'Vous êtes connecté depuis votre réseau d’entreprise...',
   windowsAuthLabel: 'Authentification Windows',
   forgotPasswordTitle: 'réinitialisez votre mot de passe',
-  signupTitle: "S'inscrire",
+  signUpTitle: "S'inscrire",
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-Step Vérification',
   mfaLoginInstructions:
     'Veuillez entrer le code de vérification généré par votre application mobile.',
   mfaSubmitLabel: "S'identifier",
   mfaCodeErrorHint: 'Utilisez des numéros %d',
-  showPassword: 'Montrer le mot de passe'
+  showPassword: 'Montrer le mot de passe',
+  signUpTerms:
+    "En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité."
 };

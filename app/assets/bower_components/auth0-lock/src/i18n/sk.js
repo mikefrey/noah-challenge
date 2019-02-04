@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Prekročili ste limit pokusov o zmenu hesla. Prosím počkajte pred ďalším pokusom.',
-      'lock.fallback': 'Prepáčte, zmena hesla nebola úspešná.'
+      'lock.fallback': 'Prepáčte, zmena hesla nebola úspešná.',
+      enterprise_email:
+        'Doména vášho e-mailu je súčasťou poskytovateľa Enterprise Identity. Ak chcete obnoviť svoje heslo, navštívte správcu zabezpečenia.'
     },
     login: {
       blocked_user: 'Užívateľ je blokovaný.',
@@ -72,7 +74,7 @@ export default {
   loginLabel: 'Prihlásenie',
   loginSubmitLabel: 'Prihlásiť',
   loginWithLabel: 'Prihlásiť sa ako %s',
-  notYourAccountAction: 'Nieje to váš účet?',
+  notYourAccountAction: 'Nie je to váš účet?',
   passwordInputPlaceholder: 'Vaše heslo',
   passwordStrength: {
     containsAtLeast: 'Musí obsahovať aspoň %d z nasledujúcich %d druhov zankov:',
@@ -101,10 +103,9 @@ export default {
   resendingLabel: 'Posielame...',
   retryLabel: 'Skúsiť znova',
   sentLabel: 'Odoslané!',
-  signupTitle: 'Prihlásiť sa',
+  signUpTitle: 'Prihlásiť sa',
   signUpLabel: 'Registrácia',
   signUpSubmitLabel: 'Registrovať sa',
-  signUpTerms: '',
   signUpWithLabel: 'Prihlásiť sa ako %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -123,5 +124,7 @@ export default {
   mfaLoginInstructions: 'Prosím zadajte verifikačný kód vygenerovaný vo Vašej mobilnej aplikácii.',
   mfaSubmitLabel: 'Prihlásiť',
   mfaCodeErrorHint: 'Použite %d číslic',
-  showPassword: 'Prosím, použite svoj firemný e-mail na prihlásenie.'
+  showPassword: 'Prosím, použite svoj firemný e-mail na prihlásenie.',
+  signUpTerms:
+    'Registráciou vyjadrujete súhlas s našimi zmluvnými podmienkami a pravidlami ochrany osobných údajov.'
 };

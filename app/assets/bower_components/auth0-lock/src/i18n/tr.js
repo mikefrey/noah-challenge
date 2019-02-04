@@ -7,28 +7,30 @@ export default {
       too_many_requests:
         'Şifre değiştirme deneme sayısında limite ulaştınız. Tekrar denemeden önce lütfen bekleyin.',
       'lock.fallback':
-        'Özür dileriz, şifre değiştirme isteğiniz gerçekleştirilirken bir hata oluştu.'
+        'Özür dileriz, şifre değiştirme isteğiniz gerçekleştirilirken bir hata oluştu.',
+      enterprise_email:
+        'E-postanızın alanı, bir kurumsal kimlik sağlayıcısının parçasıdır. Parolanızı sıfırlamak için lütfen güvenlik yöneticinize başvurun.'
     },
     login: {
       blocked_user: 'Kullanıcı engellendi.',
       invalid_user_password: 'Kimlik bilgileri hatalı.',
       'lock.fallback': 'Özür dileriz, giriş yaparken bir hata oluştu.',
       'lock.invalid_code': 'Hatalı kod.',
-      'lock.invalid_email_password': 'Yanlış e-posta yada şifre.',
-      'lock.invalid_username_password': 'Yanlış kullanıcı adı yada şifre.',
+      'lock.invalid_email_password': 'Yanlış e-posta veya şifre.',
+      'lock.invalid_username_password': 'Yanlış kullanıcı adı veya şifre.',
       'lock.network': 'Sunucuya ulaşamadık. Lütfen bağlantınızı kontrol edin ve tekrar deneyin.',
-      'lock.popup_closed': 'Popup penceresi kapandı. Tekrar deneyin.',
+      'lock.popup_closed': 'Pop-up penceresi kapandı. Tekrar deneyin.',
       'lock.unauthorized': 'Yetkiler alınamadı. Tekrar deneyin.',
       'lock.mfa_registration_required':
-        'Çok faktörlü kimlik doğrulama gerekmekte ancak cihazınız kayıtlı değil. Devam etmeden önce lütfen cihazınızı kaydettirin.',
+        'Çok faktörlü kimlik doğrulama gerekmektedir ancak cihazınız kayıtlı değil. Devam etmeden önce lütfen cihazınızı kaydettirin.',
       'lock.mfa_invalid_code': 'Hatalı kod. Lütfen tekrar deneyin.',
       password_change_required:
-        'İlk defa giriş yaptığınız yada şifrenizin kullanım süresi dolduğu için şifrenizi güncellenmeniz gerekmektedir.',
+        'İlk defa giriş yaptığınız veya şifrenizin kullanım süresi dolduğu için şifrenizi güncellenmeniz gerekmektedir.',
       password_leaked:
-        'Şifreniz başka bir websitesinde açığa çıktığı için bu giriş denemesi engelledi. Engeli kaldırmak için gereken adımları size email ile gönderdik.',
-      too_many_attempts: 'Çoklu giriş denemesi sonucunda hesabınız bloke oldu.',
+        'Şifreniz başka bir websitesinde açığa çıktığı için bu giriş denemesi engellendi. Engeli kaldırmak için gereken adımları size e-posta olarak gönderdik.',
+      too_many_attempts: 'Çok fazla giriş denemesi sonucunda hesabınız bloke oldu.',
       session_missing:
-        'Kimlik doğrulama isteği tamamlayamadı. Tüm açık diyaloglar kapattıktan sonra tekrar deneyiniz',
+        'Kimlik doğrulama isteği tamamlanamadı. Tüm açık diyalogları kapattıktan sonra tekrar deneyiniz',
       'hrd.not_matching_email': ', Giriş için kurumsal e-posta kullanın.'
     },
     passwordless: {
@@ -43,7 +45,7 @@ export default {
       password_no_user_info_error: 'Şifre kullanıcı bilgilerini içeriyor.',
       password_strength_error: 'Şifre çok zayıf.',
       user_exists: 'Bu kullanıcı zaten var.',
-      username_exists: 'Bu kullanıcı adı zaten var.'
+      username_exists: 'Bu kullanıcı adı kullanımda.'
     }
   },
   success: {
@@ -55,9 +57,9 @@ export default {
   blankErrorHint: 'Boş kalamaz',
   codeInputPlaceholder: 'kodunuz',
   databaseEnterpriseLoginInstructions: '',
-  databaseEnterpriseAlternativeLoginInstructions: 'yada',
+  databaseEnterpriseAlternativeLoginInstructions: 'veya',
   databaseSignUpInstructions: '',
-  databaseAlternativeSignUpInstructions: 'yada',
+  databaseAlternativeSignUpInstructions: 'veya',
   emailInputPlaceholder: 'sizin@ornek.com',
   enterpriseLoginIntructions: 'Şirket kimliğiniz ile giriş yapın.',
   enterpriseActiveLoginInstructions: 'Lütfen %s deki şirket kimliğinizi girin.',
@@ -87,24 +89,23 @@ export default {
     upperCase: 'Büyük harfler (A-Z)'
   },
   passwordlessEmailAlternativeInstructions:
-    'Aksi halde, giriş yapmak için e-posta adresinizi girin<br/>yada bir hesap oluşturun',
+    'Aksi halde, giriş yapmak için e-posta adresinizi girin<br/>veya bir hesap oluşturun',
   passwordlessEmailCodeInstructions: '%s adresine kod içeren bir e-posta gönderildi.',
   passwordlessEmailInstructions:
-    'Giriş yapmak için e-posta adresinizi girin<br/>yada bir hesap oluşturun',
+    'Giriş yapmak için e-posta adresinizi girin<br/>veya bir hesap oluşturun',
   passwordlessSMSAlternativeInstructions:
-    'Aksi halde, giriş yapmak için telefon numaranızı girin<br/>yada bir hesap oluşturun',
-  passwordlessSMSCodeInstructions: 'Kod içeren bir SMS gönderildi<br/>%s.',
+    'Aksi halde, giriş yapmak için telefon numaranızı girin<br/>veya bir hesap oluşturun',
+  passwordlessSMSCodeInstructions: 'Size kod içeren bir SMS gönderdik<br/>%s.',
   passwordlessSMSInstructions:
-    'Giriş yapmak için telefon numaranızı girin<br/>yada bir hesap oluşturun',
+    'Giriş yapmak için telefon numaranızı girin<br/>veya bir hesap oluşturun',
   phoneNumberInputPlaceholder: 'telefon numaranız',
-  resendCodeAction: "Kod'u almadınız mı?",
+  resendCodeAction: "Kodu almadınız mı?",
   resendLabel: 'Tekrar gönder',
   resendingLabel: 'Tekrar gönderiliyor...',
-  retryLabel: 'Tekrarla',
+  retryLabel: 'Yeniden dene',
   sentLabel: 'Gönderildi!',
   signUpLabel: 'Kaydol',
   signUpSubmitLabel: 'Kaydol',
-  signUpTerms: '',
   signUpWithLabel: '%s ile kaydol',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,6 +126,7 @@ export default {
   mfaSubmitLabel: 'Giriş yap',
   mfaCodeErrorHint: '%d numaralarını kullanın',
   forgotPasswordTitle: 'Parolanızı sıfırlayın',
-  signupTitle: 'Kaydol',
-  showPassword: 'Şifreni göster'
+  signUpTitle: 'Kaydol',
+  showPassword: 'Şifreni göster',
+  signUpTerms: 'Kaydolarak, hizmet şartlarımızı ve gizlilik politikamızı kabul etmiş olursunuz.'
 };

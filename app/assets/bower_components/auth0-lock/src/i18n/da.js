@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Du har nået grænsen for forsøg på at skifte adgangskode. Vent venligst før du prøver igen.',
-      'lock.fallback': 'Vi beklager, men der skete en fejl i forespørgslen efter ny adgangskode.'
+      'lock.fallback': 'Vi beklager, men der skete en fejl i forespørgslen efter ny adgangskode.',
+      enterprise_email:
+        'Dit e-mail-domæne er en del af en Enterprise Identity-udbyder. For at nulstille dit kodeord, se venligst din sikkerhedsadministrator.'
     },
     login: {
       blocked_user: 'Denne bruger er blokeret.',
@@ -48,7 +50,7 @@ export default {
   },
   success: {
     logIn: 'Tak fordi du loggede ind.',
-    forgotPassword: 'Vi har sendt den en e-mail med instruktioner til at nulstille dit kodeord.',
+    forgotPassword: 'Vi har sendt dig en e-mail med instruktioner til at nulstille dit kodeord.',
     magicLink: 'Vi har sendt dig et link, som du kan bruge til at logge ind<br />i %s.',
     signUp: 'Tak fordi du oprettede en bruger.'
   },
@@ -103,7 +105,6 @@ export default {
   sentLabel: 'Sendt!',
   signUpLabel: 'Opret dig',
   signUpSubmitLabel: 'Opret dig',
-  signUpTerms: '',
   signUpWithLabel: 'Opret dig med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -118,11 +119,12 @@ export default {
   windowsAuthInstructions: 'Du er forbundet fra din virksomheds netværk&hellip;',
   windowsAuthLabel: 'Windows Authentication',
   forgotPasswordTitle: 'Nulstil din adgangskode',
-  signupTitle: 'Tilmeld',
+  signUpTitle: 'Tilmeld',
   mfaInputPlaceholder: 'Kode',
   mfaLoginTitle: 'Tofaktorgodkendelse',
   mfaLoginInstructions: 'Indtast venligst bekræftelseskoden genereret af din mobilapplikation.',
   mfaSubmitLabel: 'Log på',
   mfaCodeErrorHint: 'Brug %d tal',
-  showPassword: 'Vis adgangskode'
+  showPassword: 'Vis adgangskode',
+  signUpTerms: 'Ved at tilmelde dig accepterer du vores servicevilkår og privatlivspolitik.'
 };

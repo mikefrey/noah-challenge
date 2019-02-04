@@ -99,9 +99,11 @@ const Component = ({ i18n, model }) => {
     <div>
       {ssoNotice}
       {tabs}
-      {social}
-      {separator}
-      {login}
+      <div>
+        {social}
+        {separator}
+        {login}
+      </div>
     </div>
   );
 };
@@ -139,7 +141,7 @@ export default class Login extends Screen {
       return null;
     }
 
-    if (isHRDDomain(model, databaseUsernameValue(model)) && !l.oidcConformant(model)) {
+    if (isHRDDomain(model, databaseUsernameValue(model))) {
       return id => startHRD(id, databaseUsernameValue(model));
     }
 

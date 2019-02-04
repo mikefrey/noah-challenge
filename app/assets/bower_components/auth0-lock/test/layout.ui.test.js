@@ -184,7 +184,8 @@ describe('layout', function() {
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
       expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
     });
   });
 
@@ -207,7 +208,7 @@ describe('layout', function() {
       expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
       expect(h.hasEmailInput(this.lock)).to.be.ok();
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+      expect(h.hasHiddenPasswordInput(this.lock)).to.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
       expect(h.hasSubmitButton(this.lock)).to.be.ok();
     });
@@ -232,7 +233,7 @@ describe('layout', function() {
       expect(h.hasSocialButtons(this.lock)).to.not.be.ok();
       expect(h.hasEmailInput(this.lock)).to.be.ok();
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
+      expect(h.hasHiddenPasswordInput(this.lock)).to.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
       expect(h.hasSubmitButton(this.lock)).to.be.ok();
     });
@@ -465,7 +466,8 @@ describe('layout', function() {
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
       expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // not my account
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
     });
   });
 
@@ -487,12 +489,12 @@ describe('layout', function() {
     it('renders the quick auth screen with the right contols', function() {
       expect(h.hasBackButton(this.lock)).to.not.be.ok();
       expect(h.hasLoginSignUpTabs(this.lock)).to.not.be.ok();
-      expect(h.hasOneSocialBigButton(this.lock)).to.be.ok();
+      expect(h.hasOneSocialBigButton(this.lock)).to.not.be.ok();
       expect(h.hasEmailInput(this.lock)).to.not.be.ok();
-      expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
-      expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
-      expect(h.hasAlternativeLink(this.lock)).to.be.ok(); // not your account
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasUsernameInput(this.lock)).to.be.ok();
+      expect(h.hasPasswordInput(this.lock)).to.be.ok();
+      expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // not your account
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
     });
   });
 
@@ -519,11 +521,12 @@ describe('layout', function() {
       expect(h.hasUsernameInput(this.lock)).to.not.be.ok();
       expect(h.hasPasswordInput(this.lock)).to.not.be.ok();
       expect(h.hasAlternativeLink(this.lock)).to.not.be.ok(); // forgot password
-      expect(h.hasSubmitButton(this.lock)).to.not.be.ok();
+      expect(h.hasSubmitButton(this.lock)).to.be.ok();
+      expect(h.hasSubmitButtonVisible(this.lock)).to.not.be.ok();
     });
   });
 });
 
-// TODO: besides of diplaying diffrent lock by customizing the allowed
+// TODO: besides of displaying different lock by customizing the allowed
 // connections we should consider when those connections come from the
 // client settings given the code paths are different.

@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Du har nått gränsen för maximalt antal försök att ändra ditt lösenord. Vänta och försök sedan igen.',
-      'lock.fallback': 'Något gick fel när vi försökte ändra ditt lösenord.'
+      'lock.fallback': 'Något gick fel när vi försökte ändra ditt lösenord.',
+      enterprise_email:
+        'Din e-post domän är en del av en företagsidentitetsleverantör. För att återställa ditt lösenord, se din säkerhetsadministratör.'
     },
     login: {
       blocked_user: 'Användaren är spärrad.',
@@ -100,7 +102,6 @@ export default {
   sentLabel: 'Skickats!',
   signUpLabel: 'Registrera dig',
   signUpSubmitLabel: 'Registrera dig',
-  signUpTerms: '',
   signUpWithLabel: 'Registrera dig med %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -116,11 +117,12 @@ export default {
   windowsAuthInstructions: 'Du är uppkopplad från ditt företagsnätverk&hellip;',
   windowsAuthLabel: 'Windows Authentication',
   forgotPasswordTitle: 'Återställ ditt lösenord',
-  signupTitle: 'Registrera dig',
+  signUpTitle: 'Registrera dig',
   mfaInputPlaceholder: 'Koda',
   mfaLoginTitle: '2 tvåstegsverifiering',
   mfaLoginInstructions: 'Ange verifieringskoden som genereras av din mobil applikation.',
   mfaSubmitLabel: 'Logga in',
   mfaCodeErrorHint: 'Använd %d',
-  showPassword: 'Visa lösenord'
+  showPassword: 'Visa lösenord',
+  signUpTerms: 'Genom att anmäla dig godkänner du våra användarvillkor och integritetspolicy.'
 };

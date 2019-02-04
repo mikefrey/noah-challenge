@@ -5,7 +5,8 @@ export default {
   error: {
     forgotPassword: {
       too_many_requests: '비밀번호 변경 요청 횟수가 제한을 초과하였습니다. 시간을 두고 나중에 다시 시도해 주세요.',
-      'lock.fallback': '죄송합니다. 특정 오류로 인해 비밀번호 변경에 실패하였습니다.'
+      'lock.fallback': '죄송합니다. 특정 오류로 인해 비밀번호 변경에 실패하였습니다.',
+      enterprise_email: '이메일 도메인은 엔터프라이즈 ID 제공 업체의 일부입니다. 암호를 재설정하려면 보안 관리자에게 문의하십시오.'
     },
     login: {
       blocked_user: '차단된 사용자 계정입니다.',
@@ -92,10 +93,9 @@ export default {
   resendingLabel: '재전송중...',
   retryLabel: '재시도',
   sentLabel: '전송완료',
-  signupTitle: '회원가입',
+  signUpTitle: '회원가입',
   signUpLabel: '회원가입',
   signUpSubmitLabel: '회원가입',
-  signUpTerms: '',
   signUpWithLabel: '%s로 회원가입',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -114,5 +114,6 @@ export default {
   mfaLoginInstructions: '스마트폰 어플리케이션으로 생성된 확인 코드를 입력하여 주세요.',
   mfaSubmitLabel: '로그인',
   mfaCodeErrorHint: '%d 숫자를 사용하여 주세요.',
-  showPassword: '암호 표시'
+  showPassword: '암호 표시',
+  signUpTerms: '가입하면 서비스 약관 및 개인 정보 취급 방침에 동의하게됩니다.'
 };

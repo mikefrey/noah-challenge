@@ -1,7 +1,7 @@
 import React from 'react';
 import Screen from '../screen';
 import QuickAuthPane from '../../ui/pane/quick_auth_pane';
-import { logIn, skipQuickAuth } from '../../quick-auth/actions';
+import { logIn, checkSession, skipQuickAuth } from '../../quick-auth/actions';
 import { lastUsedConnection, lastUsedUsername } from './index';
 import * as l from '../index';
 import { renderSignedInConfirmation } from '../signed_in_confirmation';
@@ -27,17 +27,24 @@ const Component = ({ i18n, model }) => {
   const buttonIcon = buttonTheme && buttonTheme.get('icon');
 
   const buttonClickHandler = () => {
-    logIn(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
+    const isUniversalLogin = window.location.host === l.domain(model);
+    if (isUniversalLogin) {
+      logIn(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
+    } else {
+      checkSession(l.id(model), lastUsedConnection(model), lastUsedUsername(model));
+    }
   };
+  const buttonLabel =
+    lastUsedUsername(model) || SOCIAL_STRATEGIES[connectionName] || connectionName;
 
   return (
     <QuickAuthPane
       alternativeLabel={i18n.str('notYourAccountAction')}
       alternativeClickHandler={() => skipQuickAuth(l.id(model))}
-      buttonLabel={lastUsedUsername(model)}
+      buttonLabel={buttonLabel}
       buttonClickHandler={buttonClickHandler}
       header={header}
-      strategy={icon(lastUsedConnection(model).get('strategy'))}
+      strategy={icon(lastUsedConnection(model).get('strategy') || connectionName)}
       buttonIcon={buttonIcon}
       primaryColor={primaryColor}
       foregroundColor={foregroundColor}

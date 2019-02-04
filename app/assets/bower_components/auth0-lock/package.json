@@ -1,6 +1,6 @@
 {
   "name": "auth0-lock",
-  "version": "10.24.3",
+  "version": "11.14.0",
   "description": "Auth0 Lock",
   "author": "Auth0 <support@auth0.com> (http://auth0.com)",
   "license": "MIT",
@@ -28,6 +28,7 @@
       "cross-env BABEL_ENV=test mochify --watch --extension=.jsx --transform=babelify ./test/setup.js test/**/*.test.js",
     "test:jest": "jest --coverage --runInBand",
     "test:jest:watch": "jest --watch --coverage",
+    "test:es-check": "es-check es5 'build/*.js'",
     "publish:cdn": "ccu",
     "release": "scripts/release.sh",
     "i18n:translate": "grunt dist && node scripts/complete-translations.js"
@@ -50,6 +51,7 @@
     "dotenv": "^4.0.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.1",
+    "es-check": "^4.0.0",
     "eslint": "^4.8.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.4.0",
@@ -75,6 +77,7 @@
     "sinon": "^1.15.4",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
+    "superagent": "^3.8.2",
     "uglify-js": "^2.7.4",
     "unminified-webpack-plugin": "^1.1.1",
     "unreleased": "^0.1.0",
@@ -86,10 +89,10 @@
     "zuul-ngrok": "4.0.0"
   },
   "dependencies": {
-    "auth0-js": "~8.12.1",
+    "auth0-js": "^9.10.0",
+    "auth0-password-policies": "^1.0.2",
     "blueimp-md5": "2.3.1",
     "fbjs": "^0.3.1",
-    "idtoken-verifier": "^1.0.1",
     "immutable": "^3.7.3",
     "jsonp": "^0.2.0",
     "password-sheriff": "^1.1.0",
@@ -97,7 +100,6 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-transition-group": "^2.2.1",
-    "superagent": "^3.3.1",
     "trim": "0.0.1",
     "url-join": "^1.1.0"
   },
@@ -129,6 +131,6 @@
   },
   "lint-staged": {
     "*.{js,jsx}": ["npm run lint"],
-    "*.{js,jsx,json,html}": ["prettier --write --print-width 100 --single-quote", "git add"]
+    "*.{js,jsx,json}": ["prettier --write --print-width 100 --single-quote", "git add"]
   }
 }

@@ -7,7 +7,9 @@ export default {
       too_many_requests:
         'U heeft de limiet van wachtwoord aanpassings pogingen bereikt. Wacht even voor dat u het nog een keer probeert.',
       'lock.fallback':
-        'Onze excuses, er is iets fout gegaan bij de de aanvraag voor een wachtwoord aanpassing.'
+        'Onze excuses, er is iets fout gegaan bij de de aanvraag voor een wachtwoord aanpassing.',
+      enterprise_email:
+        'Het domein van uw e-mail maakt deel uit van een Enterprise-identiteitsprovider. Raadpleeg uw beveiligingsbeheerder om uw wachtwoord opnieuw in te stellen.'
     },
     login: {
       blocked_user: 'De gebruiker is geblokkeerd.',
@@ -105,7 +107,6 @@ export default {
   sentLabel: 'Verzonden!',
   signUpLabel: 'Aanmelden',
   signUpSubmitLabel: 'Aanmelden',
-  signUpTerms: '',
   signUpWithLabel: 'Aanmelden met %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -121,11 +122,13 @@ export default {
   windowsAuthInstructions: 'U bent verbonden vanaf uw bedrijfsnetwerk&hellip;',
   windowsAuthLabel: 'Windows Authenticatie',
   forgotPasswordTitle: 'Stel je wachtwoord opnieuw in',
-  signupTitle: 'Aanmelden',
+  signUpTitle: 'Aanmelden',
   mfaInputPlaceholder: 'Code',
   mfaLoginTitle: '2-staps verificatie',
   mfaLoginInstructions: 'Vul de verificatiecode gegenereerd door uw mobiele applicatie.',
   mfaSubmitLabel: 'Log in',
   mfaCodeErrorHint: 'Gebruik %d nummers',
-  showPassword: 'Laat wachtwoord zien'
+  showPassword: 'Laat wachtwoord zien',
+  signUpTerms:
+    'Door u aan te melden gaat u akkoord met onze servicevoorwaarden en ons privacybeleid.'
 };

@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Ви досягли граничної кількості запитів на відновлення паролю. Будь ласка, почекайте перед повторною спробою.',
-      'lock.fallback': 'Йой! Виникла непередбачувана помилка. Перепрошуємо.'
+      'lock.fallback': 'Йой! Виникла непередбачувана помилка. Перепрошуємо.',
+      enterprise_email:
+        "Your email's domain is part of an Enterprise identity provider. To reset your password, please see your security administrator."
     },
     login: {
       blocked_user: 'Користувач заблокований.',
@@ -108,7 +110,6 @@ export default {
   sentLabel: 'Відправлено!',
   signUpLabel: 'Реєстрація',
   signUpSubmitLabel: 'Зареєструватися',
-  signUpTerms: '',
   signUpWithLabel: 'Зареєструватися через %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -125,12 +126,13 @@ export default {
   windowsAuthInstructions: 'Ви підключені через корпоративну мережу&hellip;',
   windowsAuthLabel: 'Аутентифікація Windows',
   forgotPasswordTitle: 'Скинути пароль',
-  signupTitle: 'Зареєструватися',
+  signUpTitle: 'Зареєструватися',
   mfaInputPlaceholder: 'Код',
   mfaLoginTitle: 'Дворівнева перевірка',
   mfaLoginInstructions:
     'Будь ласка, введіть перевірчий код що був згенерований мобільним додатком.',
   mfaSubmitLabel: 'Авторизуватися',
   mfaCodeErrorHint: 'Використовуйте %d номери',
-  showPassword: 'Show password'
+  showPassword: 'Show password',
+  signUpTerms: 'By signing up, you agree to our terms of service and privacy policy.'
 };

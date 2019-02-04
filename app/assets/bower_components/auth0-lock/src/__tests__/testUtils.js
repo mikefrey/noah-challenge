@@ -18,11 +18,15 @@ const removeDataFromProps = props => {
   return returnedProps;
 };
 
-export const mockComponent = (type, domElement = 'div') => props =>
-  React.createElement(domElement, {
-    'data-__type': type,
-    ...addDataToProps(props)
-  });
+export const mockComponent = (type, domElement = 'div') => ({ children, ...props }) =>
+  React.createElement(
+    domElement,
+    {
+      'data-__type': type,
+      ...addDataToProps(props)
+    },
+    children
+  );
 
 export const extractPropsFromWrapper = (wrapper, index = 0) =>
   removeDataFromProps(
@@ -33,7 +37,7 @@ export const extractPropsFromWrapper = (wrapper, index = 0) =>
   );
 
 //set urls with jest: https://github.com/facebook/jest/issues/890#issuecomment-298594389
-export const setURL = url => {
+export const setURL = (url, options = {}) => {
   const parser = document.createElement('a');
   parser.href = url;
   [
@@ -47,9 +51,20 @@ export const setURL = url => {
     'search',
     'hash'
   ].forEach(prop => {
+    let value = parser[prop];
+    if (prop === 'origin' && options.noOrigin) {
+      value = null;
+    }
     Object.defineProperty(window.location, prop, {
-      value: parser[prop],
+      value,
       writable: true
     });
   });
+};
+
+export const expectMockToMatch = ({ mock }, numberOfCalls) => {
+  expect(mock.calls.length).toBe(numberOfCalls);
+  for (var i = 0; i < numberOfCalls; i++) {
+    expect(mock.calls[i]).toMatchSnapshot();
+  }
 };

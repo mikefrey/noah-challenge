@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         "S'han exhaurit els intents per restablir la contrasenya. Espereu una estona i intenteu-ho de nou.",
-      'lock.fallback': 'Hi ha hagut un error en canviar la contrasenya.'
+      'lock.fallback': 'Hi ha hagut un error en canviar la contrasenya.',
+      enterprise_email:
+        "El domini del vostre correu electrònic forma part d'un proveïdor d'identitat empresarial. Per restablir la contrasenya, consulteu l'administrador de seguretat."
     },
     login: {
       blocked_user: "L'usuari està bloquejat.",
@@ -103,10 +105,9 @@ export default {
   resendingLabel: 'Reenviant...',
   retryLabel: 'Reintenta',
   sentLabel: 'Enviat',
-  signupTitle: 'Registre',
+  signUpTitle: 'Registre',
   signUpLabel: 'Registre',
   signUpSubmitLabel: "Registra'm",
-  signUpTerms: '',
   signUpWithLabel: 'Registreu-vos amb %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -126,5 +127,7 @@ export default {
   mfaLoginInstructions: 'Indiqueu el codi de verificació generat per la seva aplicació de mòbil.',
   mfaSubmitLabel: 'Inicia sessió',
   mfaCodeErrorHint: 'Utilitzeu %d xifres',
-  showPassword: 'Ensenya la contrasenya'
+  showPassword: 'Ensenya la contrasenya',
+  signUpTerms:
+    "En inscriure's, accepteu les nostres condicions de servei i la nostra política de privadesa."
 };

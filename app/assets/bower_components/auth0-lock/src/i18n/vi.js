@@ -6,7 +6,9 @@ export default {
     forgotPassword: {
       too_many_requests:
         'Bạn đã sử dụng tối đa số lần đổi mật khẩu được cho phép. Vui lòng thử lại sau.',
-      'lock.fallback': 'Đã có lỗi xảy ra trong lúc thay đổi mật khẩu, chúng tôi rất lấy làm tiếc.'
+      'lock.fallback': 'Đã có lỗi xảy ra trong lúc thay đổi mật khẩu, chúng tôi rất lấy làm tiếc.',
+      enterprise_email:
+        'Tên miền email của bạn là một phần của một nhà cung cấp nhận dạng doanh nghiệp. Để đặt lại mật khẩu của bạn, vui lòng xem quản trị viên bảo mật của bạn.'
     },
     login: {
       blocked_user: 'Tài khoản đã bị khóa.',
@@ -100,7 +102,6 @@ export default {
   sentLabel: 'Đã gửi!',
   signUpLabel: 'Đăng ký',
   signUpSubmitLabel: 'Đăng ký',
-  signUpTerms: '',
   signUpWithLabel: 'Đăng ký với %s',
   socialLoginInstructions: '',
   socialSignUpInstructions: '',
@@ -122,6 +123,8 @@ export default {
   mfaSubmitLabel: 'Đăng nhập',
   mfaCodeErrorHint: 'Chỉ sử dụng %d số',
   forgotPasswordTitle: 'Đặt lại mật khẩu của bạn',
-  signupTitle: 'Đăng ký',
-  showPassword: 'Hiển thị mật khẩu'
+  signUpTitle: 'Đăng ký',
+  showPassword: 'Hiển thị mật khẩu',
+  signUpTerms:
+    'Bằng cách đăng ký, bạn đồng ý với các điều khoản dịch vụ và chính sách bảo mật của chúng tôi.'
 };
