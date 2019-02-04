@@ -7,7 +7,7 @@ const Wreck = require('wreck')
 const secret = config.get('auth0.clientSecret')
 const audience = config.get('auth0.clientID')
 
-const INVITE_CODE = 'interlinked'
+const INVITE_CODE = 'bagel!'
 
 function getUserInfo(token) {
   const url = 'https://goldenstatuechallenge.auth0.com/tokeninfo'
