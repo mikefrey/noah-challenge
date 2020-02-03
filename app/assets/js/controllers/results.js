@@ -7,6 +7,12 @@ angular.module('oscars')
     this.showMinneapolis = true
     this.showChicago = true
 
+    this.shouldShowPaid = (b) => {
+      if (!this.paid) return true
+      if (this.paid && b.paid) return true
+      return false
+    }
+
     this.shouldShowParty = (b) => {
       if (!this.isOscarParty && !b.partyOnly) return true
       if (this.isOscarParty && (b.party || b.partyOnly)) return true
