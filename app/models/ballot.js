@@ -15,6 +15,7 @@ var ballotSchema = new Schema({
     nomineeID: Schema.Types.ObjectId,
     points: Number
   }],
+  paid: {type: Boolean, default: false },
   party: { type: Boolean, default: false },
   partyOnly: { type: Boolean, default: false }
 })

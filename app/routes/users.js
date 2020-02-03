@@ -9,7 +9,7 @@ const audience = config.get('auth0.clientID')
 module.exports = {
 
   index: function *(next) {
-    let fields = 'id firstName lastName location party partyOnly'
+    let fields = 'id firstName lastName location paid party partyOnly'
     if (true || this.session.admin === true)
       fields += ' email admin'
     const users = yield Ballot.find({}, fields).exec()
