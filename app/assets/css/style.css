@@ -443,11 +443,11 @@ section#login { margin-top: 20px !important; }
 	opacity: 0;
 	z-index: 0;
 	-webkit-backface-visibility: hidden;
-	-webkit-animation: imageAnimation 30s linear infinite 0s;
-	-moz-animation: imageAnimation 30s linear infinite 0s;
-	-o-animation: imageAnimation 30s linear infinite 0s;
-	-ms-animation: imageAnimation 30s linear infinite 0s;
-	animation: imageAnimation 30s linear infinite 0s;
+	-webkit-animation: imageAnimation 27s linear infinite 0s;
+	-moz-animation: imageAnimation 27s linear infinite 0s;
+	-o-animation: imageAnimation 27s linear infinite 0s;
+	-ms-animation: imageAnimation 27s linear infinite 0s;
+	animation: imageAnimation 27s linear infinite 0s;
 }
 
 #crossfade > img:nth-child(2)  {
@@ -498,6 +498,13 @@ section#login { margin-top: 20px !important; }
 	-o-animation-delay: 21s;
 	-ms-animation-delay: 21s;
 	animation-delay: 21s;
+}
+#crossfade > img:nth-child(9) {
+	-webkit-animation-delay: 24s;
+	-moz-animation-delay: 24s;
+	-o-animation-delay: 24s;
+	-ms-animation-delay: 24s;
+	animation-delay: 24s;
 }
 
 @-webkit-keyframes imageAnimation {
